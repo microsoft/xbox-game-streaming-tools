@@ -1,0 +1,25 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "title": "JSON Schema for Touch Adaptation Bundle Manifests",
+
+    "type": "object",
+
+    "properties": {
+        "layouts": {
+            "type": "string",
+            "description": "Root directory for the touch layouts."
+        },
+
+        "assets": {
+            "type": "string",
+            "description": "Root directory for all assets needed by the touch layouts."
+        },
+
+        "defaultLayout": {
+            "type": "string",
+            "description": "Name of the layout to use by default when a game is starting"
+        }
+    },
+
+    "required": [ "layouts" ]
+}
