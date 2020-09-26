@@ -1,8 +1,135 @@
 {
-  "$id": "https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/master/touch-adaptation-kit/schemas/layout/v2.0/layout.json",
+  "$id": "https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/master/touch-adaptation-kit/schemas/layout/latest/layout.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "additionalProperties": false,
   "definitions": {
+    "Definitions": {
+      "type": "object",
+      "description": "Definitions block that contains reusable components for layouts.",
+      "patternProperties": {
+        "^(?!__proto__)[a-zA-Z0-9\\.\\-_]+$": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "number"
+            },
+            { "$ref" : "#/definitions/Accelerometer"},
+            { "$ref" : "#/definitions/ActionType"},
+            { "$ref" : "#/definitions/ArcadeButton"},
+            { "$ref" : "#/definitions/ArcadeButtonDefaultStyle"},
+            { "$ref" : "#/definitions/ArcadeButtons"},
+            { "$ref" : "#/definitions/ArcadeButtonStyles"},
+            { "$ref" : "#/definitions/Background"},
+            { "$ref" : "#/definitions/BackgroundAsset"},
+            { "$ref" : "#/definitions/BackgroundColor"},
+            { "$ref" : "#/definitions/Blank"},
+            { "$ref" : "#/definitions/Button"},
+            { "$ref" : "#/definitions/ButtonStyles"},
+            { "$ref" : "#/definitions/ButtonActivatedStyle"},
+            { "$ref" : "#/definitions/ButtonDefaultStyle"},
+            { "$ref" : "#/definitions/ButtonDisabledStyle"},
+            { "$ref" : "#/definitions/ButtonIdleStyle"},
+            { "$ref" : "#/definitions/ButtonToggledStyle"},
+            { "$ref" : "#/definitions/ButtonPulledStyle"},
+            { "$ref" : "#/definitions/ButtonMappableType"},
+            { "$ref" : "#/definitions/ButtonType"},
+            { "$ref" : "#/definitions/Control"},
+            { "$ref" : "#/definitions/ControlEnabled"},
+            { "$ref" : "#/definitions/ControlGroup<Control>"},
+            { "$ref" : "#/definitions/ControlGroup<LayerControl>"},
+            { "$ref" : "#/definitions/ControllerInput"},
+            { "$ref" : "#/definitions/ControlVisibility"},
+            { "$ref" : "#/definitions/Deadzone"},
+            { "$ref" : "#/definitions/Deadzone2D"},
+            { "$ref" : "#/definitions/DirectionalPad"},
+            { "$ref" : "#/definitions/FaceImage"},
+            { "$ref" : "#/definitions/FaceImageAsset"},
+            { "$ref" : "#/definitions/FaceImageAssetValue"},
+            { "$ref" : "#/definitions/FaceImageIcon"},
+            { "$ref" : "#/definitions/FaceImageIconValue"},
+            { "$ref" : "#/definitions/GameIcon"},
+            { "$ref" : "#/definitions/Gyroscope"},
+            { "$ref" : "#/definitions/HexColor"},
+            { "$ref" : "#/definitions/InnerWheel<Control>"},
+            { "$ref" : "#/definitions/InnerWheel<LayerControl>"},
+            { "$ref" : "#/definitions/InputAxisPolar"},
+            { "$ref" : "#/definitions/InputCurveType"},
+            { "$ref" : "#/definitions/InputMapping2D"},
+            { "$ref" : "#/definitions/InputMappingZY"},
+            { "$ref" : "#/definitions/Joystick"},
+            { "$ref" : "#/definitions/JoystickActivatedStyle"},
+            { "$ref" : "#/definitions/JoystickAxisType"},
+            { "$ref" : "#/definitions/JoystickDefaultStyle"},
+            { "$ref" : "#/definitions/JoystickDirectionIndicator"},
+            { "$ref" : "#/definitions/JoystickDisabledStyle"},
+            { "$ref" : "#/definitions/JoystickIdleStyle"},
+            { "$ref" : "#/definitions/JoystickInputConfig2D"},
+            { "$ref" : "#/definitions/JoystickInputConfigAxial"},
+            { "$ref" : "#/definitions/JoystickInputConfigAxialPolar"},
+            { "$ref" : "#/definitions/JoystickInputMapping1D"},
+            { "$ref" : "#/definitions/JoystickInputMapping2D"},
+            { "$ref" : "#/definitions/JoystickMovingStyle"},
+            { "$ref" : "#/definitions/JoystickOutlineWithIndicator"},
+            { "$ref" : "#/definitions/JoystickOutlineWithoutIndicator"},
+            { "$ref" : "#/definitions/JoystickPolarAxisType"},
+            { "$ref" : "#/definitions/JoystickStyles"},
+            { "$ref" : "#/definitions/JoystickType"},
+            { "$ref" : "#/definitions/KnobStyle"},
+            { "$ref" : "#/definitions/Layer"},
+            { "$ref" : "#/definitions/LayerControl"},
+            { "$ref" : "#/definitions/Layout"},
+            { "$ref" : "#/definitions/LayoutAction"},
+            { "$ref" : "#/definitions/LayoutOrientation"},
+            { "$ref" : "#/definitions/MouseInputConfig2D"},
+            { "$ref" : "#/definitions/MouseInputConfigAxial"},
+            { "$ref" : "#/definitions/MouseInputConfigAxialPolar"},
+            { "$ref" : "#/definitions/MouseInputMapping1D"},
+            { "$ref" : "#/definitions/MouseInputMapping2D"},
+            { "$ref" : "#/definitions/MousePolarAxisType"},
+            { "$ref" : "#/definitions/Opacity"},
+            { "$ref" : "#/definitions/OuterWheel<Control>"},
+            { "$ref" : "#/definitions/OuterWheel<LayerControl>"},
+            { "$ref" : "#/definitions/PullIndicator"},
+            { "$ref" : "#/definitions/SensorControl"},
+            { "$ref" : "#/definitions/SensorZYInputConfig"},
+            { "$ref" : "#/definitions/Stroke"},
+            { "$ref" : "#/definitions/Throttle"},
+            { "$ref" : "#/definitions/ThrottleDefaultStyle"},
+            { "$ref" : "#/definitions/ThrottleStyles"},
+            { "$ref" : "#/definitions/ThrottleKnobStyle"},
+            { "$ref" : "#/definitions/Touchpad"},
+            { "$ref" : "#/definitions/TouchpadDefaultStyle"},
+            { "$ref" : "#/definitions/TouchpadStyles"},
+            { "$ref" : "#/definitions/TriggerType"},
+            { "$ref" : "#/definitions/TurboAction"},
+            { "$ref" : "#/definitions/Wheel<Control>"},
+            { "$ref" : "#/definitions/Wheel<LayerControl>"}
+          ]
+        }
+      }
+    },
+    "Reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "JSON Reference to another value defined locally or in a nearby file.",
+      "required": [
+        "$ref"
+      ],
+      "patternProperties": {
+        "^\\$ref$": {
+          "type": "string",
+          "format": "uri-reference"
+        }
+      }
+    },
     "Accelerometer": {
       "additionalProperties": false,
       "description": "Accelerometer",
@@ -55,13 +182,38 @@
         "action": {
           "$ref": "#/definitions/ControllerInput"
         },
-        "icon": {
-          "$ref": "#/definitions/GameIcon"
+        "enabled": {
+          "$ref": "#/definitions/ControlEnabled"
+        },
+        "styles": {
+          "$ref": "#/definitions/ArcadeButtonStyles"
+        },
+        "visible": {
+          "$ref": "#/definitions/ControlVisibility"
         }
       },
       "required": [
         "action"
       ],
+      "type": "object"
+    },
+    "ArcadeButtonDefaultStyle": {
+      "additionalProperties": false,
+      "description": "Default styling parameters to be applied to the arcade button.\nWhen a specific state's styling is not provided, parameters fallback to their equivalents in default.\nIf default styling is not provided, internal defaults are used instead.",
+      "properties": {
+        "background": {
+          "$ref": "#/definitions/Background",
+          "description": "Background styling to be used on the arcade button."
+        },
+        "faceImage": {
+          "$ref": "#/definitions/FaceImage",
+          "description": "Face image to be used on the arcade button."
+        },
+        "opacity": {
+          "description": "The opacity of the arcade button.",
+          "$ref": "#/definitions/Opacity"
+        }
+      },
       "type": "object"
     },
     "ArcadeButtons": {
@@ -117,6 +269,29 @@
         "mediumPunch",
         "heavyPunch"
       ],
+      "type": "object"
+    },
+    "ArcadeButtonStyles": {
+      "additionalProperties": false,
+      "description": "Styling to be applied to the arcade button.\nFor each state the arcade button can be in, each styleable component can be customized.",
+      "properties": {
+        "activated": {
+          "$ref": "#/definitions/ArcadeButtonDefaultStyle",
+          "description": "Styling to be applied to the arcade button's components while it is in the activated state.\nThe activated state is when the arcade button is being interacted with (i.e. tapped) and the action being executed."
+        },
+        "default": {
+          "$ref": "#/definitions/ArcadeButtonDefaultStyle",
+          "description": "Default styling parameters to be applied to the arcade button.\nWhen a specific state's styling is not provided, parameters fallback to their equivalents in default.\nIf default styling is not provided, internal defaults are used instead."
+        },
+        "disabled": {
+          "$ref": "#/definitions/ArcadeButtonDefaultStyle",
+          "description": "Styling to be applied to the arcade button's components while it is in the disabled state.\nThe arcade button cannot be interacted with in this state, but it still exists."
+        },
+        "idle": {
+          "$ref": "#/definitions/ArcadeButtonDefaultStyle",
+          "description": "Styling to be applied to the arcade button's components while it is in the idle state.\nThe idle state is defined as when the arcade button is not yet interacted with (i.e. not tapped)."
+        }
+      },
       "type": "object"
     },
     "Background": {
@@ -217,6 +392,12 @@
         },
         "styles": {
           "$ref": "#/definitions/ButtonStyles"
+        },
+        "visible": {
+          "$ref": "#/definitions/ControlVisibility"
+        },
+        "enabled": {
+          "$ref": "#/definitions/ControlEnabled"
         },
         "type": {
           "description": "Control type identifier.",
@@ -438,6 +619,17 @@
         }
       ]
     },
+    "ControlEnabled": {
+      "oneOf": [
+        {
+          "description": "Controls whether or not this control is enabled. Defaults to 'true'. When disabled, the control receives no input but is visible.",
+          "type": "boolean"
+        },
+        {
+          "$ref": "#/definitions/Reference"
+        }
+      ]
+    },
     "ControlGroup<Control>": {
       "items": [
         {
@@ -545,6 +737,17 @@
         }
       ]
     },
+    "ControlVisibility": {
+      "oneOf": [
+        {
+          "description": "Controls whether or not this control is visible. Defaults to 'true'. When not visible, the control receives no input.",
+          "type": "boolean"
+        },
+        {
+          "$ref": "#/definitions/Reference"
+        }
+      ]
+    },
     "Deadzone": {
       "additionalProperties": false,
       "properties": {
@@ -620,9 +823,14 @@
           "type": "string"
         },
         "value": {
-          "description": "The file name (without extension) of the asset file to reference.",
-          "type": "string",
-          "examples": [ "FancyImage" ]
+          "oneOf": [
+            {
+              "$ref": "#/definitions/Reference"
+            },
+            {
+              "$ref": "#/definitions/FaceImageAssetValue"
+            }
+          ]
         }
       },
       "type": "object",
@@ -630,6 +838,11 @@
         "type",
         "value"
       ]
+    },
+    "FaceImageAssetValue": {
+      "description": "The file name (without extension) of the asset file to reference.",
+      "type": "string",
+      "examples": [ "FancyImage" ]
     },
     "FaceImageIcon": {
       "additionalProperties": false,
@@ -643,8 +856,14 @@
           "type": "string"
         },
         "value": {
-          "description": "The name of the icon to use.",
-          "$ref": "#/definitions/GameIcon"
+          "oneOf": [
+            {
+              "$ref": "#/definitions/Reference"
+            },
+            {
+              "$ref": "#/definitions/FaceImageIconValue"
+            }
+          ]
         }
       },
       "type": "object",
@@ -652,6 +871,10 @@
         "type",
         "value"
       ]
+    },
+    "FaceImageIconValue": {
+      "description": "The name of the icon to use.",
+      "$ref": "#/definitions/GameIcon"
     },
     "GameIcon": {
       "enum": [
@@ -968,6 +1191,10 @@
           "$ref": "#/definitions/ActionType",
           "description": "Action to be invoked while the user is touching the joystick."
         },
+        "actionThreshold": {
+          "description": "Normalized minimum joystick value (radial) required to invoke the action. Default value of 0.",
+          "type": "number"
+        },
         "axis": {
           "anyOf": [
             {
@@ -982,28 +1209,22 @@
           ],
           "description": "Map input axis (touch) to output axis (joystick, mouse, or touch)."
         },
+        "enabled": {
+          "$ref": "#/definitions/ControlEnabled"
+        },
         "expand": {
           "description": "Expand joystick range to match user ergonomic preferences when placed in a center control socket.\nSet to false to use a standardized fixed joystick size. Default value of true.",
           "type": "boolean"
-        },
-        "icon": {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/GameIcon"
-            },
-            {
-              "$ref": "#/definitions/ControllerInput"
-            }
-          ],
-          "description": "Icon to be displayed on the joystick."
         },
         "relative": {
           "description": "By default, the joystick will calculate its value using a relative calculation based on user's initial touch.\nSetting this value to false will instead calculate its value based on the center point of the control.",
           "type": "boolean"
         },
-        "threshold": {
-          "description": "Normalized minimum joystick value (radial) required to invoke the action. Default value of 0.",
-          "type": "number"
+        "styles": {
+          "$ref": "#/definitions/JoystickStyles"
+        },
+        "visible": {
+          "$ref": "#/definitions/ControlVisibility"
         },
         "type": {
           "description": "Control type identifier.",
@@ -1019,6 +1240,29 @@
       ],
       "type": "object"
     },
+    "JoystickActivatedStyle": {
+      "additionalProperties": false,
+      "description": "Styling to be applied to the joystick's components while the joystick is in the activated state.\nThe activated state is when the joystick has an action defined and the knob is moved outside the threshold (if any) to execute the action.",
+      "properties": {
+        "background": {
+          "$ref": "#/definitions/Background",
+          "description": "Background styling to be used on the joystick when it is in the activated state."
+        },
+        "knob": {
+          "$ref": "#/definitions/KnobStyle",
+          "description": "Styling of the joystick knob components when it is in the activated state."
+        },
+        "opacity": {
+          "$ref": "#/definitions/Opacity",
+          "description": "The opacity of the joystick when it is in the activated state."
+        },
+        "outline": {
+          "$ref": "#/definitions/JoystickOutlineWithIndicator",
+          "description": "Styling of the joystick outline components when it is in the activated state."
+        }
+      },
+      "type": "object"
+    },
     "JoystickAxisType": {
       "enum": [
         "leftJoystickX",
@@ -1027,6 +1271,101 @@
         "rightJoystickY"
       ],
       "type": "string"
+    },
+    "JoystickDefaultStyle": {
+      "additionalProperties": false,
+      "description": "Default styling parameters to be applied to the joystick.\nWhen a specific state's styling is not provided, parameters fallback to their equivalents in default.\nIf default styling is not provided, internal defaults are used instead.",
+      "properties": {
+        "background": {
+          "$ref": "#/definitions/Background",
+          "description": "Default background styling to be used on the joystick."
+        },
+        "knob": {
+          "$ref": "#/definitions/KnobStyle",
+          "description": "Default styling of the joystick knob components."
+        },
+        "opacity": {
+          "$ref": "#/definitions/Opacity",
+          "description": "Default opacity of the joystick."
+        },
+        "outline": {
+          "$ref": "#/definitions/JoystickOutlineWithIndicator",
+          "description": "Default styling of the joystick outline components."
+        }
+      },
+      "type": "object"
+    },
+    "JoystickDirectionIndicator": {
+      "additionalProperties": false,
+      "description": "Styling of the directional indicator on the joystick",
+      "properties": {
+        "type": {
+          "description": "Joystick directional indicator type identifier",
+          "enum": [
+            "color"
+          ],
+          "type": "string"
+        },
+        "value": {
+          "description": "The color to apply to the directional indicator",
+          "$ref": "#/definitions/HexColor"
+        },
+        "opacity": {
+          "description": "The opacity of the directional indicator",
+          "$ref": "#/definitions/Opacity"
+        }
+      },
+      "required": [
+        "type",
+        "value"
+      ],
+      "type": "object"
+    },
+    "JoystickDisabledStyle": {
+      "additionalProperties": false,
+      "description": "Styling to be applied to the joystick's components while it is in the disabled state.\nThe joystick cannot be interacted with in this state, but it still exists.",
+      "properties": {
+        "background": {
+          "$ref": "#/definitions/Background",
+          "description": "Background styling to be used on the joystick when it is in the disabled state."
+        },
+        "knob": {
+          "$ref": "#/definitions/KnobStyle",
+          "description": "Styling of the joystick knob components when it is in the disabled state."
+        },
+        "opacity": {
+          "$ref": "#/definitions/Opacity",
+          "description": "The opacity of the joystick when it is in the disabled state."
+        },
+        "outline": {
+          "$ref": "#/definitions/JoystickOutlineWithoutIndicator",
+          "description": "Styling of the joystick outline components when it is in the disabled state."
+        }
+      },
+      "type": "object"
+    },
+    "JoystickIdleStyle": {
+      "additionalProperties": false,
+      "description": "Styling to be applied to the joystick's components while it is in the idle state.\nThe idle state is defined as when the joystick is not yet interacted with (i.e. not touched).",
+      "properties": {
+        "background": {
+          "$ref": "#/definitions/Background",
+          "description": "Background styling to be used on the joystick when it is in the idle state."
+        },
+        "knob": {
+          "$ref": "#/definitions/KnobStyle",
+          "description": "Styling of the joystick knob components when it is in the idle state."
+        },
+        "opacity": {
+          "$ref": "#/definitions/Opacity",
+          "description": "The opacity of the joystick when it is in the idle state."
+        },
+        "outline": {
+          "$ref": "#/definitions/JoystickOutlineWithoutIndicator",
+          "description": "Styling of the joystick outline components when it is in the idle state."
+        }
+      },
+      "type": "object"
     },
     "JoystickInputConfig2D": {
       "additionalProperties": false,
@@ -1169,6 +1508,63 @@
         }
       ]
     },
+    "JoystickMovingStyle": {
+      "additionalProperties": false,
+      "description": "Styling to be applied to the joystick's components while the joystick is in the moving state.\nThe moving state is when the joystick knob is being interacted with (i.e. touched) regardless of the deadzone defined.",
+      "properties": {
+        "background": {
+          "$ref": "#/definitions/Background",
+          "description": "Background styling to be used on the joystick when it is in the moving state."
+        },
+        "knob": {
+          "$ref": "#/definitions/KnobStyle",
+          "description": "Styling of the joystick knob components when it is in the moving state."
+        },
+        "opacity": {
+          "$ref": "#/definitions/Opacity",
+          "description": "The opacity of the joystick when it is in the moving state."
+        },
+        "outline": {
+          "$ref": "#/definitions/JoystickOutlineWithIndicator",
+          "description": "Styling of the joystick outline components when it is in the moving state."
+        }
+      },
+      "type": "object"
+    },
+    "JoystickOutlineWithIndicator": {
+      "additionalProperties": false,
+      "description": "Styling of the joystick's outline components",
+      "properties": {
+        "stroke": {
+          "$ref": "#/definitions/Stroke",
+          "description": "Styling of the stroke of the joystick's outline"
+        },
+        "indicator": {
+          "$ref": "#/definitions/JoystickDirectionIndicator",
+          "description": "Styling of the directional indicator on the joystick's outline"
+        },
+        "opacity": {
+          "$ref": "#/definitions/Opacity",
+          "description": "The opacity of the joystick outline"
+        }
+      },
+      "type": "object"
+    },
+    "JoystickOutlineWithoutIndicator": {
+      "additionalProperties": false,
+      "description": "Styling of the joystick's outline components",
+      "properties": {
+        "stroke": {
+          "$ref": "#/definitions/Stroke",
+          "description": "Styling of the stroke of the joystick's outline"
+        },
+        "opacity": {
+          "$ref": "#/definitions/Opacity",
+          "description": "The opacity of the joystick outline"
+        }
+      },
+      "type": "object"
+    },
     "JoystickPolarAxisType": {
       "enum": [
         "leftJoystickRight",
@@ -1182,12 +1578,57 @@
       ],
       "type": "string"
     },
+    "JoystickStyles": {
+      "additionalProperties": false,
+      "description": "Styling to be applied to the joystick.\n For each state that the joystick can be in, each styleable component can be customized.",
+      "properties": {
+        "activated": {
+          "$ref": "#/definitions/JoystickActivatedStyle"
+        },
+        "default": {
+          "$ref": "#/definitions/JoystickDefaultStyle"
+        },
+        "disabled": {
+          "$ref": "#/definitions/JoystickDisabledStyle"
+        },
+        "idle": {
+          "$ref": "#/definitions/JoystickIdleStyle"
+        },
+        "moving": {
+          "$ref": "#/definitions/JoystickMovingStyle"
+        }
+      },
+      "type": "object"
+    },
     "JoystickType": {
       "enum": [
         "rightJoystick",
         "leftJoystick"
       ],
       "type": "string"
+    },
+    "KnobStyle": {
+      "additionalProperties": false,
+      "description": "Styling options for a knob on controls that support it.",
+      "properties": {
+        "background": {
+          "$ref": "#/definitions/Background",
+          "description": "Background of the knob"
+        },
+        "faceImage": {
+          "$ref": "#/definitions/FaceImage",
+          "description": "Face image on the knob"
+        },
+        "opacity": {
+          "$ref": "#/definitions/Opacity",
+          "description": "Opacity of the knob"
+        },
+        "stroke": {
+          "$ref": "#/definitions/Stroke",
+          "description": "Stroke of the knob"
+        }
+      },
+      "type": "object"
     },
     "Layer": {
       "additionalProperties": false,
@@ -1206,13 +1647,27 @@
             },
             "leftCenter": {
               "items": {
-                "$ref": "#/definitions/LayerControl"
+                "anyOf": [
+                  {
+                    "$ref": "#/definitions/LayerControl"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
               },
               "type": "array"
             },
             "rightCenter": {
               "items": {
-                "$ref": "#/definitions/LayerControl"
+                "anyOf": [
+                  {
+                    "$ref": "#/definitions/LayerControl"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
               },
               "type": "array"
             }
@@ -1231,27 +1686,16 @@
         "upper": {
           "additionalProperties": false,
           "properties": {
-            "left": {
-              "items": {
-                "$ref": "#/definitions/LayerControl"
-              },
-              "type": "array"
-            },
-            "leftCenter": {
-              "items": {
-                "$ref": "#/definitions/LayerControl"
-              },
-              "type": "array"
-            },
             "right": {
               "items": {
-                "$ref": "#/definitions/LayerControl"
-              },
-              "type": "array"
-            },
-            "rightCenter": {
-              "items": {
-                "$ref": "#/definitions/LayerControl"
+                "anyOf": [
+                  {
+                    "$ref": "#/definitions/LayerControl"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
               },
               "type": "array"
             }
@@ -1295,13 +1739,27 @@
             },
             "leftCenter": {
               "items": {
-                "$ref": "#/definitions/Control"
+                "anyOf": [
+                  {
+                    "$ref": "#/definitions/Control"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
               },
               "type": "array"
             },
             "rightCenter": {
               "items": {
-                "$ref": "#/definitions/Control"
+                "anyOf": [
+                  {
+                    "$ref": "#/definitions/Control"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
               },
               "type": "array"
             }
@@ -1320,27 +1778,16 @@
         "upper": {
           "additionalProperties": false,
           "properties": {
-            "left": {
-              "items": {
-                "$ref": "#/definitions/Control"
-              },
-              "type": "array"
-            },
-            "leftCenter": {
-              "items": {
-                "$ref": "#/definitions/Control"
-              },
-              "type": "array"
-            },
             "right": {
               "items": {
-                "$ref": "#/definitions/Control"
-              },
-              "type": "array"
-            },
-            "rightCenter": {
-              "items": {
-                "$ref": "#/definitions/Control"
+                "anyOf": [
+                  {
+                    "$ref": "#/definitions/Control"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
               },
               "type": "array"
             }
@@ -1781,6 +2228,30 @@
       ],
       "type": "object"
     },
+    "Stroke": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "description": "Stroke type identifier",
+          "enum": [
+            "solid"
+          ],
+          "type": "string"
+        },
+        "color": {
+          "$ref": "#/definitions/HexColor",
+          "description": "Stroke color in Hex format"
+        },
+        "opacity": {
+          "$ref": "#/definitions/Opacity",
+          "description": "The opacity of the stroke"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "type": "object"
+    },
     "Throttle": {
       "additionalProperties": false,
       "description": "Throttle\n\nSimilar to a y-axis only joystick, but tuned specifically to control gas/brake in racing games.",
@@ -1793,10 +2264,6 @@
           "$ref": "#/definitions/TriggerType",
           "description": "Map input axis (touch positive y-axis) to output axis."
         },
-        "icon": {
-          "$ref": "#/definitions/GameIcon",
-          "description": "Icon to be displayed on the throttle knob."
-        },
         "relative": {
           "description": "By default, the throttle will calculate its value using a relative calculation based on user's initial touch.\nSetting this value to false will instead calculate its value based on the center point of the control.",
           "type": "boolean"
@@ -1804,6 +2271,9 @@
         "sticky": {
           "description": "By default, when the user stops touching the control, the axisDown and axisRight values reset back to 0.\nWhen set to true, the values will instead remain unchanged. This is commonly used to implement \"cruise control\" in driving games.",
           "type": "boolean"
+        },
+        "styles": {
+          "$ref": "#/definitions/ThrottleStyles"
         },
         "type": {
           "description": "Control type identifier.",
@@ -1818,6 +2288,38 @@
         "axisDown",
         "axisUp"
       ],
+      "type": "object"
+    },
+    "ThrottleDefaultStyle": {
+      "additionalProperties": false,
+      "description": "Default styling parameters to be applied to the throttle.\nWhen a specific state's styling is not provided, parameters fallback to their equivalents in default.\nIf default styling is not provided, internal defaults are used instead.",
+      "properties": {
+        "knob": {
+          "$ref": "#/definitions/ThrottleKnobStyle",
+          "description": "Default knob styling to be applied to the throttle."
+        }
+      },
+      "type": "object"
+    },
+    "ThrottleKnobStyle": {
+      "additionalProperties": false,
+      "description": "Styling options for a knob on controls that support it.",
+      "properties": {
+        "faceImage": {
+          "$ref": "#/definitions/FaceImageIcon",
+          "description": "Face image on the knob"
+        }
+      },
+      "type": "object"
+    },
+    "ThrottleStyles": {
+      "additionalProperties": false,
+      "description": "Styling to be applied to the arcade throttle.\nFor each state the arcade button can be in, each styleable component can be customized.",
+      "properties": {
+        "default": {
+          "$ref": "#/definitions/ThrottleDefaultStyle"
+        }
+      },
       "type": "object"
     },
     "Touchpad": {
@@ -1842,13 +2344,12 @@
           ],
           "description": "Map input axis (touch) to output axis (joystick, mouse, or touch)."
         },
-        "icon": {
-          "$ref": "#/definitions/GameIcon",
-          "description": "Icon to be displayed on the touchpad."
-        },
         "renderAsButton": {
           "description": "Render the touchpad to appear visually as a button.",
           "type": "boolean"
+        },
+        "styles": {
+          "$ref": "#/definitions/TouchpadStyles"
         },
         "type": {
           "description": "Control type identifier.",
@@ -1862,6 +2363,27 @@
         "type",
         "axis"
       ],
+      "type": "object"
+    },
+    "TouchpadDefaultStyle": {
+      "additionalProperties": false,
+      "description": "Default styling parameters to be applied to the joystick.\nWhen a specific state's styling is not provided, parameters fallback to their equivalents in default.\nIf default styling is not provided, internal defaults are used instead.",
+      "properties": {
+        "faceImage": {
+          "$ref": "#/definitions/FaceImageIcon",
+          "description": "Default face image to be used on the touchpad."
+        }
+      },
+      "type": "object"
+    },
+    "TouchpadStyles": {
+      "additionalProperties": false,
+      "description": "Styling to be applied to the touchpad.\n For each state that the touchpad can be in, each styleable component can be customized.",
+      "properties": {
+        "default": {
+          "$ref": "#/definitions/TouchpadDefaultStyle"
+        }
+      },
       "type": "object"
     },
     "TriggerType": {
@@ -1928,6 +2450,9 @@
     },
     "orientation": {
       "$ref": "#/definitions/LayoutOrientation"
+    },
+    "definitions": {
+      "ref": "#/definitions/Definitions"
     }
   },
   "required": [
