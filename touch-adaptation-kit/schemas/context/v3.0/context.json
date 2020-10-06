@@ -2,60 +2,81 @@
     "$id": "https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/master/touch-adaptation-kit/schemas/context/v3.0/context.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "title": "JSON Schema for Touch Adaptation Bundle Context File",
-
+    "definitions": {
+        "ContextDefinableType": {
+            "description": "Set of types which can be used in the definitions section of a context file.",
+            "anyOf": [
+                { "$ref": "../../layout/v3.0/layout.json#/definitions/LayoutDefinableType" },
+                { "$ref": "#/definitions/StateType" },
+                {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/StateType"
+                    }
+                }
+            ]
+        },
+        "StateType": {
+            "description": "Set of types which can be used for state values",
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "boolean"
+                },
+                {
+                    "type": "integer"
+                },
+                {
+                    "type": "number"
+                }
+            ]
+        }
+    },
     "type": "object",
-
     "properties": {
+        "$schema": {
+            "type": "string"
+        },
         "definitions": {
-          "$ref": "../../layout/v3.0/layout.json#/definitions/Definitions"
+            "type": "object",
+            "description": "Definitions block that contains reusable components for layouts.",
+            "patternProperties": {
+                "^(?!__proto__)[a-zA-Z0-9\\.\\-_]+$": {
+                    "$ref": "#/definitions/ContextDefinableType"
+                }
+            },
+            "additionalPropeties": false
         },
         "state": {
             "type": "object",
             "description": "State block that contains the global state that forms a shared context that other layouts can reference.",
             "patternProperties": {
                 "^(?!__proto__)[a-zA-Z0-9\\.\\-_]+$": {
-                    "anyOf": [
-                        {
-                          "type": "string"
-                        },
-                        {
-                          "type": "boolean"
-                        },
-                        {
-                          "type": "integer"
-                        },
-                        {
-                          "type": "number"
-                        }
-                      ]
+                    "$ref": "#/definitions/StateType"
                 }
-              }
+            },
+            "additionalProperties": false
         },
         "allowedStateValues": {
-          "type": "object",
-          "description": "AllowedStateValues block which contains allowed state values for a given state, such as allowed asset names for a given asset",
-          "patternProperties": {
-            "^(?!__proto__)[a-zA-Z0-9\\.\\-_]+$": {
-                  "type": "array",
-                  "items": {
+            "type": "object",
+            "description": "AllowedStateValues block which contains allowed state values for a given state, such as allowed asset names for a given asset",
+            "patternProperties": {
+                "^(?!__proto__)[a-zA-Z0-9\\.\\-_]+$": {
                     "anyOf": [
-                      {
-                        "type": "string"
-                      },
-                      {
-                        "type": "boolean"
-                      },
-                      {
-                        "type": "integer"
-                      },
-                      {
-                        "type": "number"
-                      }
+                        {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/StateType"
+                            }
+                        },
+                        { "$ref": "../../layout/v3.0/layout.json#/definitions/Reference" }
                     ]
-                  }
-                
-              }
-          }
+                }
+            },
+            "additionalProperties": false
         }
-    }
+    },
+    "additionalProperties": false
 }

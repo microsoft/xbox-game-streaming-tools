@@ -2,31 +2,25 @@
     "$id": "https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/master/touch-adaptation-kit/schemas/manifest/v1.1/manifest.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "title": "JSON Schema for Touch Adaptation Bundle Manifests",
-
     "type": "object",
-
     "properties": {
         "layouts": {
             "type": "string",
             "description": "Root directory for the touch layouts."
         },
-
         "assets": {
             "type": "string",
             "description": "Root directory for all assets needed by the touch layouts."
         },
-
         "defaultLayout": {
             "type": "string",
             "description": "Name of the layout to use by default when a game is starting"
         },
-
         "contextFile": {
             "type": "string",
             "format": "uri-reference",
             "description": "Relative file path to the global context file that can be referenced by all layouts."
         }
     },
-
-    "required": [ "layouts" ]
+    "required": ["layouts"]
 }
