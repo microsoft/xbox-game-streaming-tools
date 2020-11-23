@@ -5,7 +5,7 @@
 
 XBOX Game Streaming Tools provide schemas and samples to enable game developers that are optimizing their games for Xbox game streaming.  
 
-To get started with Xbox game streaming you appl to the ID@Xbox program at http://www.xbox.com/en-us/Developers/id.
+To get started with Xbox game streaming you apply to the ID@Xbox program at http://www.xbox.com/en-us/Developers/id.
 
 To learn more about optimizing your Xbox game for game streaming see the [developer documentation](https://docs.microsoft.com/en-us/gaming/game-streaming/).
 
