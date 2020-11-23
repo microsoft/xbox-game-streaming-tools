@@ -1,14 +1,23 @@
 
-# Contributing
+# XBOX GAME STREAMING TOOLS
 
-This project welcomes contributions and suggestions.  Most contributions require you to agree to a
-Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
-the rights to use your contribution. For details, visit https://cla.opensource.microsoft.com.
+## Welcome!
 
-When you submit a pull request, a CLA bot will automatically determine whether you need to provide
-a CLA and decorate the PR appropriately (e.g., status check, comment). Simply follow the instructions
-provided by the bot. You will only need to do this once across all repos using our CLA.
+XBOX Game Streaming Tools provide schemas and samples to enable game developers that are optimizing their games for Xbox game streaming.  
 
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
-For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
+To get started with Xbox game streaming you appl to the ID@Xbox program at http://www.xbox.com/en-us/Developers/id.
+
+To learn more about optimizing your Xbox game for game streaming see the [developer documentation](https://docs.microsoft.com/en-us/gaming/game-streaming/).
+
+
+## What's included
+
+* Schema representating the capabilities of the [Touch Adaptation Kit](https://docs.microsoft.com/en-us/gaming/game-streaming/ux/touch-adaptation-kit/) that allows for your creation of custom touch layouts for your games.
+* Sample touch adaptation layouts to get started.
+
+## Contributing
+
+This project welcomes contributions and suggestions.  For more information about contributing see [CONTRIBUTING](CONTRIBUTING.md)
+
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
