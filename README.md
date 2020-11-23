@@ -17,7 +17,7 @@ To learn more about optimizing your Xbox game for game streaming see the [develo
 
 ## Contributing
 
-This project welcomes contributions and suggestions.  For more information about contributing see [CONTRIBUTING](CONTRIBUTING.md)
+This project welcomes contributions and suggestions.  For more information see [CONTRIBUTING](CONTRIBUTING.md).
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
