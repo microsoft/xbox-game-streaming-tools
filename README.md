@@ -1,9 +1,6 @@
-
-# XBOX GAME STREAMING TOOLS
-
 ## Welcome!
 
-XBOX Game Streaming Tools provide schemas and samples to enable game developers that are optimizing their games for Xbox game streaming.  
+Xbox Game Streaming Tools provide schemas and samples to enable game developers that are optimizing their games for Xbox game streaming.  
 
 To get started with Xbox game streaming you apply to the ID@Xbox program at http://www.xbox.com/en-us/Developers/id.
 
