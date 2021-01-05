@@ -1,8 +1,40 @@
 {
-  "$id": "https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/master/touch-adaptation-kit/schemas/layout/v1/layout.json",
+  "$id": "https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/master/touch-adaptation-kit/schemas/layout/v1.1/layout.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "additionalProperties": false,
   "definitions": {
+    "Accelerometer": {
+      "additionalProperties": false,
+      "description": "Accelerometer",
+      "properties": {
+        "axis": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/InputMappingZY"
+            },
+            {
+              "items": {
+                "$ref": "#/definitions/InputMapping2D"
+              },
+              "type": "array"
+            }
+          ],
+          "description": "Map input axis (touch) to output axis (joystick, mouse, or touch)."
+        },
+        "type": {
+          "description": "Control type identifier.",
+          "enum": [
+            "accelerometer"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "axis"
+      ],
+      "type": "object"
+    },
     "ActionType": {
       "anyOf": [
         {
@@ -193,81 +225,6 @@
         }
       ]
     },
-    "ControlGroup<(Control|Blank)>": {
-      "items": [
-        {
-          "anyOf": [
-            {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Control"
-                },
-                {
-                  "$ref": "#/definitions/Blank"
-                }
-              ]
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Control"
-                },
-                {
-                  "$ref": "#/definitions/Blank"
-                }
-              ]
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Control"
-                },
-                {
-                  "$ref": "#/definitions/Blank"
-                }
-              ]
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Control"
-                },
-                {
-                  "$ref": "#/definitions/Blank"
-                }
-              ]
-            },
-            {
-              "type": "null"
-            }
-          ]
-        }
-      ],
-      "maxItems": 4,
-      "minItems": 1,
-      "type": "array"
-    },
     "ControlGroup<Control>": {
       "items": [
         {
@@ -304,6 +261,53 @@
           "anyOf": [
             {
               "$ref": "#/definitions/Control"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      ],
+      "maxItems": 4,
+      "minItems": 1,
+      "type": "array"
+    },
+    "ControlGroup<LayerControl>": {
+      "items": [
+        {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/LayerControl"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/LayerControl"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/LayerControl"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/LayerControl"
             },
             {
               "type": "null"
@@ -537,53 +541,6 @@
       ],
       "type": "object"
     },
-    "InnerWheel<(Control|Blank)>": {
-      "items": [
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/Control"
-            },
-            {
-              "$ref": "#/definitions/Blank"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/Control"
-            },
-            {
-              "$ref": "#/definitions/Blank"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/Control"
-            },
-            {
-              "$ref": "#/definitions/Blank"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/Control"
-            },
-            {
-              "$ref": "#/definitions/Blank"
-            }
-          ]
-        }
-      ],
-      "maxItems": 4,
-      "minItems": 1,
-      "type": "array"
-    },
     "InnerWheel<Control>": {
       "items": [
         {
@@ -597,6 +554,25 @@
         },
         {
           "$ref": "#/definitions/Control"
+        }
+      ],
+      "maxItems": 4,
+      "minItems": 1,
+      "type": "array"
+    },
+    "InnerWheel<LayerControl>": {
+      "items": [
+        {
+          "$ref": "#/definitions/LayerControl"
+        },
+        {
+          "$ref": "#/definitions/LayerControl"
+        },
+        {
+          "$ref": "#/definitions/LayerControl"
+        },
+        {
+          "$ref": "#/definitions/LayerControl"
         }
       ],
       "maxItems": 4,
@@ -936,138 +912,69 @@
       ],
       "type": "string"
     },
-    "LayoutAction": {
+    "Layer": {
       "additionalProperties": false,
       "properties": {
-        "target": {
-          "type": "string"
-        },
-        "type": {
-          "enum": [
-            "layer"
-          ],
-          "type": "string"
-        }
-      },
-      "required": [
-        "type",
-        "target"
-      ],
-      "type": "object"
-    },
-    "LayoutContentBase<(Control|Blank)>": {
-      "additionalProperties": false,
-      "properties": {
-        "layers": {
-          "additionalProperties": {
-            "$ref": "#/definitions/LayoutContentBase<(Control|Blank)>"
-          },
-          "description": "Construct a type with a set of properties K of type T",
-          "type": "object"
+        "center": {
+          "$ref": "#/definitions/Wheel<LayerControl>"
         },
         "left": {
-          "$ref": "#/definitions/Wheel<(Control|Blank)>"
+          "$ref": "#/definitions/Wheel<LayerControl>"
         },
         "lower": {
           "additionalProperties": false,
           "properties": {
             "center": {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Control"
-                },
-                {
-                  "$ref": "#/definitions/Blank"
-                }
-              ]
+              "$ref": "#/definitions/LayerControl"
             },
             "leftCenter": {
               "items": {
-                "anyOf": [
-                  {
-                    "$ref": "#/definitions/Control"
-                  },
-                  {
-                    "$ref": "#/definitions/Blank"
-                  }
-                ]
+                "$ref": "#/definitions/LayerControl"
               },
               "type": "array"
             },
             "rightCenter": {
               "items": {
-                "anyOf": [
-                  {
-                    "$ref": "#/definitions/Control"
-                  },
-                  {
-                    "$ref": "#/definitions/Blank"
-                  }
-                ]
+                "$ref": "#/definitions/LayerControl"
               },
               "type": "array"
             }
           },
           "type": "object"
         },
-        "name": {
-          "type": "string"
-        },
         "right": {
-          "$ref": "#/definitions/Wheel<(Control|Blank)>"
+          "$ref": "#/definitions/Wheel<LayerControl>"
+        },
+        "sensors": {
+          "items": {
+            "$ref": "#/definitions/SensorControl"
+          },
+          "type": "array"
         },
         "upper": {
           "additionalProperties": false,
           "properties": {
             "left": {
               "items": {
-                "anyOf": [
-                  {
-                    "$ref": "#/definitions/Control"
-                  },
-                  {
-                    "$ref": "#/definitions/Blank"
-                  }
-                ]
+                "$ref": "#/definitions/LayerControl"
               },
               "type": "array"
             },
             "leftCenter": {
               "items": {
-                "anyOf": [
-                  {
-                    "$ref": "#/definitions/Control"
-                  },
-                  {
-                    "$ref": "#/definitions/Blank"
-                  }
-                ]
+                "$ref": "#/definitions/LayerControl"
               },
               "type": "array"
             },
             "right": {
               "items": {
-                "anyOf": [
-                  {
-                    "$ref": "#/definitions/Control"
-                  },
-                  {
-                    "$ref": "#/definitions/Blank"
-                  }
-                ]
+                "$ref": "#/definitions/LayerControl"
               },
               "type": "array"
             },
             "rightCenter": {
               "items": {
-                "anyOf": [
-                  {
-                    "$ref": "#/definitions/Control"
-                  },
-                  {
-                    "$ref": "#/definitions/Blank"
-                  }
-                ]
+                "$ref": "#/definitions/LayerControl"
               },
               "type": "array"
             }
@@ -1077,12 +984,25 @@
       },
       "type": "object"
     },
-    "LayoutContent": {
+    "LayerControl": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Control"
+        },
+        {
+          "$ref": "#/definitions/Blank"
+        }
+      ]
+    },
+    "Layout": {
       "additionalProperties": false,
       "properties": {
+        "center": {
+          "$ref": "#/definitions/Wheel<Control>"
+        },
         "layers": {
           "additionalProperties": {
-            "$ref": "#/definitions/LayoutContentBase<(Control|Blank)>"
+            "$ref": "#/definitions/Layer"
           },
           "description": "Construct a type with a set of properties K of type T",
           "type": "object"
@@ -1116,7 +1036,7 @@
         },
         "sensors": {
           "items": {
-            "$ref": "#/definitions/SensorControlPublic"
+            "$ref": "#/definitions/SensorControl"
           },
           "type": "array"
         },
@@ -1152,6 +1072,35 @@
         }
       },
       "type": "object"
+    },
+    "LayoutAction": {
+      "additionalProperties": false,
+      "properties": {
+        "target": {
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "layer"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "target"
+      ],
+      "type": "object"
+    },
+    "LayoutOrientation": {
+      "enum": [
+        "landscape-left",
+        "landscape-right",
+        "landscape",
+        "portrait-up",
+        "portrait"
+      ],
+      "type": "string"
     },
     "MouseInputConfig2D": {
       "additionalProperties": false,
@@ -1261,173 +1210,6 @@
         "relativeMouseRight"
       ],
       "type": "string"
-    },
-    "OuterWheel<(Control|Blank)>": {
-      "items": [
-        {
-          "anyOf": [
-            {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Control"
-                },
-                {
-                  "$ref": "#/definitions/Blank"
-                }
-              ]
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<(Control|Blank)>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Control"
-                },
-                {
-                  "$ref": "#/definitions/Blank"
-                }
-              ]
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<(Control|Blank)>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Control"
-                },
-                {
-                  "$ref": "#/definitions/Blank"
-                }
-              ]
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<(Control|Blank)>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Control"
-                },
-                {
-                  "$ref": "#/definitions/Blank"
-                }
-              ]
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<(Control|Blank)>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Control"
-                },
-                {
-                  "$ref": "#/definitions/Blank"
-                }
-              ]
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<(Control|Blank)>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Control"
-                },
-                {
-                  "$ref": "#/definitions/Blank"
-                }
-              ]
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<(Control|Blank)>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Control"
-                },
-                {
-                  "$ref": "#/definitions/Blank"
-                }
-              ]
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<(Control|Blank)>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Control"
-                },
-                {
-                  "$ref": "#/definitions/Blank"
-                }
-              ]
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<(Control|Blank)>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        }
-      ],
-      "maxItems": 8,
-      "minItems": 1,
-      "type": "array"
     },
     "OuterWheel<Control>": {
       "items": [
@@ -1540,8 +1322,126 @@
       "minItems": 1,
       "type": "array"
     },
-    "SensorControlPublic": {
-      "$ref": "#/definitions/Gyroscope"
+    "OuterWheel<LayerControl>": {
+      "items": [
+        {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/LayerControl"
+            },
+            {
+              "$ref": "#/definitions/ControlGroup<LayerControl>"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/LayerControl"
+            },
+            {
+              "$ref": "#/definitions/ControlGroup<LayerControl>"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/LayerControl"
+            },
+            {
+              "$ref": "#/definitions/ControlGroup<LayerControl>"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/LayerControl"
+            },
+            {
+              "$ref": "#/definitions/ControlGroup<LayerControl>"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/LayerControl"
+            },
+            {
+              "$ref": "#/definitions/ControlGroup<LayerControl>"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/LayerControl"
+            },
+            {
+              "$ref": "#/definitions/ControlGroup<LayerControl>"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/LayerControl"
+            },
+            {
+              "$ref": "#/definitions/ControlGroup<LayerControl>"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/LayerControl"
+            },
+            {
+              "$ref": "#/definitions/ControlGroup<LayerControl>"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      ],
+      "maxItems": 8,
+      "minItems": 1,
+      "type": "array"
+    },
+    "SensorControl": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Gyroscope"
+        },
+        {
+          "$ref": "#/definitions/Accelerometer"
+        }
+      ]
     },
     "SensorZYInputConfig": {
       "additionalProperties": false,
@@ -1699,18 +1599,6 @@
       ],
       "type": "object"
     },
-    "Wheel<(Control|Blank)>": {
-      "additionalProperties": false,
-      "properties": {
-        "inner": {
-          "$ref": "#/definitions/InnerWheel<(Control|Blank)>"
-        },
-        "outer": {
-          "$ref": "#/definitions/OuterWheel<(Control|Blank)>"
-        }
-      },
-      "type": "object"
-    },
     "Wheel<Control>": {
       "additionalProperties": false,
       "properties": {
@@ -1722,6 +1610,18 @@
         }
       },
       "type": "object"
+    },
+    "Wheel<LayerControl>": {
+      "additionalProperties": false,
+      "properties": {
+        "inner": {
+          "$ref": "#/definitions/InnerWheel<LayerControl>"
+        },
+        "outer": {
+          "$ref": "#/definitions/OuterWheel<LayerControl>"
+        }
+      },
+      "type": "object"
     }
   },
   "properties": {
@@ -1729,17 +1629,14 @@
       "type": "string"
     },
     "content": {
-      "$ref": "#/definitions/LayoutContent"
+      "$ref": "#/definitions/Layout"
     },
     "orientation": {
-      "enum": [
-        "landscape",
-        "portrait"
-      ],
-      "type": "string"
+      "$ref": "#/definitions/LayoutOrientation"
     }
   },
   "required": [
     "content"
-  ]
+  ],
+  "type": "object"
 }

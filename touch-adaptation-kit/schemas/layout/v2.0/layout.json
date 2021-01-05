@@ -1,8 +1,40 @@
 {
-  "$id": "https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/master/touch-adaptation-kit/schemas/layout/v1/layout.json",
+  "$id": "https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/master/touch-adaptation-kit/schemas/layout/v2.0/layout.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "additionalProperties": false,
   "definitions": {
+    "Accelerometer": {
+      "additionalProperties": false,
+      "description": "Accelerometer",
+      "properties": {
+        "axis": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/InputMappingZY"
+            },
+            {
+              "items": {
+                "$ref": "#/definitions/InputMapping2D"
+              },
+              "type": "array"
+            }
+          ],
+          "description": "Map input axis (touch) to output axis (joystick, mouse, or touch)."
+        },
+        "type": {
+          "description": "Control type identifier.",
+          "enum": [
+            "accelerometer"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "axis"
+      ],
+      "type": "object"
+    },
     "ActionType": {
       "anyOf": [
         {
@@ -87,6 +119,71 @@
       ],
       "type": "object"
     },
+    "Background": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/BackgroundColor"
+        },
+        {
+          "$ref": "#/definitions/BackgroundAsset"
+        }
+      ]
+    },
+    "BackgroundAsset": {
+      "additionalProperties": false,
+      "description": "Assigns a custom asset to the background element of the control",
+      "properties": {
+        "type": {
+          "description": "Background type identifier",
+          "enum": [
+            "asset"
+          ],
+          "type": "string"
+        },
+        "value": {
+          "description": "The file name (without extension) of the asset file to reference.",
+          "type": "string",
+          "examples": [
+            "FancyImage"
+          ]
+        },
+        "opacity": {
+          "description": "The opacity of the background",
+          "$ref": "#/definitions/Opacity"
+        }
+      },
+      "required": [
+        "type",
+        "value"
+      ],
+      "type": "object"
+    },
+    "BackgroundColor": {
+      "additionalProperties": false,
+      "description": "Assigns the specified color to the background element of the control",
+      "properties": {
+        "type": {
+          "description": "Background type identifier",
+          "enum": [
+            "color"
+          ],
+          "type": "string"
+        },
+        "value": {
+          "description": "The color to apply to the background",
+          "$ref": "#/definitions/HexColor"
+        },
+        "opacity": {
+          "description": "The opacity of the background",
+          "$ref": "#/definitions/Opacity"
+        }
+      },
+      "required": [
+        "type",
+        "value"
+      ],
+      "type": "object"
+    },
     "Blank": {
       "additionalProperties": false,
       "description": "Blank\n\nWhen creating a layout that uses control layering, the blank control is used exclusively to\noverride existing controls on previous control layers.\nThe blank control does not contain any functionality and does not have any renderable properties.",
@@ -112,10 +209,6 @@
           "$ref": "#/definitions/ActionType",
           "description": "Action to be invoked when a user touches the button."
         },
-        "icon": {
-          "$ref": "#/definitions/GameIcon",
-          "description": "Icon to be displayed on the button.\nWill default to displaying an icon that corresponds to the required configured action if none is provided.\nCan be provided an array to map multiple actions to a single button press."
-        },
         "pullAction": {
           "$ref": "#/definitions/ActionType",
           "description": "Action to be invoked when a user pulls button during a touch."
@@ -123,6 +216,9 @@
         "toggle": {
           "description": "Makes the button toggleable.",
           "type": "boolean"
+        },
+        "styles": {
+          "$ref": "#/definitions/ButtonStyles"
         },
         "type": {
           "description": "Control type identifier.",
@@ -136,6 +232,157 @@
         "type",
         "action"
       ],
+      "type": "object"
+    },
+    "ButtonStyles": {
+      "additionalProperties": false,
+      "description": "Styling to be applied to the button.\nFor each state the button can be in, each styleable component can be customized.",
+      "properties": {
+        "default": {
+          "$ref": "#/definitions/ButtonDefaultStyle"
+        },
+        "idle": {
+          "$ref": "#/definitions/ButtonIdleStyle"
+        },
+        "activated": {
+          "$ref": "#/definitions/ButtonActivatedStyle"
+        },
+        "disabled": {
+          "$ref": "#/definitions/ButtonDisabledStyle"
+        },
+        "toggled": {
+          "$ref": "#/definitions/ButtonToggledStyle"
+        },
+        "pulled": {
+          "$ref": "#/definitions/ButtonPulledStyle"
+        }
+      },
+      "type": "object"
+    },
+    "ButtonActivatedStyle": {
+      "additionalProperties": false,
+      "description": "Styling to be applied to the button's components while the button is in the activated state.\nThe activated state is when the button is being interacted with (i.e. tapped) and the action being executed.",
+      "properties": {
+        "background": {
+          "$ref": "#/definitions/Background",
+          "description": "Background styling to be used on the button when it is in the activated state."
+        },
+        "faceImage": {
+          "$ref": "#/definitions/FaceImage",
+          "description": "Face Image to be used on the button when it is in the activated state."
+        },
+        "opacity": {
+          "$ref": "#/definitions/Opacity",
+          "description": "The opacity of the button when it is in the activated state."
+        },
+        "pullIndicator": {
+          "$ref": "#/definitions/PullIndicator",
+          "description": "Pull action indicator styling to be applied when the button is in the activated state.\nThe indicator is displayed when the button is in the activated or pulled state."
+        }
+      },
+      "type": "object"
+    },
+    "ButtonDefaultStyle": {
+      "additionalProperties": false,
+      "description": "Default styling parameters to be applied to the button.\nWhen a specific state's styling is not provided, parameters fallback to their equivalents in default.\nIf default styling is not provided, internal defaults are used instead.",
+      "properties": {
+        "background": {
+          "$ref": "#/definitions/Background",
+          "description": "Default background styling to be used on the button."
+        },
+        "faceImage": {
+          "$ref": "#/definitions/FaceImage",
+          "description": "Default face image to be used on the button."
+        },
+        "opacity": {
+          "$ref": "#/definitions/Opacity",
+          "description": "Default opacity to set the button to."
+        },
+        "pullIndicator": {
+          "$ref": "#/definitions/PullIndicator",
+          "description": "Default pull action indicator styling to be applied.\nThe indicator is displayed when the button is in the activated or pulled state."
+        }
+      },
+      "type": "object"
+    },
+    "ButtonDisabledStyle": {
+      "additionalProperties": false,
+      "description": "Styling to be applied to the button's components while the button is in the disabled state.\nThe button cannot be interacted with in this state, but it still exists.",
+      "properties": {
+        "background": {
+          "$ref": "#/definitions/Background",
+          "description": "Background styling to be used on the button when it is in the disabled state."
+        },
+        "faceImage": {
+          "$ref": "#/definitions/FaceImage",
+          "description": "Face Image to be used on the button when it is in the disabled stated."
+        },
+        "opacity": {
+          "$ref": "#/definitions/Opacity",
+          "description": "The opacity of the button when it is in the disabled state."
+        }
+      },
+      "type": "object"
+    },
+    "ButtonIdleStyle": {
+      "additionalProperties": false,
+      "description": "Styling to be applied to the button's components while it is in the idle state.\nThe idle state is defined as when the button is not yet interacted with (i.e. not tapped).",
+      "properties": {
+        "background": {
+          "$ref": "#/definitions/Background",
+          "description": "Background styling to be used on the button when it is in the idle state."
+        },
+        "faceImage": {
+          "$ref": "#/definitions/FaceImage",
+          "description": "Face image to be used on the button when it is in the idle state."
+        },
+        "opacity": {
+          "$ref": "#/definitions/Opacity",
+          "description": "The opacity of the button when it is in the idle state."
+        }
+      },
+      "type": "object"
+    },
+    "ButtonToggledStyle": {
+      "additionalProperties": false,
+      "description": "Styling to be applied to the button's components while the button is in the toggled state.\nThe toggled state is when the button is defined to be a toggle button, and it is toggled.",
+      "properties": {
+        "background": {
+          "$ref": "#/definitions/Background",
+          "description": "Background styling to be used on the button when it is in the toggled state."
+        },
+        "faceImage": {
+          "$ref": "#/definitions/FaceImage",
+          "description": "Face Image to be used on the button when it is in the toggled state."
+        },
+        "opacity": {
+          "$ref": "#/definitions/Opacity",
+          "description": "The opacity of the button when it is in the toggled state."
+        }
+      },
+      "type": "object"
+    },
+    "ButtonPulledStyle": {
+      "additionalProperties": false,
+      "description": "Styling to be applied to the button's components while the button is in the pulled state.\nThe pulled state is when the button has a pull action defined, and the player has pulled the button to execute the pull action.",
+      "properties": {
+        "background": {
+          "$ref": "#/definitions/Background",
+          "description": "Background color to be used on the button when it is pulled."
+        },
+        "faceImage": {
+          "$ref": "#/definitions/FaceImage",
+          "description": "Face Image to be used on the button when it is pulled."
+        },
+        "opacity": {
+          "$ref": "#/definitions/Opacity",
+          "description": "The opacity of the button when it is in the pulled state."
+        },
+        "pullIndicator": {
+          "$ref": "#/definitions/PullIndicator",
+          "description": "Pull action indicator styling to be applied when the button is in the pulled state.\nThe indicator is displayed when the button is in the activated or pulled state."
+        }
+      },
       "type": "object"
     },
     "ButtonMappableType": {
@@ -193,81 +440,6 @@
         }
       ]
     },
-    "ControlGroup<(Control|Blank)>": {
-      "items": [
-        {
-          "anyOf": [
-            {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Control"
-                },
-                {
-                  "$ref": "#/definitions/Blank"
-                }
-              ]
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Control"
-                },
-                {
-                  "$ref": "#/definitions/Blank"
-                }
-              ]
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Control"
-                },
-                {
-                  "$ref": "#/definitions/Blank"
-                }
-              ]
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Control"
-                },
-                {
-                  "$ref": "#/definitions/Blank"
-                }
-              ]
-            },
-            {
-              "type": "null"
-            }
-          ]
-        }
-      ],
-      "maxItems": 4,
-      "minItems": 1,
-      "type": "array"
-    },
     "ControlGroup<Control>": {
       "items": [
         {
@@ -304,6 +476,53 @@
           "anyOf": [
             {
               "$ref": "#/definitions/Control"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      ],
+      "maxItems": 4,
+      "minItems": 1,
+      "type": "array"
+    },
+    "ControlGroup<LayerControl>": {
+      "items": [
+        {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/LayerControl"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/LayerControl"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/LayerControl"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/LayerControl"
             },
             {
               "type": "null"
@@ -380,6 +599,63 @@
         "type"
       ],
       "type": "object"
+    },
+    "FaceImage": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/FaceImageIcon"
+        },
+        {
+          "$ref": "#/definitions/FaceImageAsset"
+        }
+      ]
+    },
+    "FaceImageAsset": {
+      "additionalProperties": false,
+      "description": "Used to create a reference to a custom asset.",
+      "properties": {
+        "type": {
+          "description": "Face Image type identifier",
+          "enum": [
+            "asset"
+          ],
+          "type": "string"
+        },
+        "value": {
+          "description": "The file name (without extension) of the asset file to reference.",
+          "type": "string",
+          "examples": [
+            "FancyImage"
+          ]
+        }
+      },
+      "type": "object",
+      "required": [
+        "type",
+        "value"
+      ]
+    },
+    "FaceImageIcon": {
+      "additionalProperties": false,
+      "description": "Used to create a reference to a built-in icon.",
+      "properties": {
+        "type": {
+          "description": "Face Image type identifier",
+          "enum": [
+            "icon"
+          ],
+          "type": "string"
+        },
+        "value": {
+          "description": "The name of the icon to use.",
+          "$ref": "#/definitions/GameIcon"
+        }
+      },
+      "type": "object",
+      "required": [
+        "type",
+        "value"
+      ]
     },
     "GameIcon": {
       "enum": [
@@ -501,7 +777,10 @@
         "waypoint",
         "horn",
         "selectAll",
-        "switchCamera"
+        "switchCamera",
+        "arrowReload",
+        "arrow",
+        "bow"
       ],
       "type": "string"
     },
@@ -537,52 +816,16 @@
       ],
       "type": "object"
     },
-    "InnerWheel<(Control|Blank)>": {
-      "items": [
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/Control"
-            },
-            {
-              "$ref": "#/definitions/Blank"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/Control"
-            },
-            {
-              "$ref": "#/definitions/Blank"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/Control"
-            },
-            {
-              "$ref": "#/definitions/Blank"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/Control"
-            },
-            {
-              "$ref": "#/definitions/Blank"
-            }
-          ]
-        }
+    "HexColor": {
+      "description": "Hexadecimal representation of RGBA color values.",
+      "pattern": "^#([a-fA-F0-9]{6}|[a-fA-F0-9]{8}|[a-fA-F0-9]{4}|[a-fA-F0-9]{3})$",
+      "examples": [
+        "#0099ff",
+        "#0099ffaa",
+        "#09f",
+        "#09fa"
       ],
-      "maxItems": 4,
-      "minItems": 1,
-      "type": "array"
+      "type": "string"
     },
     "InnerWheel<Control>": {
       "items": [
@@ -597,6 +840,25 @@
         },
         {
           "$ref": "#/definitions/Control"
+        }
+      ],
+      "maxItems": 4,
+      "minItems": 1,
+      "type": "array"
+    },
+    "InnerWheel<LayerControl>": {
+      "items": [
+        {
+          "$ref": "#/definitions/LayerControl"
+        },
+        {
+          "$ref": "#/definitions/LayerControl"
+        },
+        {
+          "$ref": "#/definitions/LayerControl"
+        },
+        {
+          "$ref": "#/definitions/LayerControl"
         }
       ],
       "maxItems": 4,
@@ -936,138 +1198,69 @@
       ],
       "type": "string"
     },
-    "LayoutAction": {
+    "Layer": {
       "additionalProperties": false,
       "properties": {
-        "target": {
-          "type": "string"
-        },
-        "type": {
-          "enum": [
-            "layer"
-          ],
-          "type": "string"
-        }
-      },
-      "required": [
-        "type",
-        "target"
-      ],
-      "type": "object"
-    },
-    "LayoutContentBase<(Control|Blank)>": {
-      "additionalProperties": false,
-      "properties": {
-        "layers": {
-          "additionalProperties": {
-            "$ref": "#/definitions/LayoutContentBase<(Control|Blank)>"
-          },
-          "description": "Construct a type with a set of properties K of type T",
-          "type": "object"
+        "center": {
+          "$ref": "#/definitions/Wheel<LayerControl>"
         },
         "left": {
-          "$ref": "#/definitions/Wheel<(Control|Blank)>"
+          "$ref": "#/definitions/Wheel<LayerControl>"
         },
         "lower": {
           "additionalProperties": false,
           "properties": {
             "center": {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Control"
-                },
-                {
-                  "$ref": "#/definitions/Blank"
-                }
-              ]
+              "$ref": "#/definitions/LayerControl"
             },
             "leftCenter": {
               "items": {
-                "anyOf": [
-                  {
-                    "$ref": "#/definitions/Control"
-                  },
-                  {
-                    "$ref": "#/definitions/Blank"
-                  }
-                ]
+                "$ref": "#/definitions/LayerControl"
               },
               "type": "array"
             },
             "rightCenter": {
               "items": {
-                "anyOf": [
-                  {
-                    "$ref": "#/definitions/Control"
-                  },
-                  {
-                    "$ref": "#/definitions/Blank"
-                  }
-                ]
+                "$ref": "#/definitions/LayerControl"
               },
               "type": "array"
             }
           },
           "type": "object"
         },
-        "name": {
-          "type": "string"
-        },
         "right": {
-          "$ref": "#/definitions/Wheel<(Control|Blank)>"
+          "$ref": "#/definitions/Wheel<LayerControl>"
+        },
+        "sensors": {
+          "items": {
+            "$ref": "#/definitions/SensorControl"
+          },
+          "type": "array"
         },
         "upper": {
           "additionalProperties": false,
           "properties": {
             "left": {
               "items": {
-                "anyOf": [
-                  {
-                    "$ref": "#/definitions/Control"
-                  },
-                  {
-                    "$ref": "#/definitions/Blank"
-                  }
-                ]
+                "$ref": "#/definitions/LayerControl"
               },
               "type": "array"
             },
             "leftCenter": {
               "items": {
-                "anyOf": [
-                  {
-                    "$ref": "#/definitions/Control"
-                  },
-                  {
-                    "$ref": "#/definitions/Blank"
-                  }
-                ]
+                "$ref": "#/definitions/LayerControl"
               },
               "type": "array"
             },
             "right": {
               "items": {
-                "anyOf": [
-                  {
-                    "$ref": "#/definitions/Control"
-                  },
-                  {
-                    "$ref": "#/definitions/Blank"
-                  }
-                ]
+                "$ref": "#/definitions/LayerControl"
               },
               "type": "array"
             },
             "rightCenter": {
               "items": {
-                "anyOf": [
-                  {
-                    "$ref": "#/definitions/Control"
-                  },
-                  {
-                    "$ref": "#/definitions/Blank"
-                  }
-                ]
+                "$ref": "#/definitions/LayerControl"
               },
               "type": "array"
             }
@@ -1077,12 +1270,25 @@
       },
       "type": "object"
     },
-    "LayoutContent": {
+    "LayerControl": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Control"
+        },
+        {
+          "$ref": "#/definitions/Blank"
+        }
+      ]
+    },
+    "Layout": {
       "additionalProperties": false,
       "properties": {
+        "center": {
+          "$ref": "#/definitions/Wheel<Control>"
+        },
         "layers": {
           "additionalProperties": {
-            "$ref": "#/definitions/LayoutContentBase<(Control|Blank)>"
+            "$ref": "#/definitions/Layer"
           },
           "description": "Construct a type with a set of properties K of type T",
           "type": "object"
@@ -1116,7 +1322,7 @@
         },
         "sensors": {
           "items": {
-            "$ref": "#/definitions/SensorControlPublic"
+            "$ref": "#/definitions/SensorControl"
           },
           "type": "array"
         },
@@ -1152,6 +1358,35 @@
         }
       },
       "type": "object"
+    },
+    "LayoutAction": {
+      "additionalProperties": false,
+      "properties": {
+        "target": {
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "layer"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "target"
+      ],
+      "type": "object"
+    },
+    "LayoutOrientation": {
+      "enum": [
+        "landscape-left",
+        "landscape-right",
+        "landscape",
+        "portrait-up",
+        "portrait"
+      ],
+      "type": "string"
     },
     "MouseInputConfig2D": {
       "additionalProperties": false,
@@ -1262,172 +1497,12 @@
       ],
       "type": "string"
     },
-    "OuterWheel<(Control|Blank)>": {
-      "items": [
-        {
-          "anyOf": [
-            {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Control"
-                },
-                {
-                  "$ref": "#/definitions/Blank"
-                }
-              ]
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<(Control|Blank)>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Control"
-                },
-                {
-                  "$ref": "#/definitions/Blank"
-                }
-              ]
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<(Control|Blank)>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Control"
-                },
-                {
-                  "$ref": "#/definitions/Blank"
-                }
-              ]
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<(Control|Blank)>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Control"
-                },
-                {
-                  "$ref": "#/definitions/Blank"
-                }
-              ]
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<(Control|Blank)>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Control"
-                },
-                {
-                  "$ref": "#/definitions/Blank"
-                }
-              ]
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<(Control|Blank)>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Control"
-                },
-                {
-                  "$ref": "#/definitions/Blank"
-                }
-              ]
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<(Control|Blank)>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Control"
-                },
-                {
-                  "$ref": "#/definitions/Blank"
-                }
-              ]
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<(Control|Blank)>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Control"
-                },
-                {
-                  "$ref": "#/definitions/Blank"
-                }
-              ]
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<(Control|Blank)>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        }
-      ],
-      "maxItems": 8,
-      "minItems": 1,
-      "type": "array"
+    "Opacity": {
+      "additionalProperties": false,
+      "description": "Opacity to be used on a control when styled in a specific state.",
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1.0
     },
     "OuterWheel<Control>": {
       "items": [
@@ -1540,8 +1615,137 @@
       "minItems": 1,
       "type": "array"
     },
-    "SensorControlPublic": {
-      "$ref": "#/definitions/Gyroscope"
+    "OuterWheel<LayerControl>": {
+      "items": [
+        {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/LayerControl"
+            },
+            {
+              "$ref": "#/definitions/ControlGroup<LayerControl>"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/LayerControl"
+            },
+            {
+              "$ref": "#/definitions/ControlGroup<LayerControl>"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/LayerControl"
+            },
+            {
+              "$ref": "#/definitions/ControlGroup<LayerControl>"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/LayerControl"
+            },
+            {
+              "$ref": "#/definitions/ControlGroup<LayerControl>"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/LayerControl"
+            },
+            {
+              "$ref": "#/definitions/ControlGroup<LayerControl>"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/LayerControl"
+            },
+            {
+              "$ref": "#/definitions/ControlGroup<LayerControl>"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/LayerControl"
+            },
+            {
+              "$ref": "#/definitions/ControlGroup<LayerControl>"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/LayerControl"
+            },
+            {
+              "$ref": "#/definitions/ControlGroup<LayerControl>"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      ],
+      "maxItems": 8,
+      "minItems": 1,
+      "type": "array"
+    },
+    "PullIndicator": {
+      "additionalProperties": false,
+      "description": "Styling options for pull action indicators on controls that support it.",
+      "properties": {
+        "background": {
+          "description": "Styling to be applied to the background of the pull indicator",
+          "$ref": "#/definitions/BackgroundColor"
+        }
+      },
+      "type": "object"
+    },
+    "SensorControl": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Gyroscope"
+        },
+        {
+          "$ref": "#/definitions/Accelerometer"
+        }
+      ]
     },
     "SensorZYInputConfig": {
       "additionalProperties": false,
@@ -1699,18 +1903,6 @@
       ],
       "type": "object"
     },
-    "Wheel<(Control|Blank)>": {
-      "additionalProperties": false,
-      "properties": {
-        "inner": {
-          "$ref": "#/definitions/InnerWheel<(Control|Blank)>"
-        },
-        "outer": {
-          "$ref": "#/definitions/OuterWheel<(Control|Blank)>"
-        }
-      },
-      "type": "object"
-    },
     "Wheel<Control>": {
       "additionalProperties": false,
       "properties": {
@@ -1722,6 +1914,18 @@
         }
       },
       "type": "object"
+    },
+    "Wheel<LayerControl>": {
+      "additionalProperties": false,
+      "properties": {
+        "inner": {
+          "$ref": "#/definitions/InnerWheel<LayerControl>"
+        },
+        "outer": {
+          "$ref": "#/definitions/OuterWheel<LayerControl>"
+        }
+      },
+      "type": "object"
     }
   },
   "properties": {
@@ -1729,17 +1933,14 @@
       "type": "string"
     },
     "content": {
-      "$ref": "#/definitions/LayoutContent"
+      "$ref": "#/definitions/Layout"
     },
     "orientation": {
-      "enum": [
-        "landscape",
-        "portrait"
-      ],
-      "type": "string"
+      "$ref": "#/definitions/LayoutOrientation"
     }
   },
   "required": [
     "content"
-  ]
+  ],
+  "type": "object"
 }
