@@ -1,0 +1,174 @@
+{
+    "$schema": "https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/master/touch-adaptation-kit/schemas/layout/v3.3/layout.json",
+    "content": {
+        "left": {
+            "inner": [
+                {
+                    "type": "joystick",
+                    "axis": {
+                        "input": "axisXY",
+                        "output": "leftJoystick"
+                    },
+                    "styles": {
+                        "default": {
+                            "background": {
+                                "type": "asset",
+                                "value": "JoystickBackground"
+                            },
+                            "knob": {
+                                "faceImage": {
+                                    "type": "asset",
+                                    "value": "Dash"
+                                },
+                                "background": {
+                                    "type": "asset",
+                                    "value": "Button"
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "right": {
+            "inner": [
+                {
+                    "type": "button",
+                    "action": "gamepadA",
+                    "styles": {
+                        "default": {
+                            "faceImage": {
+                                "type": "asset",
+                                "value": "Sword"
+                            }
+                        },
+                        "idle": {
+                            "background": {
+                                "type": "asset",
+                                "value": "Button"
+                            }
+                        },
+                        "activated": {
+                            "background": {
+                                "type": "asset",
+                                "value": "ButtonGlow"
+                            }
+                        }
+                    }
+                }
+            ],
+            "outer": [
+                [
+                    {
+                        "type": "button",
+                        "action": "gamepadB",
+                        "styles": {
+                            "default": {
+                                "faceImage": {
+                                    "type": "asset",
+                                    "value": "Bow"
+                                },
+                                "background": {
+                                    "type": "asset",
+                                    "value": "Button"
+                                }
+                            },
+                            "idle": {
+                                "background": {
+                                    "type": "asset",
+                                    "value": "Button"
+                                }
+                            },
+                            "activated": {
+                                "background": {
+                                    "type": "asset",
+                                    "value": "ButtonGlow"
+                                }
+                            }
+                        }
+                    },
+                    null
+                ],
+                {
+                    "type": "button",
+                    "action": "gamepadX",
+                    "styles": {
+                        "default": {
+                            "faceImage": {
+                                "type": "asset",
+                                "value": "Health"
+                            }
+                        },
+                        "idle": {
+                            "background": {
+                                "type": "asset",
+                                "value": "Button"
+                            }
+                        },
+                        "activated": {
+                            "background": {
+                                "type": "asset",
+                                "value": "ButtonGlow"
+                            }
+                        }
+                    }
+                },
+                [
+                    {
+                        "type": "button",
+                        "action": "gamepadY",
+                        "styles": {
+                            "default": {
+                                "faceImage": {
+                                    "type": "asset",
+                                    "value": "Spellbook"
+                                }
+                            },
+                            "idle": {
+                                "background": {
+                                    "type": "asset",
+                                    "value": "Button"
+                                }
+                            },
+                            "activated": {
+                                "background": {
+                                    "type": "asset",
+                                    "value": "ButtonGlow"
+                                }
+                            }
+                        }
+                    },
+                    null
+                ]
+            ]
+        },
+        "upper": {
+            "right": [
+                {
+                    "type": "button",
+                    "action": "guide",
+                    "styles": {
+                        "default": {
+                            "faceImage": {
+                                "type": "asset",
+                                "value": "Return"
+                            }
+                        },
+                        "idle": {
+                            "background": {
+                                "type": "asset",
+                                "value": "Button"
+                            }
+                        },
+                        "activated": {
+                            "background": {
+                                "type": "asset",
+                                "value": "ButtonGlow"
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

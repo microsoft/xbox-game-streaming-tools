@@ -1,0 +1,94 @@
+﻿{
+  "$schema": "https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/master/touch-adaptation-kit/schemas/layout/v3.1/layout.json",
+  "content": {
+    "left": {
+      "inner": [
+        {
+          "type": "directionalPad",
+          "scale": 2
+        }
+      ]
+    },
+    "right": {
+      "inner": [
+        {
+          "type": "arcadeButtons",
+          "lightPunch": {
+            "action": "gamepadX",
+            "styles": {
+              "default": {
+                "faceImage": {
+                  "type": "icon",
+                  "value": "lightPunch"
+                }
+              }
+            }
+          },
+          "mediumPunch": {
+            "action": "gamepadY",
+            "styles": {
+              "default": {
+                "faceImage": {
+                  "type": "icon",
+                  "value": "mediumPunch"
+                }
+              }
+            }
+          },
+          "heavyPunch": {
+            "action": "rightBumper",
+            "styles": {
+              "default": {
+                "faceImage": {
+                  "type": "icon",
+                  "value": "heavyPunch"
+                }
+              }
+            }
+          },
+          "lightKick": {
+            "action": "gamepadA",
+            "styles": {
+              "default": {
+                "faceImage": {
+                  "type": "icon",
+                  "value": "lightKick"
+                }
+              }
+            }
+          },
+          "mediumKick": {
+            "action": "gamepadB",
+            "styles": {
+              "default": {
+                "faceImage": {
+                  "type": "icon",
+                  "value": "mediumKick"
+                }
+              }
+            }
+          },
+          "heavyKick": {
+            "action": "leftBumper",
+            "styles": {
+              "default": {
+                "faceImage": {
+                  "type": "icon",
+                  "value": "heavyKick"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "upper": {
+      "right": [
+        {
+          "type": "button",
+          "action": "menu"
+        }
+      ]
+    }
+  }
+}

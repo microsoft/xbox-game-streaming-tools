@@ -1,0 +1,191 @@
+﻿{
+  "$schema": "https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/master/touch-adaptation-kit/schemas/layout/v3.1/layout.json",
+  "content": {
+    "left": {
+      "inner": [
+        {
+          "type": "joystick",
+          "axis": {
+            "input": "axisXY",
+            "output": "leftJoystick"
+          },
+          "styles": {
+            "default": {
+              "knob": {
+                "faceImage": {
+                  "type": "icon",
+                  "value": "walk"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "right": {
+      "inner": [
+        {
+          "type": "touchpad",
+          "axis": [
+            {
+              "input": "axisX",
+              "output": "relativeMouseX",
+              "sensitivity": 5
+            },
+            {
+              "input": "axisY",
+              "output": "relativeMouseY",
+              "sensitivity": 2.5
+            }
+          ],
+          "styles": {
+            "default": {
+              "faceImage": {
+                "type": "icon",
+                "value": "look"
+              }
+            }
+          }
+        }
+      ],
+      "outer": [
+        [
+          {
+            "type": "button",
+            "action": "leftTrigger",
+            "toggle": true,
+            "styles": {
+              "default": {
+                "faceImage": {
+                  "type": "icon",
+                  "value": "aim"
+                }
+              }
+            }
+          },
+          null
+        ],
+        {
+          "type": "button",
+          "action": "rightThumb",
+          "styles": {
+            "default": {
+              "faceImage": {
+                "type": "icon",
+                "value": "crouch"
+              }
+            }
+          }
+        },
+        {
+          "type": "button",
+          "action": "gamepadA",
+          "styles": {
+            "default": {
+              "faceImage": {
+                "type": "icon",
+                "value": "jump"
+              }
+            }
+          }
+        },
+        [
+          {
+            "type": "touchpad",
+            "axis": {
+              "input": "axisXY",
+              "output": "rightJoystick",
+              "deadzone": {
+                "threshold": 0.1,
+                "radial": true
+              }
+            },
+            "renderAsButton": true,
+            "action": [
+              "rightTrigger",
+              "leftTrigger"
+            ],
+            "styles": {
+              "default": {
+                "faceImage": {
+                  "type": "icon",
+                  "value": "fire"
+                }
+              }
+            }
+          },
+          {
+            "type": "button",
+            "action": "gamepadB",
+            "styles": {
+              "default": {
+                "faceImage": {
+                  "type": "icon",
+                  "value": "punch"
+                }
+              }
+            }
+          },
+          {
+            "type": "button",
+            "action": "leftBumper",
+            "styles": {
+              "default": {
+                "faceImage": {
+                  "type": "icon",
+                  "value": "grenade"
+                }
+              }
+            }
+          }
+        ],
+        {
+          "type": "button",
+          "action": "gamepadX",
+          "styles": {
+            "default": {
+              "faceImage": {
+                "type": "icon",
+                "value": "interact"
+              }
+            }
+          }
+        },
+        {
+          "type": "button",
+          "action": "gamepadY",
+          "styles": {
+            "default": {
+              "faceImage": {
+                "type": "icon",
+                "value": "weaponSelect"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "upper": {
+      "right": [
+        {
+          "type": "button",
+          "action": "menu"
+        },
+        {
+          "type": "button",
+          "action": "view"
+        }
+      ]
+    },
+    "sensors": [
+      {
+        "type": "gyroscope",
+        "axis": {
+          "input": "axisXY",
+          "output": "relativeMouse",
+          "sensitivity": 8
+        }
+      }
+    ]
+  }
+}

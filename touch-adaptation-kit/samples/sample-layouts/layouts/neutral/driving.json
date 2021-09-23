@@ -1,0 +1,132 @@
+﻿{
+  "$schema": "https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/master/touch-adaptation-kit/schemas/layout/v3.1/layout.json",
+  "content": {
+    "left": {
+      "inner": [
+        {
+          "type": "joystick",
+          "axis": {
+            "input": "axisX",
+            "output": "leftJoystickX",
+            "deadzone": {
+              "threshold": 0.1
+            }
+          },
+          "styles": {
+            "default": {
+              "knob": {
+                "faceImage": {
+                  "type": "icon",
+                  "value": "steering"
+                }
+              }
+            },
+            "idle": {
+              "outline": {
+                "stroke": {
+                  "color": "#fff",
+                  "opacity": 0,
+                  "type": "solid"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "right": {
+      "inner": [
+        {
+          "type": "button",
+          "action": "rightTrigger",
+          "styles": {
+            "default": {
+              "faceImage": {
+                "type": "icon",
+                "value": "gasPedal"
+              }
+            }
+          }
+        }
+      ],
+      "outer": [
+        [
+          {
+            "type": "button",
+            "action": "gamepadA",
+            "styles": {
+              "default": {
+                "faceImage": {
+                  "type": "icon",
+                  "value": "handbrake2"
+                }
+              }
+            }
+          },
+          null
+        ],
+        {
+          "type": "button",
+          "action": "gamepadB",
+          "styles": {
+            "default": {
+              "faceImage": {
+                "type": "icon",
+                "value": "close"
+              }
+            }
+          }
+        },
+        [
+          {
+            "type": "button",
+            "action": "leftTrigger",
+            "styles": {
+              "default": {
+                "faceImage": {
+                  "type": "icon",
+                  "value": "brakePedal"
+                }
+              }
+            }
+          },
+          null
+        ],
+        {
+          "type": "button",
+          "action": "gamepadX",
+          "styles": {
+            "default": {
+              "faceImage": {
+                "type": "icon",
+                "value": "interact"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "upper": {
+      "right": [
+        {
+          "type": "button",
+          "action": "menu"
+        }
+      ]
+    },
+    "lower": {
+      "center": {
+        "type": "button",
+        "action": "rightBumper",
+        "styles": {
+          "default": {
+            "faceImage": {
+              "type": "icon",
+              "value": "switchCamera"
+            }
+          }
+        }
+      }
+    }
+  }
+}
