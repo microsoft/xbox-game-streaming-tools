@@ -1,0 +1,144 @@
+﻿{
+  "$schema": "https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/master/touch-adaptation-kit/schemas/layout/v3.1/layout.json",
+  "content": {
+    "left": {
+      "inner": [
+        {
+          "type": "joystick",
+          "axis": {
+            "input": "axisXY",
+            "output": "leftJoystick",
+            "deadzone": {
+              "threshold": 0.05,
+              "radial": true
+            }
+          },
+          "styles": {
+            "default": {
+              "knob": {
+                "faceImage": {
+                  "type": "icon",
+                  "value": "walk"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "right": {
+      "inner": [
+        {
+          "type": "button",
+          "action": "gamepadX",
+          "styles": {
+            "default": {
+              "faceImage": {
+                "type": "icon",
+                "value": "sword"
+              }
+            }
+          }
+        }
+      ],
+      "outer": [
+        [
+          {
+            "type": "button",
+            "action": "gamepadY",
+            "styles": {
+              "default": {
+                "faceImage": {
+                  "type": "icon",
+                  "value": "bow"
+                }
+              }
+            }
+          },
+          null
+        ],
+        {
+          "type": "button",
+          "action": "rightBumper",
+          "styles": {
+            "default": {
+              "faceImage": {
+                "type": "icon",
+                "value": "interact"
+              }
+            }
+          }
+        },
+        {
+          "type": "button",
+          "action": "gamepadB",
+          "styles": {
+            "default": {
+              "faceImage": {
+                "type": "icon",
+                "value": "dash"
+              }
+            }
+          }
+        },
+        {
+          "type": "button",
+          "action": "gamepadA",
+          "styles": {
+            "default": {
+              "faceImage": {
+                "type": "icon",
+                "value": "jump"
+              }
+            }
+          }
+        },
+        {
+          "type": "button",
+          "action": "rightTrigger",
+          "styles": {
+            "default": {
+              "faceImage": {
+                "type": "icon",
+                "value": "armor"
+              }
+            }
+          }
+        },
+        null,
+        {
+          "type": "button",
+          "action": "leftBumper",
+          "styles": {
+            "default": {
+              "faceImage": {
+                "type": "icon",
+                "value": "medical"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "upper": {
+      "right": [
+        {
+          "type": "button",
+          "action": "menu"
+        },
+        {
+          "type": "button",
+          "action": "view",
+          "styles": {
+            "default": {
+              "faceImage": {
+                "type": "icon",
+                "value": "inventory"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

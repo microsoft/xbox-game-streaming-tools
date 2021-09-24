@@ -1,0 +1,87 @@
+﻿{
+  "$schema": "https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/master/touch-adaptation-kit/schemas/layout/v3.1/layout.json",
+  "content": {
+    "left": {
+      "inner": [
+        {
+          "type": "joystick",
+          "axis": {
+            "input": "axisXY",
+            "output": "leftJoystick",
+            "deadzone": {
+              "threshold": 0.05,
+              "radial": true
+            }
+          },
+          "styles": {
+            "default": {
+              "knob": {
+                "faceImage": {
+                  "type": "icon",
+                  "value": "walk"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "right": {
+      "inner": [
+        {
+          "type": "button",
+          "action": "gamepadX",
+          "styles": {
+            "default": {
+              "faceImage": {
+                "type": "icon",
+                "value": "sword"
+              }
+            }
+          }
+        }
+      ],
+      "outer": [
+        [
+          {
+            "type": "button",
+            "action": "gamepadB",
+            "styles": {
+              "default": {
+                "faceImage": {
+                  "type": "icon",
+                  "value": "interact"
+                }
+              }
+            }
+          },
+          null
+        ],
+        null,
+        [
+          {
+            "type": "button",
+            "action": "gamepadA",
+            "styles": {
+              "default": {
+                "faceImage": {
+                  "type": "icon",
+                  "value": "jump"
+                }
+              }
+            }
+          },
+          null
+        ]
+      ]
+    },
+    "upper": {
+      "right": [
+        {
+          "type": "button",
+          "action": "menu"
+        }
+      ]
+    }
+  }
+}
