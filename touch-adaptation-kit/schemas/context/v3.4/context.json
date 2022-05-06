@@ -1,5 +1,5 @@
 {
-    "$id": "https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/master/touch-adaptation-kit/schemas/context/v3.4/context.json",
+    "$id": "https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/main/touch-adaptation-kit/schemas/context/v3.4/context.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "title": "JSON Schema for Touch Adaptation Bundle Context File",
     "definitions": {
@@ -51,7 +51,7 @@
             "$ref": "#/definitions/ContextDefinableType"
           }
         },
-        "additionalPropeties": false
+        "additionalProperties": false
       },
       "state": {
         "type": "object",
