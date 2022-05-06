@@ -1,5 +1,5 @@
 {
-  "$id": "https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/master/touch-adaptation-kit/schemas/manifest/v2.0/manifest.json",
+  "$id": "https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/main/touch-adaptation-kit/schemas/manifest/v2.0/manifest.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "JSON Schema for Touch Adaptation Bundle Manifests",
   "type": "object",

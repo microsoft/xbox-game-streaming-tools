@@ -1,5 +1,5 @@
 {
-    "$id": "https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/main/touch-adaptation-kit/schemas/context/v3.3/context.json",
+    "$id": "https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/main/touch-adaptation-kit/schemas/context/v3.4.1/context.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "title": "JSON Schema for Touch Adaptation Bundle Context File",
     "definitions": {
@@ -7,7 +7,7 @@
         "description": "Set of types which can be used in the definitions section of a context file.",
         "anyOf": [
           {
-            "$ref": "../../layout/v3.3/layout.json#/definitions/LayoutDefinableType"
+            "$ref": "../../layout/v3.4.1/layout.json#/definitions/LayoutDefinableType"
           },
           {
             "$ref": "#/definitions/StateType"
@@ -76,7 +76,7 @@
                 }
               },
               {
-                "$ref": "../../layout/v3.3/layout.json#/definitions/Reference"
+                "$ref": "../../layout/v3.4.1/layout.json#/definitions/Reference"
               }
             ]
           }

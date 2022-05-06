@@ -1,5 +1,5 @@
 {
-  "$id": "https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/master/touch-adaptation-kit/schemas/layout/v3.1/layout.json",
+  "$id": "https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/main/touch-adaptation-kit/schemas/layout/v3.1/layout.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "additionalProperties": false,
   "definitions": {
@@ -348,9 +348,7 @@
         },
         "type": {
           "description": "Control type identifier.",
-          "enum": [
-            "accelerometer"
-          ],
+          "const": "accelerometer",
           "type": "string"
         }
       },
@@ -452,9 +450,7 @@
         },
         "type": {
           "description": "Control type identifier.",
-          "enum": [
-            "arcadeButtons"
-          ],
+          "const": "arcadeButtons",
           "type": "string"
         }
       },
@@ -508,9 +504,7 @@
       "properties": {
         "type": {
           "description": "Background type identifier",
-          "enum": [
-            "asset"
-          ],
+          "const": "asset",
           "type": "string"
         },
         "value": {
@@ -537,9 +531,7 @@
       "properties": {
         "type": {
           "description": "Background type identifier",
-          "enum": [
-            "color"
-          ],
+          "const": "color",
           "type": "string"
         },
         "value": {
@@ -563,9 +555,7 @@
       "properties": {
         "type": {
           "description": "Control type identifier.",
-          "enum": [
-            "blank"
-          ],
+          "const": "blank",
           "type": "string"
         }
       },
@@ -601,9 +591,7 @@
         },
         "type": {
           "description": "Control type identifier.",
-          "enum": [
-            "button"
-          ],
+          "const": "button",
           "type": "string"
         }
       },
@@ -831,95 +819,31 @@
       ]
     },
     "ControlGroup<Control>": {
-      "items": [
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/Control"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/Control"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/Control"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/Control"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        }
-      ],
+      "items": {
+        "anyOf": [
+          {
+            "$ref": "#/definitions/Control"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
       "maxItems": 4,
       "minItems": 1,
       "type": "array"
     },
     "ControlGroup<LayerControl>": {
-      "items": [
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/LayerControl"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/LayerControl"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/LayerControl"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/LayerControl"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        }
-      ],
+      "items": {
+        "anyOf": [
+          {
+            "$ref": "#/definitions/LayerControl"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
       "maxItems": 4,
       "minItems": 1,
       "type": "array"
@@ -996,9 +920,7 @@
         },
         "type": {
           "description": "Control type identifier.",
-          "enum": [
-            "directionalPad"
-          ],
+          "const": "directionalPad",
           "type": "string"
         },
         "visible": {
@@ -1099,9 +1021,7 @@
       "properties": {
         "type": {
           "description": "Face Image type identifier",
-          "enum": [
-            "asset"
-          ],
+          "const": "asset",
           "type": "string"
         },
         "value": {
@@ -1134,9 +1054,7 @@
       "properties": {
         "type": {
           "description": "Face Image type identifier",
-          "enum": [
-            "icon"
-          ],
+          "const": "icon",
           "type": "string"
         },
         "value": {
@@ -1318,9 +1236,7 @@
         },
         "type": {
           "description": "Control type identifier.",
-          "enum": [
-            "gyroscope"
-          ],
+          "const": "gyroscope",
           "type": "string"
         }
       },
@@ -1342,39 +1258,17 @@
       "type": "string"
     },
     "InnerWheel<Control>": {
-      "items": [
-        {
-          "$ref": "#/definitions/Control"
-        },
-        {
-          "$ref": "#/definitions/Control"
-        },
-        {
-          "$ref": "#/definitions/Control"
-        },
-        {
-          "$ref": "#/definitions/Control"
-        }
-      ],
+      "items": {
+        "$ref": "#/definitions/Control"
+      },
       "maxItems": 4,
       "minItems": 1,
       "type": "array"
     },
     "InnerWheel<LayerControl>": {
-      "items": [
-        {
-          "$ref": "#/definitions/LayerControl"
-        },
-        {
-          "$ref": "#/definitions/LayerControl"
-        },
-        {
-          "$ref": "#/definitions/LayerControl"
-        },
-        {
-          "$ref": "#/definitions/LayerControl"
-        }
-      ],
+      "items": {
+        "$ref": "#/definitions/LayerControl"
+      },
       "maxItems": 4,
       "minItems": 1,
       "type": "array"
@@ -1405,22 +1299,15 @@
           "properties": {
             "range": {
               "description": "Start and end values for input curve range.",
-              "items": [
-                {
-                  "type": "number"
-                },
-                {
-                  "type": "number"
-                }
-              ],
+              "items": {
+                "type": "number"
+              },
               "maxItems": 2,
               "minItems": 2,
               "type": "array"
             },
             "type": {
-              "enum": [
-                "circular"
-              ],
+              "const": "circular",
               "type": "string"
             }
           },
@@ -1436,22 +1323,15 @@
           "properties": {
             "range": {
               "description": "Start and end values for input curve range.",
-              "items": [
-                {
-                  "type": "number"
-                },
-                {
-                  "type": "number"
-                }
-              ],
+              "items": {
+                "type": "number"
+              },
               "maxItems": 2,
               "minItems": 2,
               "type": "array"
             },
             "type": {
-              "enum": [
-                "circular-inverse"
-              ],
+              "const": "circular-inverse",
               "type": "string"
             }
           },
@@ -1528,9 +1408,7 @@
         },
         "type": {
           "description": "Control type identifier.",
-          "enum": [
-            "joystick"
-          ],
+          "const": "joystick",
           "type": "string"
         }
       },
@@ -1601,9 +1479,7 @@
       "properties": {
         "type": {
           "description": "Joystick directional indicator type identifier",
-          "enum": [
-            "color"
-          ],
+          "const": "color",
           "type": "string"
         },
         "value": {
@@ -1676,9 +1552,7 @@
         },
         "input": {
           "description": "Touch Axis, X and Y",
-          "enum": [
-            "axisXY"
-          ],
+          "const": "axisXY",
           "type": "string"
         },
         "output": {
@@ -1687,9 +1561,7 @@
               "$ref": "#/definitions/JoystickType"
             },
             {
-              "enum": [
-                "relativeMouse"
-              ],
+              "const": "relativeMouse",
               "type": "string"
             }
           ],
@@ -1719,15 +1591,11 @@
         "input": {
           "anyOf": [
             {
-              "enum": [
-                "axisX"
-              ],
+              "const": "axisX",
               "type": "string"
             },
             {
-              "enum": [
-                "axisY"
-              ],
+              "const": "axisY",
               "type": "string"
             }
           ],
@@ -2104,9 +1972,7 @@
           "type": "string"
         },
         "type": {
-          "enum": [
-            "layer"
-          ],
+          "const": "layer",
           "type": "string"
         }
       },
@@ -2130,15 +1996,11 @@
       "additionalProperties": false,
       "properties": {
         "input": {
-          "enum": [
-            "axisXY"
-          ],
+          "const": "axisXY",
           "type": "string"
         },
         "output": {
-          "enum": [
-            "relativeMouse"
-          ],
+          "const": "relativeMouse",
           "type": "string"
         },
         "sensitivity": {
@@ -2157,15 +2019,11 @@
         "input": {
           "anyOf": [
             {
-              "enum": [
-                "axisX"
-              ],
+              "const": "axisX",
               "type": "string"
             },
             {
-              "enum": [
-                "axisY"
-              ],
+              "const": "axisY",
               "type": "string"
             }
           ]
@@ -2236,230 +2094,43 @@
       "type": "string"
     },
     "Opacity": {
-      "additionalProperties": false,
       "description": "Opacity to be used on a control when styled in a specific state.",
       "type": "number",
       "minimum": 0,
-      "maximum": 1.0
+      "maximum": 1
     },
     "OuterWheel<Control>": {
-      "items": [
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/Control"
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<Control>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/Control"
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<Control>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/Control"
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<Control>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/Control"
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<Control>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/Control"
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<Control>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/Control"
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<Control>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/Control"
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<Control>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/Control"
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<Control>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        }
-      ],
+      "items": {
+        "anyOf": [
+          {
+            "$ref": "#/definitions/Control"
+          },
+          {
+            "$ref": "#/definitions/ControlGroup<Control>"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
       "maxItems": 8,
       "minItems": 1,
       "type": "array"
     },
     "OuterWheel<LayerControl>": {
-      "items": [
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/LayerControl"
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<LayerControl>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/LayerControl"
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<LayerControl>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/LayerControl"
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<LayerControl>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/LayerControl"
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<LayerControl>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/LayerControl"
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<LayerControl>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/LayerControl"
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<LayerControl>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/LayerControl"
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<LayerControl>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/LayerControl"
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<LayerControl>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        }
-      ],
+      "items": {
+        "anyOf": [
+          {
+            "$ref": "#/definitions/LayerControl"
+          },
+          {
+            "$ref": "#/definitions/ControlGroup<LayerControl>"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
       "maxItems": 8,
       "minItems": 1,
       "type": "array"
@@ -2494,9 +2165,7 @@
         },
         "input": {
           "description": "Touch Axis, X and Y",
-          "enum": [
-            "axisZY"
-          ],
+          "const": "axisZY",
           "type": "string"
         },
         "output": {
@@ -2505,9 +2174,7 @@
               "$ref": "#/definitions/JoystickType"
             },
             {
-              "enum": [
-                "relativeMouse"
-              ],
+              "const": "relativeMouse",
               "type": "string"
             }
           ],
@@ -2533,9 +2200,7 @@
       "properties": {
         "type": {
           "description": "Stroke type identifier",
-          "enum": [
-            "solid"
-          ],
+          "const": "solid",
           "type": "string"
         },
         "color": {
@@ -2577,9 +2242,7 @@
         },
         "type": {
           "description": "Control type identifier.",
-          "enum": [
-            "throttle"
-          ],
+          "const": "throttle",
           "type": "string"
         }
       },
@@ -2656,9 +2319,7 @@
         },
         "type": {
           "description": "Control type identifier.",
-          "enum": [
-            "touchpad"
-          ],
+          "const": "touchpad",
           "type": "string"
         },
         "visible": {
@@ -2734,9 +2395,7 @@
           "type": "number"
         },
         "type": {
-          "enum": [
-            "turbo"
-          ],
+          "const": "turbo",
           "type": "string"
         }
       },
@@ -2783,7 +2442,7 @@
       "$ref": "#/definitions/LayoutOrientation"
     },
     "definitions": {
-      "ref": "#/definitions/Definitions"
+      "$ref": "#/definitions/Definitions"
     }
   },
   "required": [

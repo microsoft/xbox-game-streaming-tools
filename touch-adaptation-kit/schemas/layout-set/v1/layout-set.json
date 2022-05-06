@@ -69,9 +69,7 @@
         },
         "type": {
           "description": "Control type identifier.",
-          "enum": [
-            "arcadeButtons"
-          ],
+          "const": "arcadeButtons",
           "type": "string"
         }
       },
@@ -92,9 +90,7 @@
       "properties": {
         "type": {
           "description": "Control type identifier.",
-          "enum": [
-            "blank"
-          ],
+          "const": "blank",
           "type": "string"
         }
       },
@@ -125,9 +121,7 @@
         },
         "type": {
           "description": "Control type identifier.",
-          "enum": [
-            "button"
-          ],
+          "const": "button",
           "type": "string"
         }
       },
@@ -193,123 +187,38 @@
       ]
     },
     "ControlGroup<(Control|Blank)>": {
-      "items": [
-        {
-          "anyOf": [
-            {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Control"
-                },
-                {
-                  "$ref": "#/definitions/Blank"
-                }
-              ]
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Control"
-                },
-                {
-                  "$ref": "#/definitions/Blank"
-                }
-              ]
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Control"
-                },
-                {
-                  "$ref": "#/definitions/Blank"
-                }
-              ]
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Control"
-                },
-                {
-                  "$ref": "#/definitions/Blank"
-                }
-              ]
-            },
-            {
-              "type": "null"
-            }
-          ]
-        }
-      ],
+      "items": {
+        "anyOf": [
+          {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/Control"
+              },
+              {
+                "$ref": "#/definitions/Blank"
+              }
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
       "maxItems": 4,
       "minItems": 1,
       "type": "array"
     },
     "ControlGroup<Control>": {
-      "items": [
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/Control"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/Control"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/Control"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/Control"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        }
-      ],
+      "items": {
+        "anyOf": [
+          {
+            "$ref": "#/definitions/Control"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
       "maxItems": 4,
       "minItems": 1,
       "type": "array"
@@ -369,9 +278,7 @@
         },
         "type": {
           "description": "Control type identifier.",
-          "enum": [
-            "directionalPad"
-          ],
+          "const": "directionalPad",
           "type": "string"
         }
       },
@@ -524,9 +431,7 @@
         },
         "type": {
           "description": "Control type identifier.",
-          "enum": [
-            "gyroscope"
-          ],
+          "const": "gyroscope",
           "type": "string"
         }
       },
@@ -537,67 +442,24 @@
       "type": "object"
     },
     "InnerWheel<(Control|Blank)>": {
-      "items": [
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/Control"
-            },
-            {
-              "$ref": "#/definitions/Blank"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/Control"
-            },
-            {
-              "$ref": "#/definitions/Blank"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/Control"
-            },
-            {
-              "$ref": "#/definitions/Blank"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/Control"
-            },
-            {
-              "$ref": "#/definitions/Blank"
-            }
-          ]
-        }
-      ],
+      "items": {
+        "anyOf": [
+          {
+            "$ref": "#/definitions/Control"
+          },
+          {
+            "$ref": "#/definitions/Blank"
+          }
+        ]
+      },
       "maxItems": 4,
       "minItems": 1,
       "type": "array"
     },
     "InnerWheel<Control>": {
-      "items": [
-        {
-          "$ref": "#/definitions/Control"
-        },
-        {
-          "$ref": "#/definitions/Control"
-        },
-        {
-          "$ref": "#/definitions/Control"
-        },
-        {
-          "$ref": "#/definitions/Control"
-        }
-      ],
+      "items": {
+        "$ref": "#/definitions/Control"
+      },
       "maxItems": 4,
       "minItems": 1,
       "type": "array"
@@ -628,22 +490,15 @@
           "properties": {
             "range": {
               "description": "Start and end values for input curve range.",
-              "items": [
-                {
-                  "type": "number"
-                },
-                {
-                  "type": "number"
-                }
-              ],
+              "items": {
+                "type": "number"
+              },
               "maxItems": 2,
               "minItems": 2,
               "type": "array"
             },
             "type": {
-              "enum": [
-                "circular"
-              ],
+              "const": "circular",
               "type": "string"
             }
           },
@@ -659,22 +514,15 @@
           "properties": {
             "range": {
               "description": "Start and end values for input curve range.",
-              "items": [
-                {
-                  "type": "number"
-                },
-                {
-                  "type": "number"
-                }
-              ],
+              "items": {
+                "type": "number"
+              },
               "maxItems": 2,
               "minItems": 2,
               "type": "array"
             },
             "type": {
-              "enum": [
-                "circular-inverse"
-              ],
+              "const": "circular-inverse",
               "type": "string"
             }
           },
@@ -753,9 +601,7 @@
         },
         "type": {
           "description": "Control type identifier.",
-          "enum": [
-            "joystick"
-          ],
+          "const": "joystick",
           "type": "string"
         }
       },
@@ -783,9 +629,7 @@
         },
         "input": {
           "description": "Touch Axis, X and Y",
-          "enum": [
-            "axisXY"
-          ],
+          "const": "axisXY",
           "type": "string"
         },
         "output": {
@@ -794,9 +638,7 @@
               "$ref": "#/definitions/JoystickType"
             },
             {
-              "enum": [
-                "relativeMouse"
-              ],
+              "const": "relativeMouse",
               "type": "string"
             }
           ],
@@ -826,15 +668,11 @@
         "input": {
           "anyOf": [
             {
-              "enum": [
-                "axisX"
-              ],
+              "const": "axisX",
               "type": "string"
             },
             {
-              "enum": [
-                "axisY"
-              ],
+              "const": "axisY",
               "type": "string"
             }
           ],
@@ -942,9 +780,7 @@
           "type": "string"
         },
         "type": {
-          "enum": [
-            "layer"
-          ],
+          "const": "layer",
           "type": "string"
         }
       },
@@ -1173,15 +1009,11 @@
       "additionalProperties": false,
       "properties": {
         "input": {
-          "enum": [
-            "axisXY"
-          ],
+          "const": "axisXY",
           "type": "string"
         },
         "output": {
-          "enum": [
-            "relativeMouse"
-          ],
+          "const": "relativeMouse",
           "type": "string"
         },
         "sensitivity": {
@@ -1200,15 +1032,11 @@
         "input": {
           "anyOf": [
             {
-              "enum": [
-                "axisX"
-              ],
+              "const": "axisX",
               "type": "string"
             },
             {
-              "enum": [
-                "axisY"
-              ],
+              "const": "axisY",
               "type": "string"
             }
           ]
@@ -1279,279 +1107,44 @@
       "type": "string"
     },
     "OuterWheel<(Control|Blank)>": {
-      "items": [
-        {
-          "anyOf": [
-            {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Control"
-                },
-                {
-                  "$ref": "#/definitions/Blank"
-                }
-              ]
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<(Control|Blank)>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Control"
-                },
-                {
-                  "$ref": "#/definitions/Blank"
-                }
-              ]
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<(Control|Blank)>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Control"
-                },
-                {
-                  "$ref": "#/definitions/Blank"
-                }
-              ]
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<(Control|Blank)>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Control"
-                },
-                {
-                  "$ref": "#/definitions/Blank"
-                }
-              ]
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<(Control|Blank)>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Control"
-                },
-                {
-                  "$ref": "#/definitions/Blank"
-                }
-              ]
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<(Control|Blank)>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Control"
-                },
-                {
-                  "$ref": "#/definitions/Blank"
-                }
-              ]
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<(Control|Blank)>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Control"
-                },
-                {
-                  "$ref": "#/definitions/Blank"
-                }
-              ]
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<(Control|Blank)>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Control"
-                },
-                {
-                  "$ref": "#/definitions/Blank"
-                }
-              ]
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<(Control|Blank)>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        }
-      ],
+      "items": {
+        "anyOf": [
+          {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/Control"
+              },
+              {
+                "$ref": "#/definitions/Blank"
+              }
+            ]
+          },
+          {
+            "$ref": "#/definitions/ControlGroup<(Control|Blank)>"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
       "maxItems": 8,
       "minItems": 1,
       "type": "array"
     },
     "OuterWheel<Control>": {
-      "items": [
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/Control"
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<Control>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/Control"
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<Control>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/Control"
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<Control>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/Control"
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<Control>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/Control"
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<Control>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/Control"
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<Control>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/Control"
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<Control>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/Control"
-            },
-            {
-              "$ref": "#/definitions/ControlGroup<Control>"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        }
-      ],
+      "items": {
+        "anyOf": [
+          {
+            "$ref": "#/definitions/Control"
+          },
+          {
+            "$ref": "#/definitions/ControlGroup<Control>"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
       "maxItems": 8,
       "minItems": 1,
       "type": "array"
@@ -1568,9 +1161,7 @@
         },
         "input": {
           "description": "Touch Axis, X and Y",
-          "enum": [
-            "axisZY"
-          ],
+          "const": "axisZY",
           "type": "string"
         },
         "output": {
@@ -1579,9 +1170,7 @@
               "$ref": "#/definitions/JoystickType"
             },
             {
-              "enum": [
-                "relativeMouse"
-              ],
+              "const": "relativeMouse",
               "type": "string"
             }
           ],
@@ -1628,9 +1217,7 @@
         },
         "type": {
           "description": "Control type identifier.",
-          "enum": [
-            "throttle"
-          ],
+          "const": "throttle",
           "type": "string"
         }
       },
@@ -1673,9 +1260,7 @@
         },
         "type": {
           "description": "Control type identifier.",
-          "enum": [
-            "touchpad"
-          ],
+          "const": "touchpad",
           "type": "string"
         }
       },
@@ -1702,9 +1287,7 @@
           "type": "number"
         },
         "type": {
-          "enum": [
-            "turbo"
-          ],
+          "const": "turbo",
           "type": "string"
         }
       },
