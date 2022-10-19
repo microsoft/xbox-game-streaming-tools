@@ -1,0 +1,139 @@
+{
+    "$id": "https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/master/touch-adaptation-kit/schemas/takxconfig/v1/takxconfig.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "JSON Schema for configuration options file that configures takx bundle metadata",
+    "type": "object",
+    "definitions": {
+        "AllowedLanguages": {
+            "enum": [
+                "ar",
+                "ar-SA",
+                "cs",
+                "cs-CZ",
+                "da",
+                "da-DK",
+                "de",
+                "de-DE",
+                "el",
+                "el-GR",
+                "en",
+                "en-US",
+                "en-GB",
+                "es",
+                "es-ES",
+                "es-MX",
+                "fi",
+                "fi-FI",
+                "fil",
+                "fil-PH",
+                "fr",
+                "fr-FR",
+                "he",
+                "he-IL",
+                "hu",
+                "hu-HU",
+                "id",
+                "id-ID",
+                "it",
+                "it-IT",
+                "ja",
+                "ja-JP",
+                "ko",
+                "ko-KR",
+                "ms",
+                "ms-MY",
+                "nb",
+                "nb-NO",
+                "nl",
+                "nl-NL",
+                "pl",
+                "pl-PL",
+                "pt",
+                "pt-BR",
+                "pt-PT",
+                "ru",
+                "ru-RU",
+                "sk",
+                "sk-SK",
+                "sv",
+                "sv-SE",
+                "th",
+                "th-TH",
+                "tr",
+                "tr-TR",
+                "vi",
+                "vi-VN",
+                "zh",
+                "zh-CN",
+                "zh-TW"
+            ]
+        }
+    },
+    "properties": {
+        "$schema": {
+            "type": "string"
+        },
+        "layouts": {
+            "path": {
+                "type": "string",
+                "format": "uri-reference",
+                "description": "Path to the root directory for the touch layouts relative to takxconfig.json."
+            },
+            "default": {
+                "type": "string",
+                "description": "Name of the layout to use by default when a game is starting. This should match the name of one of the files in the layout path. If not provided, no layout will be shown when the bundle loads."
+            },
+            "required": [
+                "path"
+            ],
+            "type": "object"
+        },
+        "assets": {
+            "path": {
+                "type": "string",
+                "format": "uri-reference",
+                "description": "Path to the root directory for the assets relative to takxconfig.json."
+            },
+            "required": [
+                "path"
+            ],
+            "type": "object"
+        },
+        "context": {
+            "path": {
+                "type": "string",
+                "format": "uri-reference",
+                "description": "Path to the context file relative to takxconfig.json."
+            },
+            "required": [
+                "path"
+            ],
+            "type": "object"
+        },
+        "languages": {
+            "items": {
+                "$ref": "#/definitions/AllowedLanguages"
+            },
+            "type": "array"
+        },
+        "version": {
+            "type": "string",
+            "pattern": "\\d+\\.\\d+\\.\\d+\\.\\d+",
+            "description": "Version number of the touch adaptation bundle.",
+            "examples": [
+                "1.0.0.0"
+            ]
+        },
+        "versionName": {
+            "type": "string",
+            "description": "Descriptive name of the version of the touch adaptation bundle.",
+            "examples": [
+                "DLC 2"
+            ]
+        }
+    },
+    "required": [
+      "layouts",
+      "version"
+    ]
+}
