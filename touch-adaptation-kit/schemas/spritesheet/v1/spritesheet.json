@@ -1,0 +1,148 @@
+{
+    "$id": "https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/main/touch-adaptation-kit/schemas/spritesheet/v1/spritesheet.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "JSON Schema for Touch Adaption Bundle Spritesheets",
+    "type": "object",
+    "definitions": {
+        "frames": {
+            "type": "object",
+            "description": "Frames block that contains sprite definitions.",
+            "patternProperties": {
+                "^[A-Za-z0-9_]+$": {
+                    "$ref": "#/definitions/sprite"
+                }
+            },
+            "additionalProperties": false
+        },
+        "sprite": {
+            "type": "object",
+            "description": "Defines a layout referenceable sprite asset.",
+            "properties": {
+                "frame": {
+                    "$ref": "#/definitions/frame"
+                },
+                "spriteSourceSize": {
+                    "$ref": "#/definitions/spriteSourceSize"
+                },
+                "sourceSize": {
+                    "$ref": "#/definitions/sourceSize"
+                },
+                "rotated": {
+                    "type": "boolean",
+                    "description": "Rotate the sprite by 90 degrees counter clockwise prior to rendering.",
+                    "default": false
+                },
+                "trimmed": {
+                    "type": "boolean",
+                    "description": "Indicates whether or not transparent pixels were removed from the sprite's border when packing.",
+                    "default": false
+                }
+            },
+            "required": [
+                "frame",
+                "spriteSourceSize",
+                "sourceSize",
+                "rotated",
+                "trimmed"
+            ],
+            "additionalProperties": true
+        },
+        "frame": {
+            "type": "object",
+            "description": "Defines a rectangular frame in the spritesheet from which to sample this sprite.",
+            "properties": {
+                "x": {
+                    "type": "integer",
+                    "description": "The x coordinate (in pixels) of the top left corner of the frame."
+                },
+                "y": {
+                    "type": "integer",
+                    "description": "The y coordinate (in pixels) of the top left corner of the frame."
+                },
+                "w": {
+                    "type": "integer",
+                    "description": "The width (in pixels) of the frame."
+                },
+                "h": {
+                    "type": "integer",
+                    "description": "The height (in pixels) of the frame."
+                }
+            },
+            "required": [
+                "x",
+                "y",
+                "w",
+                "h"
+            ],
+            "additionalProperties": false
+        },
+        "spriteSourceSize": {
+            "type": "object",
+            "description": "Defines a rectangular frame in the untrimmed sprite from which to sample the trimmed sprite.",
+            "properties": {
+                "x": {
+                    "type": "integer",
+                    "description": "The x coordinate (in pixels) of the top left corner of the frame."
+                },
+                "y": {
+                    "type": "integer",
+                    "description": "The y coordinate (in pixels) of the top left corner of the frame."
+                },
+                "w": {
+                    "type": "integer",
+                    "description": "The width (in pixels) of the frame."
+                },
+                "h": {
+                    "type": "integer",
+                    "description": "The height (in pixels) of the frame."
+                }
+            },
+            "required": [
+                "x",
+                "y",
+                "w",
+                "h"
+            ],
+            "additionalProperties": false
+        },
+        "sourceSize": {
+            "type": "object",
+            "description": "The size of the untrimmed sprite.",
+            "properties": {
+                "w": {
+                    "type": "integer",
+                    "description": "The width (in pixels) of the untrimmed sprite."
+                },
+                "h": {
+                    "type": "integer",
+                    "description": "The height (in pixels) of the untrimmed sprite."
+                }
+            },
+            "required": [
+                "w",
+                "h"
+            ],
+            "additionalProperties": false
+        },
+        "meta": {
+            "type": "object",
+            "description": "Metadata for this spritesheet atlas.",
+            "additionalProperties": true
+        }
+    },
+    "properties": {
+        "$schema": {
+            "type": "string"
+        },
+        "frames": {
+            "$ref": "#/definitions/frames"
+        },
+        "meta": {
+            "$ref": "#/definitions/meta"
+        }
+    },
+    "required": [
+        "frames"
+    ],
+    "additionalProperties": false
+}
