@@ -1,0 +1,221 @@
+{
+  "required": [
+    "layouts",
+    "version"
+  ],
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "context": {
+      "examples": [
+        {
+          "path": "./context.json"
+        }
+      ],
+      "additionalProperties": false,
+      "type": "object",
+      "description": "このプロパティは、ファイルが配置されているディスク上の場所など、コンテキスト ファイルに関連するバンドル プロパティを定義します。省略した場合、バンドルにはコンテキスト ファイルは含まれません。",
+      "markdownDescription": "このプロパティは、ファイルが配置されているディスク上の場所など、コンテキスト ファイルに関連するバンドル プロパティを定義します。省略した場合、バンドルにはコンテキスト ファイルは含まれません。",
+      "required": [
+        "path"
+      ],
+      "title": "タッチ適応バンドルのコンテキスト ファイル構成",
+      "properties": {
+        "path": {
+          "markdownDescription": "このプロパティは、このファイルからコンテキスト ファイルへの相対パスを定義します。",
+          "description": "このプロパティは、このファイルからコンテキスト ファイルへの相対パスを定義します。",
+          "title": "タッチ適応バンドルのコンテキスト ファイル パス",
+          "examples": [
+            "./context.json"
+          ],
+          "type": "string",
+          "format": "uri-reference"
+        }
+      }
+    },
+    "versionName": {
+      "description": "このプロパティは、このバージョンのタッチ バンドルを表すわかりやすい名前を定義します。このプロパティは、https://learn.microsoft.com/gaming/gdk/_content/gc/reference/system/xgamestreaming/functions/xgamestreaminggettouchbundleversion で説明されている API を使用して照会できます。",
+      "title": "タッチ適応バンドルのバージョン名",
+      "examples": [
+        "DLC 2"
+      ],
+      "type": "string",
+      "markdownDescription": "このプロパティは、このバージョンのタッチ バンドルを表すわかりやすい名前を定義します。このプロパティは、https://learn.microsoft.com/gaming/gdk/_content/gc/reference/system/xgamestreaming/functions/xgamestreaminggettouchbundleversion で説明されている API を使用して照会できます。"
+    },
+    "assets": {
+      "examples": [
+        {
+          "path": "./assets"
+        }
+      ],
+      "additionalProperties": false,
+      "type": "object",
+      "description": "このプロパティは、ディスク資産ファイルの場所など、資産ファイルに関連するバンドル プロパティを定義します。",
+      "markdownDescription": "このプロパティは、ディスク資産ファイルの場所など、資産ファイルに関連するバンドル プロパティを定義します。",
+      "required": [
+        "path"
+      ],
+      "title": "タッチ適応バンドルの資産構成",
+      "properties": {
+        "path": {
+          "markdownDescription": "このプロパティは、このバンドルのすべての資産 (画像ファイルなど) を含むディレクトリへの、このファイルからの相対パスを定義します。",
+          "description": "このプロパティは、このバンドルのすべての資産 (画像ファイルなど) を含むディレクトリへの、このファイルからの相対パスを定義します。",
+          "title": "タッチ適応バンドルの資産パス",
+          "examples": [
+            "./assets"
+          ],
+          "type": "string",
+          "format": "uri-reference"
+        }
+      }
+    },
+    "languages": {
+      "markdownDescription": "このプロパティは、バンドルでサポートされている言語に関連するバンドル プロパティを定義します。省略した場合、バンドルはレイアウト フォルダーと資産フォルダーのディレクトリ構造から推論されたすべての言語をサポートします。ニュートラル言語は、このプロパティの値に関係なく、常にバンドルに含まれます。",
+      "items": {
+        "$ref": "#/$defs/LanguageItem"
+      },
+      "description": "このプロパティは、バンドルでサポートされている言語に関連するバンドル プロパティを定義します。省略した場合、バンドルはレイアウト フォルダーと資産フォルダーのディレクトリ構造から推論されたすべての言語をサポートします。ニュートラル言語は、このプロパティの値に関係なく、常にバンドルに含まれます。",
+      "title": "タッチ適応バンドルの言語構成",
+      "examples": [
+        [],
+        [
+          "en-US"
+        ],
+        [
+          "en",
+          "fr-FR"
+        ]
+      ],
+      "type": "array"
+    },
+    "version": {
+      "markdownDescription": "このプロパティは、タッチ バンドルのバージョン番号を定義します。バージョンはメジャー コンポーネント、マイナー コンポーネント、ビルド コンポーネント、およびリビジョン コンポーネントで構成されていますが、これらの特定の意味論はタッチ バンドル ランタイムによって解釈されません。代わりに、ランタイムが読み込むことができる最新バージョンのバンドルが使用されます。バンドルを読み込む機能は、バンドル内で使用される最大レイアウト スキーマ バージョンによって決まります。このプロパティは、https://learn.microsoft.com/gaming/gdk/_content/gc/reference/system/xgamestreaming/functions/xgamestreaminggettouchbundleversion で説明されている API を使用して照会できます。",
+      "pattern": "^\\d+\\.\\d+\\.\\d+\\.\\d+$",
+      "description": "このプロパティは、タッチ バンドルのバージョン番号を定義します。バージョンはメジャー コンポーネント、マイナー コンポーネント、ビルド コンポーネント、およびリビジョン コンポーネントで構成されていますが、これらの特定の意味論はタッチ バンドル ランタイムによって解釈されません。代わりに、ランタイムが読み込むことができる最新バージョンのバンドルが使用されます。バンドルを読み込む機能は、バンドル内で使用される最大レイアウト スキーマ バージョンによって決まります。このプロパティは、https://learn.microsoft.com/gaming/gdk/_content/gc/reference/system/xgamestreaming/functions/xgamestreaminggettouchbundleversion で説明されている API を使用して照会できます。",
+      "title": "タッチ適応バンドルのバージョン",
+      "examples": [
+        "1.0.0.0"
+      ],
+      "type": "string"
+    },
+    "layouts": {
+      "examples": [
+        {
+          "path": "./layouts"
+        },
+        {
+          "default": "cinematic",
+          "path": "./layouts"
+        }
+      ],
+      "additionalProperties": false,
+      "type": "object",
+      "description": "このプロパティは、レイアウト ファイルに関連するバンドル プロパティを定義します。たとえば、ディスク レイアウト ファイルの場所や、既定のレイアウトとして使用するレイアウト ファイルなどです。",
+      "markdownDescription": "このプロパティは、レイアウト ファイルに関連するバンドル プロパティを定義します。たとえば、ディスク レイアウト ファイルの場所や、既定のレイアウトとして使用するレイアウト ファイルなどです。",
+      "required": [
+        "path"
+      ],
+      "title": "タッチ適応バンドルのレイアウト構成",
+      "properties": {
+        "default": {
+          "description": "このプロパティは、タッチ バンドルの開始アクティブ レイアウトを定義します。既定のレイアウトを指定するには、ファイル拡張子のないレイアウト ファイルの名前を使用します。アクティブなレイアウトは、後で https://learn.microsoft.com/gaming/gdk/_content/gc/reference/system/xgamestreaming/functions/xgamestreamingshowtouchcontrollayoutonclient で説明されている API 呼び出しを使用して変更できます。省略すると、開始レイアウトは使用されません。",
+          "title": "タッチ適応バンドルの既定レイアウト",
+          "examples": [
+            "cinematic",
+            "menu",
+            "firstPerson"
+          ],
+          "type": "string",
+          "markdownDescription": "このプロパティは、タッチ バンドルの開始アクティブ レイアウトを定義します。既定のレイアウトを指定するには、ファイル拡張子のないレイアウト ファイルの名前を使用します。アクティブなレイアウトは、後で https://learn.microsoft.com/gaming/gdk/_content/gc/reference/system/xgamestreaming/functions/xgamestreamingshowtouchcontrollayoutonclient で説明されている API 呼び出しを使用して変更できます。省略すると、開始レイアウトは使用されません。"
+        },
+        "path": {
+          "markdownDescription": "このプロパティは、このバンドルのすべてのレイアウトを含むディレクトリへの、このファイルからの相対パスを定義します。",
+          "description": "このプロパティは、このバンドルのすべてのレイアウトを含むディレクトリへの、このファイルからの相対パスを定義します。",
+          "title": "タッチ適応バンドルのレイアウト パス",
+          "examples": [
+            "./layouts"
+          ],
+          "type": "string",
+          "format": "uri-reference"
+        }
+      }
+    }
+  },
+  "title": "タッチ適応バンドルの構成ファイル スキーマ",
+  "description": "タッチ適応バンドル構成ファイル (`takxconfig.json`) は、バンドルのプロジェクト ファイルとして機能し、バンドルのすべてのメタデータとプロパティを再利用可能で一貫性のある方法で定義するファイルです。バージョン間の変更に関する最新情報については、https://github.com/microsoft/xbox-game-streaming-tools/releases を参照してください。",
+  "markdownDescription": "タッチ適応バンドル構成ファイル (`takxconfig.json`) は、バンドルのプロジェクト ファイルとして機能し、バンドルのすべてのメタデータとプロパティを再利用可能で一貫性のある方法で定義するファイルです。バージョン間の変更に関する最新情報については、https://github.com/microsoft/xbox-game-streaming-tools/releases を参照してください。",
+  "additionalProperties": false,
+  "$id": "https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/main/touch-adaptation-kit/schemas/takxconfig/v4.0/takxconfig.json",
+  "$defs": {
+    "LanguageItem": {
+      "description": "バンドルがサポートするニュートラル言語に加えて、言語を定義する単一言語タグです。",
+      "enum": [
+        "ar",
+        "ar-SA",
+        "cs",
+        "cs-CZ",
+        "da",
+        "da-DK",
+        "de",
+        "de-DE",
+        "el",
+        "el-GR",
+        "en",
+        "en-US",
+        "en-GB",
+        "es",
+        "es-ES",
+        "es-MX",
+        "fi",
+        "fi-FI",
+        "fil",
+        "fil-PH",
+        "fr",
+        "fr-FR",
+        "he",
+        "he-IL",
+        "hu",
+        "hu-HU",
+        "id",
+        "id-ID",
+        "it",
+        "it-IT",
+        "ja",
+        "ja-JP",
+        "ko",
+        "ko-KR",
+        "ms",
+        "ms-MY",
+        "nb",
+        "nb-NO",
+        "nl",
+        "nl-NL",
+        "pl",
+        "pl-PL",
+        "pt",
+        "pt-BR",
+        "pt-PT",
+        "ru",
+        "ru-RU",
+        "sk",
+        "sk-SK",
+        "sv",
+        "sv-SE",
+        "th",
+        "th-TH",
+        "tr",
+        "tr-TR",
+        "vi",
+        "vi-VN",
+        "zh",
+        "zh-CN",
+        "zh-TW"
+      ],
+      "title": "IETF 言語タグ",
+      "markdownDescription": "バンドルがサポートするニュートラル言語に加えて、言語を定義する単一言語タグです。"
+    }
+  },
+  "type": "object"
+}
