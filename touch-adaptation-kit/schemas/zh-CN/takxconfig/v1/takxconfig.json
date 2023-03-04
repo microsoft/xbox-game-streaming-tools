@@ -1,0 +1,221 @@
+{
+  "required": [
+    "layouts",
+    "version"
+  ],
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "context": {
+      "examples": [
+        {
+          "path": "./context.json"
+        }
+      ],
+      "additionalProperties": false,
+      "type": "object",
+      "description": "此属性定义与上下文文件相关的捆绑包属性，例如文件在磁盘上的位置。如果省略，捆绑包将不包含上下文文件。",
+      "markdownDescription": "此属性定义与上下文文件相关的捆绑包属性，例如文件在磁盘上的位置。如果省略，捆绑包将不包含上下文文件。",
+      "required": [
+        "path"
+      ],
+      "title": "触摸适配捆绑包上下文文件配置",
+      "properties": {
+        "path": {
+          "markdownDescription": "此属性定义从此文件到上下文文件的相对路径。",
+          "description": "此属性定义从此文件到上下文文件的相对路径。",
+          "title": "触摸适配捆绑包上下文文件路径",
+          "examples": [
+            "./context.json"
+          ],
+          "type": "string",
+          "format": "uri-reference"
+        }
+      }
+    },
+    "versionName": {
+      "description": "此属性定义表示此版本的触摸捆绑包的描述性名称。可以通过https://learn.microsoft.com/gaming/gdk/_content/gc/reference/system/xgamestreaming/functions/xgamestreaminggettouchbundleversion处描述的 API 查询此属性。",
+      "title": "触摸适配捆绑包版本名称",
+      "examples": [
+        "DLC 2"
+      ],
+      "type": "string",
+      "markdownDescription": "此属性定义表示此版本的触摸捆绑包的描述性名称。可以通过https://learn.microsoft.com/gaming/gdk/_content/gc/reference/system/xgamestreaming/functions/xgamestreaminggettouchbundleversion处描述的 API 查询此属性。"
+    },
+    "assets": {
+      "examples": [
+        {
+          "path": "./assets"
+        }
+      ],
+      "additionalProperties": false,
+      "type": "object",
+      "description": "此属性定义与资产文件相关的捆绑包属性，例如磁盘资产文件所在的位置。",
+      "markdownDescription": "此属性定义与资产文件相关的捆绑包属性，例如磁盘资产文件所在的位置。",
+      "required": [
+        "path"
+      ],
+      "title": "触摸适配捆绑包资产配置",
+      "properties": {
+        "path": {
+          "markdownDescription": "此属性定义此捆绑包的从此文件到包含所有资产的目录的相对路径，如图像文件。",
+          "description": "此属性定义此捆绑包的从此文件到包含所有资产的目录的相对路径，如图像文件。",
+          "title": "触摸适配捆绑包资产路径",
+          "examples": [
+            "./assets"
+          ],
+          "type": "string",
+          "format": "uri-reference"
+        }
+      }
+    },
+    "languages": {
+      "markdownDescription": "此属性定义与捆绑包支持的语言相关的捆绑包属性。如果省略，捆绑包将支持布局和资产文件夹的目录结构中的所有推断语言。无论此属性的值如何，捆绑包中始终包含中性语言。",
+      "items": {
+        "$ref": "#/$defs/LanguageItem"
+      },
+      "description": "此属性定义与捆绑包支持的语言相关的捆绑包属性。如果省略，捆绑包将支持布局和资产文件夹的目录结构中的所有推断语言。无论此属性的值如何，捆绑包中始终包含中性语言。",
+      "title": "触摸适配捆绑包语言配置",
+      "examples": [
+        [],
+        [
+          "en-US"
+        ],
+        [
+          "en",
+          "fr-FR"
+        ]
+      ],
+      "type": "array"
+    },
+    "version": {
+      "markdownDescription": "此属性定义触摸捆绑包的版本号。虽然版本由主要组件、次版本组件、内部版本组件和修订版组件组成，但 Touch 捆绑包运行时不会解释这些特定语义。改为使用运行时能够加载的最高版本的捆绑包。捆绑包的加载能力由捆绑包中使用的最大布局架构版本决定。可以通过https://learn.microsoft.com/gaming/gdk/_content/gc/reference/system/xgamestreaming/functions/xgamestreaminggettouchbundleversion处描述的 API 查询此属性。",
+      "pattern": "^\\d+\\.\\d+\\.\\d+\\.\\d+$",
+      "description": "此属性定义触摸捆绑包的版本号。虽然版本由主要组件、次版本组件、内部版本组件和修订版组件组成，但 Touch 捆绑包运行时不会解释这些特定语义。改为使用运行时能够加载的最高版本的捆绑包。捆绑包的加载能力由捆绑包中使用的最大布局架构版本决定。可以通过https://learn.microsoft.com/gaming/gdk/_content/gc/reference/system/xgamestreaming/functions/xgamestreaminggettouchbundleversion处描述的 API 查询此属性。",
+      "title": "触摸适配捆绑包版本",
+      "examples": [
+        "1.0.0.0"
+      ],
+      "type": "string"
+    },
+    "layouts": {
+      "examples": [
+        {
+          "path": "./layouts"
+        },
+        {
+          "default": "cinematic",
+          "path": "./layouts"
+        }
+      ],
+      "additionalProperties": false,
+      "type": "object",
+      "description": "此属性定义与布局文件相关的捆绑包属性，例如磁盘布局文件的位置以及应用作默认布局的布局文件。",
+      "markdownDescription": "此属性定义与布局文件相关的捆绑包属性，例如磁盘布局文件的位置以及应用作默认布局的布局文件。",
+      "required": [
+        "path"
+      ],
+      "title": "触摸适配捆绑包布局配置",
+      "properties": {
+        "default": {
+          "description": "此属性定义触摸捆绑包的起始活动布局。若要指定默认布局，请使用不带文件扩展名的布局文件的名称。稍后可通过在https://learn.microsoft.com/gaming/gdk/_content/gc/reference/system/xgamestreaming/functions/xgamestreamingshowtouchcontrollayoutonclient中描述的 API 调用更改活动布局。如果省略，将不使用任何起始布局。",
+          "title": "触摸适配捆绑包默认布局",
+          "examples": [
+            "cinematic",
+            "menu",
+            "firstPerson"
+          ],
+          "type": "string",
+          "markdownDescription": "此属性定义触摸捆绑包的起始活动布局。若要指定默认布局，请使用不带文件扩展名的布局文件的名称。稍后可通过在https://learn.microsoft.com/gaming/gdk/_content/gc/reference/system/xgamestreaming/functions/xgamestreamingshowtouchcontrollayoutonclient中描述的 API 调用更改活动布局。如果省略，将不使用任何起始布局。"
+        },
+        "path": {
+          "markdownDescription": "此属性定义从此文件到包含此捆绑包的所有布局的目录的相对路径。",
+          "description": "此属性定义从此文件到包含此捆绑包的所有布局的目录的相对路径。",
+          "title": "触摸适配捆绑包布局路径",
+          "examples": [
+            "./layouts"
+          ],
+          "type": "string",
+          "format": "uri-reference"
+        }
+      }
+    }
+  },
+  "title": "触摸适配捆绑包配置文件架构",
+  "description": "触控适应捆绑包配置文件(，即`takxconfig.json`)是充当捆绑包的项目文件并以可重用、一致的方式定义所有捆绑包元数据和属性的文件。有关版本之间更改的最新信息，请参阅https://github.com/microsoft/xbox-game-streaming-tools/releases。",
+  "markdownDescription": "触控适应捆绑包配置文件(，即`takxconfig.json`)是充当捆绑包的项目文件并以可重用、一致的方式定义所有捆绑包元数据和属性的文件。有关版本之间更改的最新信息，请参阅https://github.com/microsoft/xbox-game-streaming-tools/releases。",
+  "additionalProperties": false,
+  "$id": "https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/main/touch-adaptation-kit/schemas/takxconfig/v4.0/takxconfig.json",
+  "$defs": {
+    "LanguageItem": {
+      "description": "除了捆绑包支持的非特定语言之外，还定义一种语言的单语言标记。",
+      "enum": [
+        "ar",
+        "ar-SA",
+        "cs",
+        "cs-CZ",
+        "da",
+        "da-DK",
+        "de",
+        "de-DE",
+        "el",
+        "el-GR",
+        "en",
+        "en-US",
+        "en-GB",
+        "es",
+        "es-ES",
+        "es-MX",
+        "fi",
+        "fi-FI",
+        "fil",
+        "fil-PH",
+        "fr",
+        "fr-FR",
+        "he",
+        "he-IL",
+        "hu",
+        "hu-HU",
+        "id",
+        "id-ID",
+        "it",
+        "it-IT",
+        "ja",
+        "ja-JP",
+        "ko",
+        "ko-KR",
+        "ms",
+        "ms-MY",
+        "nb",
+        "nb-NO",
+        "nl",
+        "nl-NL",
+        "pl",
+        "pl-PL",
+        "pt",
+        "pt-BR",
+        "pt-PT",
+        "ru",
+        "ru-RU",
+        "sk",
+        "sk-SK",
+        "sv",
+        "sv-SE",
+        "th",
+        "th-TH",
+        "tr",
+        "tr-TR",
+        "vi",
+        "vi-VN",
+        "zh",
+        "zh-CN",
+        "zh-TW"
+      ],
+      "title": "IETF 语言标记",
+      "markdownDescription": "除了捆绑包支持的非特定语言之外，还定义一种语言的单语言标记。"
+    }
+  },
+  "type": "object"
+}
