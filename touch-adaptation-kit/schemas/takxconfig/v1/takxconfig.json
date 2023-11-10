@@ -1,221 +1,221 @@
 {
-  "required": [
-    "layouts",
-    "version"
-  ],
-  "$schema": "https://json-schema.org/draft/2019-09/schema",
-  "properties": {
-    "$schema": {
-      "type": "string"
-    },
-    "context": {
-      "examples": [
-        {
-          "path": "./context.json"
+    "$id": "https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/main/touch-adaptation-kit/schemas/takxconfig/v1/takxconfig.json",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "title": "Touch Adaptation Bundle Configuration File Schema",
+    "description": "A touch adaptation bundle configuration file (i.e. `takxconfig.json`) is the file that acts as the project file for the bundle and defines all of the bundle metadata and properties in a reusable, consistent manner. For the latest information on the changes between versions, see https://github.com/microsoft/xbox-game-streaming-tools/releases.",
+    "markdownDescription": "A touch adaptation bundle configuration file (i.e. `takxconfig.json`) is the file that acts as the project file for the bundle and defines all of the bundle metadata and properties in a reusable, consistent manner. For the latest information on the changes between versions, see https://github.com/microsoft/xbox-game-streaming-tools/releases.",
+    "$defs": {
+        "LanguageItem": {
+            "title": "IETF Language Tag",
+            "description": "A single language tag that defines a language, in addition to the neutral language, that the bundle supports.",
+            "markdownDescription": "A single language tag that defines a language, in addition to the neutral language, that the bundle supports.",
+            "enum": [
+                "ar",
+                "ar-SA",
+                "cs",
+                "cs-CZ",
+                "da",
+                "da-DK",
+                "de",
+                "de-DE",
+                "el",
+                "el-GR",
+                "en",
+                "en-US",
+                "en-GB",
+                "es",
+                "es-ES",
+                "es-MX",
+                "fi",
+                "fi-FI",
+                "fil",
+                "fil-PH",
+                "fr",
+                "fr-FR",
+                "he",
+                "he-IL",
+                "hu",
+                "hu-HU",
+                "id",
+                "id-ID",
+                "it",
+                "it-IT",
+                "ja",
+                "ja-JP",
+                "ko",
+                "ko-KR",
+                "ms",
+                "ms-MY",
+                "nb",
+                "nb-NO",
+                "nl",
+                "nl-NL",
+                "pl",
+                "pl-PL",
+                "pt",
+                "pt-BR",
+                "pt-PT",
+                "ru",
+                "ru-RU",
+                "sk",
+                "sk-SK",
+                "sv",
+                "sv-SE",
+                "th",
+                "th-TH",
+                "tr",
+                "tr-TR",
+                "vi",
+                "vi-VN",
+                "zh",
+                "zh-CN",
+                "zh-TW"
+            ]
         }
-      ],
-      "additionalProperties": false,
-      "type": "object",
-      "description": "This property defines bundle properties related to the context file, like where on disk the file is located. If omitted, the bundle will not contain a context file.",
-      "markdownDescription": "This property defines bundle properties related to the context file, like where on disk the file is located. If omitted, the bundle will not contain a context file.",
-      "required": [
-        "path"
-      ],
-      "title": "Touch Adaptation Bundle Context File Configuration",
-      "properties": {
-        "path": {
-          "markdownDescription": "This property defines the relative path from this file to the context file.",
-          "description": "This property defines the relative path from this file to the context file.",
-          "title": "Touch Adaptation Bundle Context File Path",
-          "examples": [
-            "./context.json"
-          ],
-          "type": "string",
-          "format": "uri-reference"
-        }
-      }
     },
-    "versionName": {
-      "description": "This property defines a descriptive name that represents this version of the touch bundle. This property can be queried via the apis described at https://learn.microsoft.com/gaming/gdk/_content/gc/reference/system/xgamestreaming/functions/xgamestreaminggettouchbundleversion.",
-      "title": "Touch Adaptation Bundle Version Name",
-      "examples": [
-        "DLC 2"
-      ],
-      "type": "string",
-      "markdownDescription": "This property defines a descriptive name that represents this version of the touch bundle. This property can be queried via the apis described at https://learn.microsoft.com/gaming/gdk/_content/gc/reference/system/xgamestreaming/functions/xgamestreaminggettouchbundleversion."
-    },
-    "assets": {
-      "examples": [
-        {
-          "path": "./assets"
-        }
-      ],
-      "additionalProperties": false,
-      "type": "object",
-      "description": "This property defines bundle properties related to asset files, like where on disk asset files are located.",
-      "markdownDescription": "This property defines bundle properties related to asset files, like where on disk asset files are located.",
-      "required": [
-        "path"
-      ],
-      "title": "Touch Adaptation Bundle Assets Configuration",
-      "properties": {
-        "path": {
-          "markdownDescription": "This property defines the relative path from this file to the directory containing all the assets, like image files, for this bundle.",
-          "description": "This property defines the relative path from this file to the directory containing all the assets, like image files, for this bundle.",
-          "title": "Touch Adaptation Bundle Assets Path",
-          "examples": [
-            "./assets"
-          ],
-          "type": "string",
-          "format": "uri-reference"
-        }
-      }
-    },
-    "languages": {
-      "markdownDescription": "This property defines bundle properties related to the supported languages for the bundle. If omitted, the bundle will support all inferred languages from the directory structure of the layouts and assets folders. A neutral language is always included in the bundle regardless of this property's value.",
-      "items": {
-        "$ref": "#/$defs/LanguageItem"
-      },
-      "description": "This property defines bundle properties related to the supported languages for the bundle. If omitted, the bundle will support all inferred languages from the directory structure of the layouts and assets folders. A neutral language is always included in the bundle regardless of this property's value.",
-      "title": "Touch Adaptation Bundle Languages Configuration",
-      "examples": [
-        [],
-        [
-          "en-US"
-        ],
-        [
-          "en",
-          "fr-FR"
-        ]
-      ],
-      "type": "array"
-    },
-    "version": {
-      "markdownDescription": "This property defines the version number of the touch bundle. While the version is composed of major, minor, build, and revision components, these particular semantics are not interpreted by the touch bundle runtime. Instead, the highest versioned bundle that the runtime is capable of loading will be used. A bundle's ability to be loaded is determined by the max layout schema version used within the bundle. This property can be queried via the apis described at https://learn.microsoft.com/gaming/gdk/_content/gc/reference/system/xgamestreaming/functions/xgamestreaminggettouchbundleversion.",
-      "pattern": "^\\d+\\.\\d+\\.\\d+\\.\\d+$",
-      "description": "This property defines the version number of the touch bundle. While the version is composed of major, minor, build, and revision components, these particular semantics are not interpreted by the touch bundle runtime. Instead, the highest versioned bundle that the runtime is capable of loading will be used. A bundle's ability to be loaded is determined by the max layout schema version used within the bundle. This property can be queried via the apis described at https://learn.microsoft.com/gaming/gdk/_content/gc/reference/system/xgamestreaming/functions/xgamestreaminggettouchbundleversion.",
-      "title": "Touch Adaptation Bundle Version",
-      "examples": [
-        "1.0.0.0"
-      ],
-      "type": "string"
-    },
-    "layouts": {
-      "examples": [
-        {
-          "path": "./layouts"
+    "type": "object",
+    "properties": {
+        "$schema": {
+            "type": "string"
         },
-        {
-          "default": "cinematic",
-          "path": "./layouts"
-        }
-      ],
-      "additionalProperties": false,
-      "type": "object",
-      "description": "This property defines bundle properties related to layout files, like where on disk layout files are located and which layout file should be used as the default layout.",
-      "markdownDescription": "This property defines bundle properties related to layout files, like where on disk layout files are located and which layout file should be used as the default layout.",
-      "required": [
-        "path"
-      ],
-      "title": "Touch Adaptation Bundle Layouts Configuration",
-      "properties": {
-        "default": {
-          "description": "This property defines the starting active layout of the touch bundle. To specify the default layout, use the name of the layout file without the file extension. The active layout may be later changed via the api calls described at https://learn.microsoft.com/gaming/gdk/_content/gc/reference/system/xgamestreaming/functions/xgamestreamingshowtouchcontrollayoutonclient. If omitted, no starting layout will be used.",
-          "title": "Touch Adaptation Bundle Default Layout",
-          "examples": [
-            "cinematic",
-            "menu",
-            "firstPerson"
-          ],
-          "type": "string",
-          "markdownDescription": "This property defines the starting active layout of the touch bundle. To specify the default layout, use the name of the layout file without the file extension. The active layout may be later changed via the api calls described at https://learn.microsoft.com/gaming/gdk/_content/gc/reference/system/xgamestreaming/functions/xgamestreamingshowtouchcontrollayoutonclient. If omitted, no starting layout will be used."
+        "layouts": {
+            "title": "Touch Adaptation Bundle Layouts Configuration",
+            "description": "This property defines bundle properties related to layout files, like where on disk layout files are located and which layout file should be used as the default layout.",
+            "markdownDescription": "This property defines bundle properties related to layout files, like where on disk layout files are located and which layout file should be used as the default layout.",
+            "examples": [
+                {
+                    "path": "./layouts"
+                },
+                {
+                    "path": "./layouts",
+                    "default": "cinematic"
+                }
+            ],
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "path": {
+                    "title": "Touch Adaptation Bundle Layouts Path",
+                    "description": "This property defines the relative path from this file to the directory containing all the layouts for this bundle.",
+                    "markdownDescription": "This property defines the relative path from this file to the directory containing all the layouts for this bundle.",
+                    "examples": [
+                        "./layouts"
+                    ],
+                    "type": "string",
+                    "format": "uri-reference"
+                },
+                "default": {
+                    "title": "Touch Adaptation Bundle Default Layout",
+                    "description": "This property defines the starting active layout of the touch bundle. To specify the default layout, use the name of the layout file without the file extension. The active layout may be later changed via the api calls described at https://learn.microsoft.com/gaming/gdk/_content/gc/reference/system/xgamestreaming/functions/xgamestreamingshowtouchcontrollayoutonclient. If omitted, no starting layout will be used.",
+                    "markdownDescription": "This property defines the starting active layout of the touch bundle. To specify the default layout, use the name of the layout file without the file extension. The active layout may be later changed via the api calls described at https://learn.microsoft.com/gaming/gdk/_content/gc/reference/system/xgamestreaming/functions/xgamestreamingshowtouchcontrollayoutonclient. If omitted, no starting layout will be used.",
+                    "examples": [
+                        "cinematic",
+                        "menu",
+                        "firstPerson"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "path"
+            ]
         },
-        "path": {
-          "markdownDescription": "This property defines the relative path from this file to the directory containing all the layouts for this bundle.",
-          "description": "This property defines the relative path from this file to the directory containing all the layouts for this bundle.",
-          "title": "Touch Adaptation Bundle Layouts Path",
-          "examples": [
-            "./layouts"
-          ],
-          "type": "string",
-          "format": "uri-reference"
+        "assets": {
+            "title": "Touch Adaptation Bundle Assets Configuration",
+            "description": "This property defines bundle properties related to asset files, like where on disk asset files are located.",
+            "markdownDescription": "This property defines bundle properties related to asset files, like where on disk asset files are located.",
+            "examples": [
+                {
+                    "path": "./assets"
+                }
+            ],
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "path": {
+                    "title": "Touch Adaptation Bundle Assets Path",
+                    "description": "This property defines the relative path from this file to the directory containing all the assets, like image files, for this bundle.",
+                    "markdownDescription": "This property defines the relative path from this file to the directory containing all the assets, like image files, for this bundle.",
+                    "examples": [
+                        "./assets"
+                    ],
+                    "type": "string",
+                    "format": "uri-reference"
+                }
+            },
+            "required": [
+                "path"
+            ]
+        },
+        "context": {
+            "title": "Touch Adaptation Bundle Context File Configuration",
+            "description": "This property defines bundle properties related to the context file, like where on disk the file is located. If omitted, the bundle will not contain a context file.",
+            "markdownDescription": "This property defines bundle properties related to the context file, like where on disk the file is located. If omitted, the bundle will not contain a context file.",
+            "examples": [
+                {
+                    "path": "./context.json"
+                }
+            ],
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "path": {
+                    "title": "Touch Adaptation Bundle Context File Path",
+                    "description": "This property defines the relative path from this file to the context file.",
+                    "markdownDescription": "This property defines the relative path from this file to the context file.",
+                    "examples": [
+                        "./context.json"
+                    ],
+                    "type": "string",
+                    "format": "uri-reference"
+                }
+            },
+            "required": [
+                "path"
+            ]
+        },
+        "languages": {
+            "title": "Touch Adaptation Bundle Languages Configuration",
+            "description": "This property defines bundle properties related to the supported languages for the bundle. If omitted, the bundle will support all inferred languages from the directory structure of the layouts and assets folders. A neutral language is always included in the bundle regardless of this property's value.",
+            "markdownDescription": "This property defines bundle properties related to the supported languages for the bundle. If omitted, the bundle will support all inferred languages from the directory structure of the layouts and assets folders. A neutral language is always included in the bundle regardless of this property's value.",
+            "examples": [
+                [],
+                [
+                    "en-US"
+                ],
+                [
+                    "en",
+                    "fr-FR"
+                ]
+            ],
+            "items": {
+                "$ref": "#/$defs/LanguageItem"
+            },
+            "type": "array"
+        },
+        "version": {
+            "title": "Touch Adaptation Bundle Version",
+            "description": "This property defines the version number of the touch bundle. While the version is composed of major, minor, build, and revision components, these particular semantics are not interpreted by the touch bundle runtime. Instead, the highest versioned bundle that the runtime is capable of loading will be used. A bundle's ability to be loaded is determined by the max layout schema version used within the bundle. This property can be queried via the apis described at https://learn.microsoft.com/gaming/gdk/_content/gc/reference/system/xgamestreaming/functions/xgamestreaminggettouchbundleversion.",
+            "markdownDescription": "This property defines the version number of the touch bundle. While the version is composed of major, minor, build, and revision components, these particular semantics are not interpreted by the touch bundle runtime. Instead, the highest versioned bundle that the runtime is capable of loading will be used. A bundle's ability to be loaded is determined by the max layout schema version used within the bundle. This property can be queried via the apis described at https://learn.microsoft.com/gaming/gdk/_content/gc/reference/system/xgamestreaming/functions/xgamestreaminggettouchbundleversion.",
+            "examples": [
+                "1.0.0.0"
+            ],
+            "type": "string",
+            "pattern": "^\\d+\\.\\d+\\.\\d+\\.\\d+$"
+        },
+        "versionName": {
+            "title": "Touch Adaptation Bundle Version Name",
+            "description": "This property defines a descriptive name that represents this version of the touch bundle. This property can be queried via the apis described at https://learn.microsoft.com/gaming/gdk/_content/gc/reference/system/xgamestreaming/functions/xgamestreaminggettouchbundleversion.",
+            "markdownDescription": "This property defines a descriptive name that represents this version of the touch bundle. This property can be queried via the apis described at https://learn.microsoft.com/gaming/gdk/_content/gc/reference/system/xgamestreaming/functions/xgamestreaminggettouchbundleversion.",
+            "examples": [
+                "DLC 2"
+            ],
+            "type": "string"
         }
-      }
-    }
-  },
-  "title": "Touch Adaptation Bundle Configuration File Schema",
-  "description": "A touch adaptation bundle configuration file (i.e. `takxconfig.json`) is the file that acts as the project file for the bundle and defines all of the bundle metadata and properties in a reusable, consistent manner. For the latest information on the changes between versions, see https://github.com/microsoft/xbox-game-streaming-tools/releases.",
-  "markdownDescription": "A touch adaptation bundle configuration file (i.e. `takxconfig.json`) is the file that acts as the project file for the bundle and defines all of the bundle metadata and properties in a reusable, consistent manner. For the latest information on the changes between versions, see https://github.com/microsoft/xbox-game-streaming-tools/releases.",
-  "additionalProperties": false,
-  "$id": "https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/main/touch-adaptation-kit/schemas/takxconfig/v4.0/takxconfig.json",
-  "$defs": {
-    "LanguageItem": {
-      "description": "A single language tag that defines a language, in addition to the neutral language, that the bundle supports.",
-      "enum": [
-        "ar",
-        "ar-SA",
-        "cs",
-        "cs-CZ",
-        "da",
-        "da-DK",
-        "de",
-        "de-DE",
-        "el",
-        "el-GR",
-        "en",
-        "en-US",
-        "en-GB",
-        "es",
-        "es-ES",
-        "es-MX",
-        "fi",
-        "fi-FI",
-        "fil",
-        "fil-PH",
-        "fr",
-        "fr-FR",
-        "he",
-        "he-IL",
-        "hu",
-        "hu-HU",
-        "id",
-        "id-ID",
-        "it",
-        "it-IT",
-        "ja",
-        "ja-JP",
-        "ko",
-        "ko-KR",
-        "ms",
-        "ms-MY",
-        "nb",
-        "nb-NO",
-        "nl",
-        "nl-NL",
-        "pl",
-        "pl-PL",
-        "pt",
-        "pt-BR",
-        "pt-PT",
-        "ru",
-        "ru-RU",
-        "sk",
-        "sk-SK",
-        "sv",
-        "sv-SE",
-        "th",
-        "th-TH",
-        "tr",
-        "tr-TR",
-        "vi",
-        "vi-VN",
-        "zh",
-        "zh-CN",
-        "zh-TW"
-      ],
-      "title": "IETF Language Tag",
-      "markdownDescription": "A single language tag that defines a language, in addition to the neutral language, that the bundle supports."
-    }
-  },
-  "type": "object"
+    },
+    "additionalProperties": false,
+    "required": [
+      "layouts",
+      "version"
+    ]
 }

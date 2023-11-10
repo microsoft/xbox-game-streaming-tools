@@ -1,163 +1,163 @@
 {
-  "$schema": "https://json-schema.org/draft/2019-09/schema",
-  "properties": {
-    "allowedStateValues": {
-      "$ref": "#/$defs/AllowedStateValues"
-    },
-    "state": {
-      "$ref": "#/$defs/State"
-    },
-    "$schema": {
-      "type": "string"
-    },
-    "definitions": {
-      "$ref": "#/$defs/Definitions"
-    },
-    "styles": {
-      "$ref": "#/$defs/ContextStyles"
-    }
-  },
-  "title": "タッチ適応バンドルのコンテキスト スキーマ",
-  "description": "タッチ適用バンドル コンテキストは、グローバルで再利用可能な状態と、他のレイアウトで参照できる定義を含むファイルです。これにより、一般的なスキーマ スニペットを再利用し、タッチ コントロールがゲームの状態に動的に応答できるようになります。バージョン間の変更に関する最新情報については、https://github.com/microsoft/xbox-game-streaming-tools/releases を参照してください。",
-  "markdownDescription": "タッチ適用バンドル コンテキストは、グローバルで再利用可能な状態と、他のレイアウトで参照できる定義を含むファイルです。これにより、一般的なスキーマ スニペットを再利用し、タッチ コントロールがゲームの状態に動的に応答できるようになります。バージョン間の変更に関する最新情報については、https://github.com/microsoft/xbox-game-streaming-tools/releases を参照してください。",
-  "additionalProperties": false,
-  "$id": "https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/main/touch-adaptation-kit/schemas/context/v4.0/context.json",
-  "$defs": {
-    "State": {
-      "markdownDescription": "このプロパティは、プリミティブ値でカスタムの名前付きプロパティを指定することで、タッチ バンドルのすべての動的な状態を格納するために使用されます。`XGameStreamingUpdateTouchControlsState` API を使用して、実行時にセクションの値を更新できます。これは、プレイヤーが新しいスキルを取得したり、コントロールの設定をカスタマイズしたりした場合など、プレイヤーのゲームの正確な状態を表示されるコントロールと一致させるために役立ちます。プリミティブ文字列、数値、またはブール型を使用するタッチ レイアウトのほとんどの場所では、値をこの状態ブロックに戻す `$ref` として定義することで、動的置換が可能になります。",
-      "additionalProperties": false,
-      "description": "このプロパティは、プリミティブ値でカスタムの名前付きプロパティを指定することで、タッチ バンドルのすべての動的な状態を格納するために使用されます。`XGameStreamingUpdateTouchControlsState` API を使用して、実行時にセクションの値を更新できます。これは、プレイヤーが新しいスキルを取得したり、コントロールの設定をカスタマイズしたりした場合など、プレイヤーのゲームの正確な状態を表示されるコントロールと一致させるために役立ちます。プリミティブ文字列、数値、またはブール型を使用するタッチ レイアウトのほとんどの場所では、値をこの状態ブロックに戻す `$ref` として定義することで、動的置換が可能になります。",
-      "title": "タッチ バンドルの状態",
-      "examples": [
-        {},
-        {
-          "inventorySlotEnabled": true,
-          "inventorySlotForegroundImage": "InventoryForeground",
-          "inventorySlotBackgroundImage": "InventoryBackground"
-        }
-      ],
-      "patternProperties": {
-        "^(?!__proto__)[a-zA-Z0-9\\.\\-_]+$": {
-          "$ref": "#/$defs/StateType"
-        }
-      },
-      "type": "object"
-    },
-    "StateType": {
-      "description": "このプロパティは、`state`構成に表示される個々の項目です。値はプリミティブ文字列、数値、またはブール値である必要があります。`XGameStreamingUpdateTouchControlsState`を呼び出して状態を動的に更新するときに、項目の名前と一致する型の値を使用します。",
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "boolean"
-        },
-        {
-          "type": "integer"
-        },
-        {
-          "type": "number"
-        }
-      ],
-      "title": "タッチ バンドルの状態アイテム",
-      "examples": [
-        "customAssetName",
-        false,
-        true,
-        1,
-        0
-      ],
-      "markdownDescription": "このプロパティは、`state`構成に表示される個々の項目です。値はプリミティブ文字列、数値、またはブール値である必要があります。`XGameStreamingUpdateTouchControlsState`を呼び出して状態を動的に更新するときに、項目の名前と一致する型の値を使用します。"
-    },
-    "ContextStyles": {
-      "description": "このプロパティは、スタイル設定を目的として、このタッチ適応バンドルのレイアウト内で参照できる再利用可能なスタイルを定義します。同等の `styles` プロパティが指定されたレイアウト ファイルで定義されている場合、それぞれの内容がマージされます。重複する定義が見つかった場合は、レイアウト内の定義が優先され、コンテキスト ファイル内の定義が上書きされます。",
-      "title": "スタイル",
-      "$ref": "../../layout/v4.0/layout.json#/$defs/_LayoutStyles",
-      "markdownDescription": "このプロパティは、スタイル設定を目的として、このタッチ適応バンドルのレイアウト内で参照できる再利用可能なスタイルを定義します。同等の `styles` プロパティが指定されたレイアウト ファイルで定義されている場合、それぞれの内容がマージされます。重複する定義が見つかった場合は、レイアウト内の定義が優先され、コンテキスト ファイル内の定義が上書きされます。"
-    },
-    "ContextDefinableType": {
-      "description": "このファイルの `definitions` セクションで使用できるすべての型を含む共用体型です。詳細については、`definitions` セクションを参照してください",
-      "anyOf": [
-        {
-          "$ref": "../../layout/v4.0/layout.json#/$defs/LayoutDefinableType"
-        },
-        {
-          "$ref": "#/$defs/StateType"
-        },
-        {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/StateType"
-          }
-        }
-      ],
-      "title": "定義可能な型",
-      "markdownDescription": "このファイルの `definitions` セクションで使用できるすべての型を含む共用体型です。詳細については、`definitions` セクションを参照してください"
-    },
-    "AllowedStateValues": {
-      "markdownDescription": "このプロパティは、動的状態を使用する場合に、さまざまな資産ファイル名など、使用可能な値のセットに関する追加のメタデータを提供するために使用されます。これは検証の目的で使用され、すべての値が有効なタッチ レイアウトになり、資産などの追加のバンドル ファイルが欠落したり使用されたりしないようにするのに役立ちます。このプロパティは実行時には使用されず、無効なレイアウトになる状態変更操作は無視されることに注意してください。そのため、すべてのケースで適切な動作を確保するために、幅広い値を使用してテストすることが重要です。",
-      "additionalProperties": false,
-      "description": "このプロパティは、動的状態を使用する場合に、さまざまな資産ファイル名など、使用可能な値のセットに関する追加のメタデータを提供するために使用されます。これは検証の目的で使用され、すべての値が有効なタッチ レイアウトになり、資産などの追加のバンドル ファイルが欠落したり使用されたりしないようにするのに役立ちます。このプロパティは実行時には使用されず、無効なレイアウトになる状態変更操作は無視されることに注意してください。そのため、すべてのケースで適切な動作を確保するために、幅広い値を使用してテストすることが重要です。",
-      "title": "タッチ バンドルの許可状態値",
-      "examples": [
-        {},
-        {
-          "inventorySlotBackgroundImage": {
-            "$ref": "#/definitions/AllowedBackgroundImages"
-          },
-          "inventorySlotForegroundImage": [
-            "InventoryForegroundFireballSpell",
-            "InventoryForegroundLightningBoltSpell"
-          ]
-        }
-      ],
-      "patternProperties": {
-        "^(?!__proto__)[a-zA-Z0-9\\.\\-_]+$": {
-          "anyOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/$defs/StateType"
-              }
-            },
-            {
-              "$ref": "../../layout/v4.0/layout.json#/$defs/Reference"
-            }
-          ]
-        }
-      },
-      "type": "object"
-    },
-    "Definitions": {
-      "markdownDescription": "タッチ レイアウトの再利用可能なコンポーネントと値を格納するために使用できるセクションです。これらの定義は、後で '{ \"$ref\": \"#/definitions/joystickKnobStyle\" }' のような JSON 参照で参照できます。JSON 参照は、レイアウト スキーマのほぼすべての部分でサポートされており、複数のコントロールで使用される共通のボタンの背景など、共通の要素を分解して再利用できます。コンテキスト ファイルでは、レイアウト間でコンポーネントを再利用するために、`definitions` プロパティと `state` もサポートされることに注意してください。",
-      "additionalProperties": false,
-      "description": "タッチ レイアウトの再利用可能なコンポーネントと値を格納するために使用できるセクションです。これらの定義は、後で '{ \"$ref\": \"#/definitions/joystickKnobStyle\" }' のような JSON 参照で参照できます。JSON 参照は、レイアウト スキーマのほぼすべての部分でサポートされており、複数のコントロールで使用される共通のボタンの背景など、共通の要素を分解して再利用できます。コンテキスト ファイルでは、レイアウト間でコンポーネントを再利用するために、`definitions` プロパティと `state` もサポートされることに注意してください。",
-      "title": "定義",
-      "examples": [
-        {},
-        {
-          "joystickKnob": {
-            "default": {
-              "knob": {
-                "faceImage": {
-                  "type": "asset",
-                  "value": {
-                    "$ref": "#/$defs/joystickAssetName"
-                  }
+    "$id": "https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/main/touch-adaptation-kit/schemas/context/v4.0/context.json",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "title": "タッチ適応バンドルのコンテキスト スキーマ",
+    "description": "タッチ適応バンドル コンテキストは、グローバルで再利用可能な状態と、他のレイアウトで参照できる定義を含むファイルです。これにより、一般的なスキーマ スニペットを再利用し、タッチ コントロールがゲームの状態に動的に応答できるようになります。バージョン間の変更に関する最新情報については、https://github.com/microsoft/xbox-game-streaming-tools/releases を参照してください。",
+    "markdownDescription": "タッチ適応バンドル コンテキストは、グローバルで再利用可能な状態と、他のレイアウトで参照できる定義を含むファイルです。これにより、一般的なスキーマ スニペットを再利用し、タッチ コントロールがゲームの状態に動的に応答できるようになります。バージョン間の変更に関する最新情報については、https://github.com/microsoft/xbox-game-streaming-tools/releases を参照してください。",
+    "$defs": {
+        "AllowedStateValues": {
+            "title": "タッチ バンドルの許可状態値",
+            "description": "このプロパティは、動的状態を使用する場合に、さまざまな資産ファイル名など、使用可能な値のセットに関する追加のメタデータを提供するために使用されます。これは検証の目的で使用され、すべての値が有効なタッチ レイアウトになり、資産などの追加のバンドル ファイルが欠落したり使用されたりしないようにするのに役立ちます。このプロパティは実行時には使用されず、無効なレイアウトになる状態変更操作は無視されることに注意してください。そのため、すべてのケースで適切な動作を確保するために、幅広い値を使用してテストすることが重要です。",
+            "markdownDescription": "このプロパティは、動的状態を使用する場合に、さまざまな資産ファイル名など、使用可能な値のセットに関する追加のメタデータを提供するために使用されます。これは検証の目的で使用され、すべての値が有効なタッチ レイアウトになり、資産などの追加のバンドル ファイルが欠落したり使用されたりしないようにするのに役立ちます。このプロパティは実行時には使用されず、無効なレイアウトになる状態変更操作は無視されることに注意してください。そのため、すべてのケースで適切な動作を確保するために、幅広い値を使用してテストすることが重要です。",
+            "examples": [
+                {},
+                {
+                    "inventorySlotForegroundImage": [
+                        "InventoryForegroundFireballSpell",
+                        "InventoryForegroundLightningBoltSpell"
+                    ],
+                    "inventorySlotBackgroundImage": {
+                        "$ref": "#/definitions/AllowedBackgroundImages"
+                    }
                 }
-              }
-            }
-          },
-          "joystickAssetName": "exampleAssetName"
+            ],
+            "additionalProperties": false,
+            "patternProperties": {
+                "^(?!__proto__)[a-zA-Z0-9\\.\\-_]+$": {
+                    "anyOf": [
+                        {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/$defs/StateType"
+                            }
+                        },
+                        {
+                            "$ref": "../../layout/v4.0/layout.json#/$defs/Reference"
+                        }
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "ContextDefinableType": {
+            "title": "定義可能な型",
+            "description": "このファイルの `definitions` セクションで使用できるすべての型を含む共用体型です。詳細については、`definitions` セクションを参照してください",
+            "markdownDescription": "このファイルの `definitions` セクションで使用できるすべての型を含む共用体型です。詳細については、`definitions` セクションを参照してください",
+            "anyOf": [
+                {
+                    "$ref": "../../layout/v4.0/layout.json#/$defs/LayoutDefinableType"
+                },
+                {
+                    "$ref": "#/$defs/StateType"
+                },
+                {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/StateType"
+                    }
+                }
+            ]
+        },
+        "Definitions": {
+            "title": "定義",
+            "description": "タッチ レイアウトの再利用可能なコンポーネントと値を格納するために使用できるセクションです。これらの定義は、後で '{ \"$ref\": \"#/definitions/joystickKnobStyle\" }' のような JSON 参照で参照できます。JSON 参照は、レイアウト スキーマのほぼすべての部分でサポートされており、複数のコントロールで使用される共通のボタンの背景など、共通の要素を分解して再利用できます。コンテキスト ファイルでは、レイアウト間でコンポーネントを再利用するために、`definitions` プロパティと `state` もサポートされることに注意してください。",
+            "markdownDescription": "タッチ レイアウトの再利用可能なコンポーネントと値を格納するために使用できるセクションです。これらの定義は、後で '{ \"$ref\": \"#/definitions/joystickKnobStyle\" }' のような JSON 参照で参照できます。JSON 参照は、レイアウト スキーマのほぼすべての部分でサポートされており、複数のコントロールで使用される共通のボタンの背景など、共通の要素を分解して再利用できます。コンテキスト ファイルでは、レイアウト間でコンポーネントを再利用するために、`definitions` プロパティと `state` もサポートされることに注意してください。",
+            "examples": [
+                {},
+                {
+                    "joystickAssetName": "exampleAssetName",
+                    "joystickKnob": {
+                        "default": {
+                            "knob": {
+                                "faceImage": {
+                                    "type": "asset",
+                                    "value": {
+                                        "$ref": "#/$defs/joystickAssetName"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            ],
+            "additionalProperties": false,
+            "patternProperties": {
+                "^(?!__proto__)[a-zA-Z0-9\\.\\-_]+$": {
+                    "$ref": "#/$defs/ContextDefinableType"
+                }
+            },
+            "type": "object"
+        },
+        "State": {
+            "title": "タッチ バンドルの状態",
+            "description": "このプロパティは、プリミティブ値でカスタムの名前付きプロパティを指定することで、タッチ バンドルのすべての動的な状態を格納するために使用されます。`XGameStreamingUpdateTouchControlsState` API を使用して、実行時にセクションの値を更新できます。これは、プレイヤーが新しいスキルを取得したり、コントロールの設定をカスタマイズしたりした場合など、プレイヤーのゲームの正確な状態を表示されるコントロールと一致させるために役立ちます。プリミティブ文字列、数値、またはブール型を使用するタッチ レイアウトのほとんどの場所では、値をこの状態ブロックに戻す `$ref` として定義することで、動的置換が可能になります。",
+            "markdownDescription": "このプロパティは、プリミティブ値でカスタムの名前付きプロパティを指定することで、タッチ バンドルのすべての動的な状態を格納するために使用されます。`XGameStreamingUpdateTouchControlsState` API を使用して、実行時にセクションの値を更新できます。これは、プレイヤーが新しいスキルを取得したり、コントロールの設定をカスタマイズしたりした場合など、プレイヤーのゲームの正確な状態を表示されるコントロールと一致させるために役立ちます。プリミティブ文字列、数値、またはブール型を使用するタッチ レイアウトのほとんどの場所では、値をこの状態ブロックに戻す `$ref` として定義することで、動的置換が可能になります。",
+            "examples": [
+                {},
+                {
+                    "inventorySlotEnabled": true,
+                    "inventorySlotForegroundImage": "InventoryForeground",
+                    "inventorySlotBackgroundImage": "InventoryBackground"
+                }
+            ],
+            "additionalProperties": false,
+            "patternProperties": {
+                "^(?!__proto__)[a-zA-Z0-9\\.\\-_]+$": {
+                    "$ref": "#/$defs/StateType"
+                }
+            },
+            "type": "object"
+        },
+        "StateType": {
+            "title": "タッチ バンドルの状態アイテム",
+            "description": "このプロパティは、`state`構成に表示される個々の項目です。値はプリミティブ文字列、数値、またはブール値である必要があります。`XGameStreamingUpdateTouchControlsState`を呼び出して状態を動的に更新するときに、項目の名前と一致する型の値を使用します。",
+            "markdownDescription": "このプロパティは、`state`構成に表示される個々の項目です。値はプリミティブ文字列、数値、またはブール値である必要があります。`XGameStreamingUpdateTouchControlsState`を呼び出して状態を動的に更新するときに、項目の名前と一致する型の値を使用します。",
+            "examples": [
+                "customAssetName",
+                false,
+                true,
+                1,
+                0
+            ],
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "boolean"
+                },
+                {
+                    "type": "integer"
+                },
+                {
+                    "type": "number"
+                }
+            ]
+        },
+        "ContextStyles": {
+            "title": "スタイル",
+            "description": "このプロパティは、スタイル設定を目的として、このタッチ適応バンドルのレイアウト内で参照できる再利用可能なスタイルを定義します。同等の `styles` プロパティが指定されたレイアウト ファイルで定義されている場合、それぞれの内容がマージされます。重複する定義が見つかった場合は、レイアウト内の定義が優先され、コンテキスト ファイル内の定義が上書きされます。",
+            "markdownDescription": "このプロパティは、スタイル設定を目的として、このタッチ適応バンドルのレイアウト内で参照できる再利用可能なスタイルを定義します。同等の `styles` プロパティが指定されたレイアウト ファイルで定義されている場合、それぞれの内容がマージされます。重複する定義が見つかった場合は、レイアウト内の定義が優先され、コンテキスト ファイル内の定義が上書きされます。",
+            "$ref": "../../layout/v4.0/layout.json#/$defs/_LayoutStyles"
         }
-      ],
-      "patternProperties": {
-        "^(?!__proto__)[a-zA-Z0-9\\.\\-_]+$": {
-          "$ref": "#/$defs/ContextDefinableType"
+    },
+    "type": "object",
+    "properties": {
+        "$schema": {
+            "type": "string"
+        },
+        "definitions": {
+            "$ref": "#/$defs/Definitions"
+        },
+        "state": {
+            "$ref": "#/$defs/State"
+        },
+        "styles": {
+            "$ref": "#/$defs/ContextStyles"
+        },
+        "allowedStateValues": {
+            "$ref": "#/$defs/AllowedStateValues"
         }
-      },
-      "type": "object"
-    }
-  },
-  "type": "object"
+    },
+    "additionalProperties": false
 }
