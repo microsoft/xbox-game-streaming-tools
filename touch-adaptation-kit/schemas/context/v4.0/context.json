@@ -1,163 +1,163 @@
 {
-  "additionalProperties": false,
-  "type": "object",
-  "$defs": {
-    "AllowedStateValues": {
-      "examples": [
-        {},
-        {
-          "inventorySlotForegroundImage": [
-            "InventoryForegroundFireballSpell",
-            "InventoryForegroundLightningBoltSpell"
-          ],
-          "inventorySlotBackgroundImage": {
-            "$ref": "#/definitions/AllowedBackgroundImages"
-          }
-        }
-      ],
-      "title": "Touch Bundle Allowed State Values",
-      "patternProperties": {
-        "^(?!__proto__)[a-zA-Z0-9\\.\\-_]+$": {
-          "anyOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/$defs/StateType"
-              }
-            },
-            {
-              "$ref": "../../layout/v4.0/layout.json#/$defs/Reference"
-            }
-          ]
-        }
-      },
-      "description": "This property is used to provide additional metadata on the set of possible values, like different asset file names, when using dynamic state. This is used for validation purposes to help ensure that all values will result in a valid touch layout and that no additional bundle files, like assets, are missing or unused. Note that this property is not used at runtime and any state change operations that result in an invalid layout will be ignored. It is therefore critical to test with a wide range of values to ensure proper operation in all cases.",
-      "type": "object",
-      "markdownDescription": "This property is used to provide additional metadata on the set of possible values, like different asset file names, when using dynamic state. This is used for validation purposes to help ensure that all values will result in a valid touch layout and that no additional bundle files, like assets, are missing or unused. Note that this property is not used at runtime and any state change operations that result in an invalid layout will be ignored. It is therefore critical to test with a wide range of values to ensure proper operation in all cases.",
-      "additionalProperties": false
-    },
-    "State": {
-      "examples": [
-        {},
-        {
-          "inventorySlotBackgroundImage": "InventoryBackground",
-          "inventorySlotEnabled": true,
-          "inventorySlotForegroundImage": "InventoryForeground"
-        }
-      ],
-      "title": "Touch Bundle State",
-      "patternProperties": {
-        "^(?!__proto__)[a-zA-Z0-9\\.\\-_]+$": {
-          "$ref": "#/$defs/StateType"
-        }
-      },
-      "description": "This property is used to contain all of the dynamic state of the touch bundle by specifying custom named properties with primitive values. The `XGameStreamingUpdateTouchControlsState` API can be used to update the values in the section at runtime. This can be useful to match the exact state of the player's game to the controls being displayed, for instance when a player acquires new skills or customizes their control preferences. Most places in the touch layout that use a primitive string, number, or boolean type allow for dynamic replacement by defining the value as a `$ref` back to this state block.",
-      "type": "object",
-      "markdownDescription": "This property is used to contain all of the dynamic state of the touch bundle by specifying custom named properties with primitive values. The `XGameStreamingUpdateTouchControlsState` API can be used to update the values in the section at runtime. This can be useful to match the exact state of the player's game to the controls being displayed, for instance when a player acquires new skills or customizes their control preferences. Most places in the touch layout that use a primitive string, number, or boolean type allow for dynamic replacement by defining the value as a `$ref` back to this state block.",
-      "additionalProperties": false
-    },
-    "Definitions": {
-      "examples": [
-        {},
-        {
-          "joystickKnob": {
-            "default": {
-              "knob": {
-                "faceImage": {
-                  "type": "asset",
-                  "value": {
-                    "$ref": "#/$defs/joystickAssetName"
-                  }
+    "$id": "https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/main/touch-adaptation-kit/schemas/context/v4.0/context.json",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "title": "Touch Adaptation Bundle Context Schema",
+    "description": "A touch adaptation bundle context is the file that contains global, reusable state and definitions which can be referenced by other layouts. This allows for common schema snippets to be reused and for the touch controls to respond dynamically to game state. For the latest information on the changes between versions, see https://github.com/microsoft/xbox-game-streaming-tools/releases.",
+    "markdownDescription": "A touch adaptation bundle context is the file that contains global, reusable state and definitions which can be referenced by other layouts. This allows for common schema snippets to be reused and for the touch controls to respond dynamically to game state. For the latest information on the changes between versions, see https://github.com/microsoft/xbox-game-streaming-tools/releases.",
+    "$defs": {
+        "AllowedStateValues": {
+            "title": "Touch Bundle Allowed State Values",
+            "description": "This property is used to provide additional metadata on the set of possible values, like different asset file names, when using dynamic state. This is used for validation purposes to help ensure that all values will result in a valid touch layout and that no additional bundle files, like assets, are missing or unused. Note that this property is not used at runtime and any state change operations that result in an invalid layout will be ignored. It is therefore critical to test with a wide range of values to ensure proper operation in all cases.",
+            "markdownDescription": "This property is used to provide additional metadata on the set of possible values, like different asset file names, when using dynamic state. This is used for validation purposes to help ensure that all values will result in a valid touch layout and that no additional bundle files, like assets, are missing or unused. Note that this property is not used at runtime and any state change operations that result in an invalid layout will be ignored. It is therefore critical to test with a wide range of values to ensure proper operation in all cases.",
+            "examples": [
+                {},
+                {
+                    "inventorySlotForegroundImage": [
+                        "InventoryForegroundFireballSpell",
+                        "InventoryForegroundLightningBoltSpell"
+                    ],
+                    "inventorySlotBackgroundImage": {
+                        "$ref": "#/definitions/AllowedBackgroundImages"
+                    }
                 }
-              }
-            }
-          },
-          "joystickAssetName": "exampleAssetName"
+            ],
+            "additionalProperties": false,
+            "patternProperties": {
+                "^(?!__proto__)[a-zA-Z0-9\\.\\-_]+$": {
+                    "anyOf": [
+                        {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/$defs/StateType"
+                            }
+                        },
+                        {
+                            "$ref": "../../layout/v4.0/layout.json#/$defs/Reference"
+                        }
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "ContextDefinableType": {
+            "title": "Definable Types",
+            "description": "Union type that includes all types which can be used in the `definitions` section of this file. See the `definitions` section for more information",
+            "markdownDescription": "Union type that includes all types which can be used in the `definitions` section of this file. See the `definitions` section for more information",
+            "anyOf": [
+                {
+                    "$ref": "../../layout/v4.0/layout.json#/$defs/LayoutDefinableType"
+                },
+                {
+                    "$ref": "#/$defs/StateType"
+                },
+                {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/StateType"
+                    }
+                }
+            ]
+        },
+        "Definitions": {
+            "title": "Definitions",
+            "description": "A section that can be used to contain reusable components and values for touch layouts. These definitions can be later referenced with a JSON reference like `{ \"$ref\": \"#/definitions/joystickKnobStyle\" }`. JSON references are supported for nearly every part of the layout schema enabling common elements, like a common button background used across several controls, to be factored out and reused. Note that the context file also supports the `definitions` property, as well as `state`, to reuse components across layouts.",
+            "markdownDescription": "A section that can be used to contain reusable components and values for touch layouts. These definitions can be later referenced with a JSON reference like `{ \"$ref\": \"#/definitions/joystickKnobStyle\" }`. JSON references are supported for nearly every part of the layout schema enabling common elements, like a common button background used across several controls, to be factored out and reused. Note that the context file also supports the `definitions` property, as well as `state`, to reuse components across layouts.",
+            "examples": [
+                {},
+                {
+                    "joystickAssetName": "exampleAssetName",
+                    "joystickKnob": {
+                        "default": {
+                            "knob": {
+                                "faceImage": {
+                                    "type": "asset",
+                                    "value": {
+                                        "$ref": "#/$defs/joystickAssetName"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            ],
+            "additionalProperties": false,
+            "patternProperties": {
+                "^(?!__proto__)[a-zA-Z0-9\\.\\-_]+$": {
+                    "$ref": "#/$defs/ContextDefinableType"
+                }
+            },
+            "type": "object"
+        },
+        "State": {
+            "title": "Touch Bundle State",
+            "description": "This property is used to contain all of the dynamic state of the touch bundle by specifying custom named properties with primitive values. The `XGameStreamingUpdateTouchControlsState` API can be used to update the values in the section at runtime. This can be useful to match the exact state of the player's game to the controls being displayed, for instance when a player acquires new skills or customizes their control preferences. Most places in the touch layout that use a primitive string, number, or boolean type allow for dynamic replacement by defining the value as a `$ref` back to this state block.",
+            "markdownDescription": "This property is used to contain all of the dynamic state of the touch bundle by specifying custom named properties with primitive values. The `XGameStreamingUpdateTouchControlsState` API can be used to update the values in the section at runtime. This can be useful to match the exact state of the player's game to the controls being displayed, for instance when a player acquires new skills or customizes their control preferences. Most places in the touch layout that use a primitive string, number, or boolean type allow for dynamic replacement by defining the value as a `$ref` back to this state block.",
+            "examples": [
+                {},
+                {
+                    "inventorySlotEnabled": true,
+                    "inventorySlotForegroundImage": "InventoryForeground",
+                    "inventorySlotBackgroundImage": "InventoryBackground"
+                }
+            ],
+            "additionalProperties": false,
+            "patternProperties": {
+                "^(?!__proto__)[a-zA-Z0-9\\.\\-_]+$": {
+                    "$ref": "#/$defs/StateType"
+                }
+            },
+            "type": "object"
+        },
+        "StateType": {
+            "title": "Touch Bundle State Item",
+            "description": "This property is an individual item that appears in the `state` configuration. Its value must be a primitive string, number, or boolean. Use the name of the item and a value of matching type when calling `XGameStreamingUpdateTouchControlsState` to update the state dynamically.",
+            "markdownDescription": "This property is an individual item that appears in the `state` configuration. Its value must be a primitive string, number, or boolean. Use the name of the item and a value of matching type when calling `XGameStreamingUpdateTouchControlsState` to update the state dynamically.",
+            "examples": [
+                "customAssetName",
+                false,
+                true,
+                1,
+                0
+            ],
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "boolean"
+                },
+                {
+                    "type": "integer"
+                },
+                {
+                    "type": "number"
+                }
+            ]
+        },
+        "ContextStyles": {
+            "title": "Styles",
+            "description": "This property defines reusable styles which can be referenced within the layouts in this touch adaption bundle for styling purposes. If an equivalent `styles` property is defined in a given layout file, the contents of each will be merged. If a duplicate definition is found, the definition in the layout is preferred, overwriting the definition in the context file.",
+            "markdownDescription": "This property defines reusable styles which can be referenced within the layouts in this touch adaption bundle for styling purposes. If an equivalent `styles` property is defined in a given layout file, the contents of each will be merged. If a duplicate definition is found, the definition in the layout is preferred, overwriting the definition in the context file.",
+            "$ref": "../../layout/v4.0/layout.json#/$defs/_LayoutStyles"
         }
-      ],
-      "title": "Definitions",
-      "patternProperties": {
-        "^(?!__proto__)[a-zA-Z0-9\\.\\-_]+$": {
-          "$ref": "#/$defs/ContextDefinableType"
+    },
+    "type": "object",
+    "properties": {
+        "$schema": {
+            "type": "string"
+        },
+        "definitions": {
+            "$ref": "#/$defs/Definitions"
+        },
+        "state": {
+            "$ref": "#/$defs/State"
+        },
+        "styles": {
+            "$ref": "#/$defs/ContextStyles"
+        },
+        "allowedStateValues": {
+            "$ref": "#/$defs/AllowedStateValues"
         }
-      },
-      "description": "A section that can be used to contain reusable components and values for touch layouts. These definitions can be later referenced with a JSON reference like `{ \"$ref\": \"#/definitions/joystickKnobStyle\" }`. JSON references are supported for nearly every part of the layout schema enabling common elements, like a common button background used across several controls, to be factored out and reused. Note that the context file also supports the `definitions` property, as well as `state`, to reuse components across layouts.",
-      "type": "object",
-      "markdownDescription": "A section that can be used to contain reusable components and values for touch layouts. These definitions can be later referenced with a JSON reference like `{ \"$ref\": \"#/definitions/joystickKnobStyle\" }`. JSON references are supported for nearly every part of the layout schema enabling common elements, like a common button background used across several controls, to be factored out and reused. Note that the context file also supports the `definitions` property, as well as `state`, to reuse components across layouts.",
-      "additionalProperties": false
     },
-    "StateType": {
-      "markdownDescription": "This property is an individual item that appears in the `state` configuration. Its value must be a primitive string, number, or boolean. Use the name of the item and a value of matching type when calling `XGameStreamingUpdateTouchControlsState` to update the state dynamically.",
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "boolean"
-        },
-        {
-          "type": "integer"
-        },
-        {
-          "type": "number"
-        }
-      ],
-      "description": "This property is an individual item that appears in the `state` configuration. Its value must be a primitive string, number, or boolean. Use the name of the item and a value of matching type when calling `XGameStreamingUpdateTouchControlsState` to update the state dynamically.",
-      "examples": [
-        "customAssetName",
-        false,
-        true,
-        1,
-        0
-      ],
-      "title": "Touch Bundle State Item"
-    },
-    "ContextDefinableType": {
-      "markdownDescription": "Union type that includes all types which can be used in the `definitions` section of this file. See the `definitions` section for more information",
-      "anyOf": [
-        {
-          "$ref": "../../layout/v4.0/layout.json#/$defs/LayoutDefinableType"
-        },
-        {
-          "$ref": "#/$defs/StateType"
-        },
-        {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/StateType"
-          }
-        }
-      ],
-      "description": "Union type that includes all types which can be used in the `definitions` section of this file. See the `definitions` section for more information",
-      "title": "Definable Types"
-    },
-    "ContextStyles": {
-      "markdownDescription": "This property defines reusable styles which can be referenced within the layouts in this touch adaption bundle for styling purposes. If an equivalent `styles` property is defined in a given layout file, the contents of each will be merged. If a duplicate definition is found, the definition in the layout is preferred, overwriting the definition in the context file.",
-      "description": "This property defines reusable styles which can be referenced within the layouts in this touch adaption bundle for styling purposes. If an equivalent `styles` property is defined in a given layout file, the contents of each will be merged. If a duplicate definition is found, the definition in the layout is preferred, overwriting the definition in the context file.",
-      "$ref": "../../layout/v4.0/layout.json#/$defs/_LayoutStyles",
-      "title": "Styles"
-    }
-  },
-  "description": "A touch adaptation bundle context is the file that contains global, reusable state and definitions which can be referenced by other layouts. This allows for common schema snippets to be reused and for the touch controls to respond dynamically to game state. For the latest information on the changes between versions, see https://github.com/microsoft/xbox-game-streaming-tools/releases.",
-  "properties": {
-    "state": {
-      "$ref": "#/$defs/State"
-    },
-    "definitions": {
-      "$ref": "#/$defs/Definitions"
-    },
-    "styles": {
-      "$ref": "#/$defs/ContextStyles"
-    },
-    "allowedStateValues": {
-      "$ref": "#/$defs/AllowedStateValues"
-    },
-    "$schema": {
-      "type": "string"
-    }
-  },
-  "$schema": "https://json-schema.org/draft/2019-09/schema",
-  "$id": "https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/main/touch-adaptation-kit/schemas/context/v4.0/context.json",
-  "title": "Touch Adaptation Bundle Context Schema",
-  "markdownDescription": "A touch adaptation bundle context is the file that contains global, reusable state and definitions which can be referenced by other layouts. This allows for common schema snippets to be reused and for the touch controls to respond dynamically to game state. For the latest information on the changes between versions, see https://github.com/microsoft/xbox-game-streaming-tools/releases."
+    "additionalProperties": false
 }

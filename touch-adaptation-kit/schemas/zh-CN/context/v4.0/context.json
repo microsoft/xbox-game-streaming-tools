@@ -1,163 +1,163 @@
 {
-  "additionalProperties": false,
-  "type": "object",
-  "$defs": {
-    "AllowedStateValues": {
-      "examples": [
-        {},
-        {
-          "inventorySlotForegroundImage": [
-            "InventoryForegroundFireballSpell",
-            "InventoryForegroundLightningBoltSpell"
-          ],
-          "inventorySlotBackgroundImage": {
-            "$ref": "#/definitions/AllowedBackgroundImages"
-          }
-        }
-      ],
-      "title": "触摸捆绑包允许的状态值",
-      "patternProperties": {
-        "^(?!__proto__)[a-zA-Z0-9\\.\\-_]+$": {
-          "anyOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/$defs/StateType"
-              }
-            },
-            {
-              "$ref": "../../layout/v4.0/layout.json#/$defs/Reference"
-            }
-          ]
-        }
-      },
-      "description": "使用动态状态时，此属性用于在可能值集上提供其他元数据，如不同的资产文件名。这用于验证目的，以帮助确保所有值都将导致有效的触摸布局，并且不会丢失或未使用资产等其他捆绑包文件。请注意，运行时不使用此属性，将导致布局无效的任何状态更改操作都将被忽略。因此，必须使用各种值进行测试，以确保在所有情况下都正常操作。",
-      "type": "object",
-      "markdownDescription": "使用动态状态时，此属性用于在可能值集上提供其他元数据，如不同的资产文件名。这用于验证目的，以帮助确保所有值都将导致有效的触摸布局，并且不会丢失或未使用资产等其他捆绑包文件。请注意，运行时不使用此属性，将导致布局无效的任何状态更改操作都将被忽略。因此，必须使用各种值进行测试，以确保在所有情况下都正常操作。",
-      "additionalProperties": false
-    },
-    "State": {
-      "examples": [
-        {},
-        {
-          "inventorySlotBackgroundImage": "InventoryBackground",
-          "inventorySlotEnabled": true,
-          "inventorySlotForegroundImage": "InventoryForeground"
-        }
-      ],
-      "title": "触摸捆绑包状态",
-      "patternProperties": {
-        "^(?!__proto__)[a-zA-Z0-9\\.\\-_]+$": {
-          "$ref": "#/$defs/StateType"
-        }
-      },
-      "description": "此属性用于通过指定具有基元值的自定义命名属性来包含触摸捆绑包的所有动态状态。`XGameStreamingUpdateTouchControlsState` API 可用于在运行时更新节中的值。这对于将玩家游戏的确切状态与所显示的控件匹配可能很有用，例如当玩家获取新技能或自定义其控制首选项时。触摸布局中使用基元字符串、数字或布尔类型的大多数位置都允许动态替换，将值定义为`$ref`回此状态块。",
-      "type": "object",
-      "markdownDescription": "此属性用于通过指定具有基元值的自定义命名属性来包含触摸捆绑包的所有动态状态。`XGameStreamingUpdateTouchControlsState` API 可用于在运行时更新节中的值。这对于将玩家游戏的确切状态与所显示的控件匹配可能很有用，例如当玩家获取新技能或自定义其控制首选项时。触摸布局中使用基元字符串、数字或布尔类型的大多数位置都允许动态替换，将值定义为`$ref`回此状态块。",
-      "additionalProperties": false
-    },
-    "Definitions": {
-      "examples": [
-        {},
-        {
-          "joystickKnob": {
-            "default": {
-              "knob": {
-                "faceImage": {
-                  "type": "asset",
-                  "value": {
-                    "$ref": "#/$defs/joystickAssetName"
-                  }
+    "$id": "https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/main/touch-adaptation-kit/schemas/context/v4.0/context.json",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "title": "触摸适配捆绑包上下文架构",
+    "description": "触摸适配捆绑包上下文是包含可由其他布局引用的全局、可重用状态和定义的文件。这允许重用公共架构片段，并使触摸控件动态响应游戏状态。有关版本之间更改的最新信息，请参阅 https://github.com/microsoft/xbox-game-streaming-tools/releases。",
+    "markdownDescription": "触摸适配捆绑包上下文是包含可由其他布局引用的全局、可重用状态和定义的文件。这允许重用公共架构片段，并使触摸控件动态响应游戏状态。有关版本之间更改的最新信息，请参阅 https://github.com/microsoft/xbox-game-streaming-tools/releases。",
+    "$defs": {
+        "AllowedStateValues": {
+            "title": "触摸捆绑包允许的状态值",
+            "description": "使用动态状态时，此属性用于在可能值集上提供其他元数据，如不同的资产文件名。这用于验证目的，以帮助确保所有值都将导致有效的触摸布局，并且不会丢失或未使用资产等其他捆绑包文件。请注意，运行时不使用此属性，将导致布局无效的任何状态更改操作都将被忽略。因此，必须使用各种值进行测试，以确保在所有情况下都正常操作。",
+            "markdownDescription": "使用动态状态时，此属性用于在可能值集上提供其他元数据，如不同的资产文件名。这用于验证目的，以帮助确保所有值都将导致有效的触摸布局，并且不会丢失或未使用资产等其他捆绑包文件。请注意，运行时不使用此属性，将导致布局无效的任何状态更改操作都将被忽略。因此，必须使用各种值进行测试，以确保在所有情况下都正常操作。",
+            "examples": [
+                {},
+                {
+                    "inventorySlotForegroundImage": [
+                        "InventoryForegroundFireballSpell",
+                        "InventoryForegroundLightningBoltSpell"
+                    ],
+                    "inventorySlotBackgroundImage": {
+                        "$ref": "#/definitions/AllowedBackgroundImages"
+                    }
                 }
-              }
-            }
-          },
-          "joystickAssetName": "exampleAssetName"
+            ],
+            "additionalProperties": false,
+            "patternProperties": {
+                "^(?!__proto__)[a-zA-Z0-9\\.\\-_]+$": {
+                    "anyOf": [
+                        {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/$defs/StateType"
+                            }
+                        },
+                        {
+                            "$ref": "../../layout/v4.0/layout.json#/$defs/Reference"
+                        }
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "ContextDefinableType": {
+            "title": "可定义类型",
+            "description": "包含可在此文件的`definitions`部分中使用的所有类型的联合类型。有关详细信息，请参阅`definitions`部分",
+            "markdownDescription": "包含可在此文件的`definitions`部分中使用的所有类型的联合类型。有关详细信息，请参阅`definitions`部分",
+            "anyOf": [
+                {
+                    "$ref": "../../layout/v4.0/layout.json#/$defs/LayoutDefinableType"
+                },
+                {
+                    "$ref": "#/$defs/StateType"
+                },
+                {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/StateType"
+                    }
+                }
+            ]
+        },
+        "Definitions": {
+            "title": "定义",
+            "description": "可用于包含触摸布局的可重用组件和值的部分。这些定义稍后可以使用 JSON 引用进行引用，例如 `{ \"$ref\": \"#/definitions/joystickKnobStyle\" }。几乎布局架构的每个部分都支持 JSON 引用，使常见元素(如多个控件中使用的常用按钮背景)被分解和重复使用。请注意，上下文文件还支持`definitions`属性和`state`，以便跨布局重复使用组件。",
+            "markdownDescription": "可用于包含触摸布局的可重用组件和值的部分。这些定义稍后可以使用 JSON 引用进行引用，例如 `{ \"$ref\": \"#/definitions/joystickKnobStyle\" }。几乎布局架构的每个部分都支持 JSON 引用，使常见元素(如多个控件中使用的常用按钮背景)被分解和重复使用。请注意，上下文文件还支持`definitions`属性和`state`，以便跨布局重复使用组件。",
+            "examples": [
+                {},
+                {
+                    "joystickAssetName": "exampleAssetName",
+                    "joystickKnob": {
+                        "default": {
+                            "knob": {
+                                "faceImage": {
+                                    "type": "asset",
+                                    "value": {
+                                        "$ref": "#/$defs/joystickAssetName"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            ],
+            "additionalProperties": false,
+            "patternProperties": {
+                "^(?!__proto__)[a-zA-Z0-9\\.\\-_]+$": {
+                    "$ref": "#/$defs/ContextDefinableType"
+                }
+            },
+            "type": "object"
+        },
+        "State": {
+            "title": "触摸捆绑包状态",
+            "description": "此属性用于通过指定具有基元值的自定义命名属性来包含触摸捆绑包的所有动态状态。`XGameStreamingUpdateTouchControlsState` API 可用于在运行时更新节中的值。这对于将玩家游戏的确切状态与所显示的控件匹配可能很有用，例如当玩家获取新技能或自定义其控制首选项时。触摸布局中使用基元字符串、数字或布尔类型的大多数位置都允许动态替换，将值定义为`$ref`回此状态块。",
+            "markdownDescription": "此属性用于通过指定具有基元值的自定义命名属性来包含触摸捆绑包的所有动态状态。`XGameStreamingUpdateTouchControlsState` API 可用于在运行时更新节中的值。这对于将玩家游戏的确切状态与所显示的控件匹配可能很有用，例如当玩家获取新技能或自定义其控制首选项时。触摸布局中使用基元字符串、数字或布尔类型的大多数位置都允许动态替换，将值定义为`$ref`回此状态块。",
+            "examples": [
+                {},
+                {
+                    "inventorySlotEnabled": true,
+                    "inventorySlotForegroundImage": "InventoryForeground",
+                    "inventorySlotBackgroundImage": "InventoryBackground"
+                }
+            ],
+            "additionalProperties": false,
+            "patternProperties": {
+                "^(?!__proto__)[a-zA-Z0-9\\.\\-_]+$": {
+                    "$ref": "#/$defs/StateType"
+                }
+            },
+            "type": "object"
+        },
+        "StateType": {
+            "title": "触摸捆绑包状态项",
+            "description": "此属性是出现在`state`配置中的单个项。其值必须是基元字符串、数字或布尔值。调用`XGameStreamingUpdateTouchControlsState`时，使用项的名称和匹配类型的值动态更新状态。",
+            "markdownDescription": "此属性是出现在`state`配置中的单个项。其值必须是基元字符串、数字或布尔值。调用`XGameStreamingUpdateTouchControlsState`时，使用项的名称和匹配类型的值动态更新状态。",
+            "examples": [
+                "customAssetName",
+                false,
+                true,
+                1,
+                0
+            ],
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "boolean"
+                },
+                {
+                    "type": "integer"
+                },
+                {
+                    "type": "number"
+                }
+            ]
+        },
+        "ContextStyles": {
+            "title": "样式",
+            "description": "此属性定义可重用样式，可在此触摸适配捆绑包的布局中引用这些样式以实现样式设置。如果在给定的布局文件中定义了等效的`styles`属性，则将合并每个属性的内容。如果找到重复的定义，则首选布局中的定义，覆盖上下文文件中的定义。",
+            "markdownDescription": "此属性定义可重用样式，可在此触摸适配捆绑包的布局中引用这些样式以实现样式设置。如果在给定的布局文件中定义了等效的`styles`属性，则将合并每个属性的内容。如果找到重复的定义，则首选布局中的定义，覆盖上下文文件中的定义。",
+            "$ref": "../../layout/v4.0/layout.json#/$defs/_LayoutStyles"
         }
-      ],
-      "title": "定义",
-      "patternProperties": {
-        "^(?!__proto__)[a-zA-Z0-9\\.\\-_]+$": {
-          "$ref": "#/$defs/ContextDefinableType"
+    },
+    "type": "object",
+    "properties": {
+        "$schema": {
+            "type": "string"
+        },
+        "definitions": {
+            "$ref": "#/$defs/Definitions"
+        },
+        "state": {
+            "$ref": "#/$defs/State"
+        },
+        "styles": {
+            "$ref": "#/$defs/ContextStyles"
+        },
+        "allowedStateValues": {
+            "$ref": "#/$defs/AllowedStateValues"
         }
-      },
-      "description": "可用于包含触摸布局的可重用组件和值的部分。这些定义稍后可以使用 JSON 引用进行引用，例如 `{ \"$ref\": \"#/definitions/joystickKnobStyle\" }。几乎布局架构的每个部分都支持 JSON 引用，使常见元素(如多个控件中使用的常用按钮背景)被分解和重复使用。请注意，上下文文件还支持`definitions`属性和`state`，以便跨布局重复使用组件。",
-      "type": "object",
-      "markdownDescription": "可用于包含触摸布局的可重用组件和值的部分。这些定义稍后可以使用 JSON 引用进行引用，例如 `{ \"$ref\": \"#/definitions/joystickKnobStyle\" }。几乎布局架构的每个部分都支持 JSON 引用，使常见元素(如多个控件中使用的常用按钮背景)被分解和重复使用。请注意，上下文文件还支持`definitions`属性和`state`，以便跨布局重复使用组件。",
-      "additionalProperties": false
     },
-    "StateType": {
-      "markdownDescription": "此属性是出现在`state`配置中的单个项。其值必须是基元字符串、数字或布尔值。调用`XGameStreamingUpdateTouchControlsState`时，使用项的名称和匹配类型的值动态更新状态。",
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "boolean"
-        },
-        {
-          "type": "integer"
-        },
-        {
-          "type": "number"
-        }
-      ],
-      "description": "此属性是出现在`state`配置中的单个项。其值必须是基元字符串、数字或布尔值。调用`XGameStreamingUpdateTouchControlsState`时，使用项的名称和匹配类型的值动态更新状态。",
-      "examples": [
-        "customAssetName",
-        false,
-        true,
-        1,
-        0
-      ],
-      "title": "触摸捆绑包状态项"
-    },
-    "ContextDefinableType": {
-      "markdownDescription": "包含可在此文件的`definitions`部分中使用的所有类型的联合类型。有关详细信息，请参阅`definitions`部分",
-      "anyOf": [
-        {
-          "$ref": "../../layout/v4.0/layout.json#/$defs/LayoutDefinableType"
-        },
-        {
-          "$ref": "#/$defs/StateType"
-        },
-        {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/StateType"
-          }
-        }
-      ],
-      "description": "包含可在此文件的`definitions`部分中使用的所有类型的联合类型。有关详细信息，请参阅`definitions`部分",
-      "title": "可定义类型"
-    },
-    "ContextStyles": {
-      "markdownDescription": "此属性定义可重用样式，可在此触摸适配捆绑包的布局中引用这些样式以实现样式设置。如果在给定的布局文件中定义了等效的`styles`属性，则将合并每个属性的内容。如果找到重复的定义，则首选布局中的定义，覆盖上下文文件中的定义。",
-      "description": "此属性定义可重用样式，可在此触摸适配捆绑包的布局中引用这些样式以实现样式设置。如果在给定的布局文件中定义了等效的`styles`属性，则将合并每个属性的内容。如果找到重复的定义，则首选布局中的定义，覆盖上下文文件中的定义。",
-      "$ref": "../../layout/v4.0/layout.json#/$defs/_LayoutStyles",
-      "title": "样式"
-    }
-  },
-  "description": "触摸适配捆绑包上下文是包含可由其他布局引用的全局、可重用状态和定义的文件。这允许重用公共架构片段，并使触摸控件动态响应游戏状态。有关版本之间更改的最新信息，请参阅 https://github.com/microsoft/xbox-game-streaming-tools/releases。",
-  "properties": {
-    "state": {
-      "$ref": "#/$defs/State"
-    },
-    "definitions": {
-      "$ref": "#/$defs/Definitions"
-    },
-    "styles": {
-      "$ref": "#/$defs/ContextStyles"
-    },
-    "allowedStateValues": {
-      "$ref": "#/$defs/AllowedStateValues"
-    },
-    "$schema": {
-      "type": "string"
-    }
-  },
-  "$schema": "https://json-schema.org/draft/2019-09/schema",
-  "$id": "https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/main/touch-adaptation-kit/schemas/context/v4.0/context.json",
-  "title": "触摸适配捆绑包上下文架构",
-  "markdownDescription": "触摸适配捆绑包上下文是包含可由其他布局引用的全局、可重用状态和定义的文件。这允许重用公共架构片段，并使触摸控件动态响应游戏状态。有关版本之间更改的最新信息，请参阅 https://github.com/microsoft/xbox-game-streaming-tools/releases。"
+    "additionalProperties": false
 }

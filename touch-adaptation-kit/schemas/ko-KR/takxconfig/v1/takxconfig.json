@@ -1,221 +1,221 @@
 {
-  "additionalProperties": false,
-  "type": "object",
-  "$defs": {
-    "LanguageItem": {
-      "markdownDescription": "중립 언어 외에도 번들이 지원하는 언어를 정의하는 단일 언어 태그입니다.",
-      "description": "중립 언어 외에도 번들이 지원하는 언어를 정의하는 단일 언어 태그입니다.",
-      "enum": [
-        "ar",
-        "ar-SA",
-        "cs",
-        "cs-CZ",
-        "da",
-        "da-DK",
-        "de",
-        "de-DE",
-        "el",
-        "el-GR",
-        "en",
-        "en-US",
-        "en-GB",
-        "es",
-        "es-ES",
-        "es-MX",
-        "fi",
-        "fi-FI",
-        "fil",
-        "fil-PH",
-        "fr",
-        "fr-FR",
-        "he",
-        "he-IL",
-        "hu",
-        "hu-HU",
-        "id",
-        "id-ID",
-        "it",
-        "it-IT",
-        "ja",
-        "ja-JP",
-        "ko",
-        "ko-KR",
-        "ms",
-        "ms-MY",
-        "nb",
-        "nb-NO",
-        "nl",
-        "nl-NL",
-        "pl",
-        "pl-PL",
-        "pt",
-        "pt-BR",
-        "pt-PT",
-        "ru",
-        "ru-RU",
-        "sk",
-        "sk-SK",
-        "sv",
-        "sv-SE",
-        "th",
-        "th-TH",
-        "tr",
-        "tr-TR",
-        "vi",
-        "vi-VN",
-        "zh",
-        "zh-CN",
-        "zh-TW"
-      ],
-      "title": "IETF 언어 태그"
-    }
-  },
-  "description": "터치 적응 번들 구성 파일(예: `takxconfig.json`)은 번들에 대한 프로젝트 파일 역할을 하는 파일이며 모든 번들 메타데이터 및 속성을 재사용 가능하고 일관된 방식으로 정의합니다. 버전 간 변경 내용에 대한 최신 정보는 https://github.com/microsoft/xbox-game-streaming-tools/releases를 참조하세요.",
-  "properties": {
-    "versionName": {
-      "markdownDescription": "이 속성은 이 버전의 터치 번들을 나타내는 설명 이름을 정의합니다. 이 속성은 https://learn.microsoft.com/gaming/gdk/_content/gc/reference/system/xgamestreaming/functions/xgamestreaminggettouchbundleversion에 설명된 api를 통해 쿼리할 수 있습니다.",
-      "type": "string",
-      "description": "이 속성은 이 버전의 터치 번들을 나타내는 설명 이름을 정의합니다. 이 속성은 https://learn.microsoft.com/gaming/gdk/_content/gc/reference/system/xgamestreaming/functions/xgamestreaminggettouchbundleversion에 설명된 api를 통해 쿼리할 수 있습니다.",
-      "examples": [
-        "DLC 2"
-      ],
-      "title": "터치 적응 번들 버전 이름"
+    "$id": "https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/main/touch-adaptation-kit/schemas/takxconfig/v1/takxconfig.json",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "title": "터치 적응 번들 구성 파일 스키마",
+    "description": "터치 적응 번들 구성 파일(예: `takxconfig.json`)은 번들에 대한 프로젝트 파일 역할을 하는 파일이며 모든 번들 메타데이터 및 속성을 재사용 가능하고 일관된 방식으로 정의합니다. 버전 간 변경 내용에 대한 최신 정보는 https://github.com/microsoft/xbox-game-streaming-tools/releases를 참조하세요.",
+    "markdownDescription": "터치 적응 번들 구성 파일(예: `takxconfig.json`)은 번들에 대한 프로젝트 파일 역할을 하는 파일이며 모든 번들 메타데이터 및 속성을 재사용 가능하고 일관된 방식으로 정의합니다. 버전 간 변경 내용에 대한 최신 정보는 https://github.com/microsoft/xbox-game-streaming-tools/releases를 참조하세요.",
+    "$defs": {
+        "LanguageItem": {
+            "title": "IETF 언어 태그",
+            "description": "중립 언어 외에도 번들이 지원하는 언어를 정의하는 단일 언어 태그입니다.",
+            "markdownDescription": "중립 언어 외에도 번들이 지원하는 언어를 정의하는 단일 언어 태그입니다.",
+            "enum": [
+                "ar",
+                "ar-SA",
+                "cs",
+                "cs-CZ",
+                "da",
+                "da-DK",
+                "de",
+                "de-DE",
+                "el",
+                "el-GR",
+                "en",
+                "en-US",
+                "en-GB",
+                "es",
+                "es-ES",
+                "es-MX",
+                "fi",
+                "fi-FI",
+                "fil",
+                "fil-PH",
+                "fr",
+                "fr-FR",
+                "he",
+                "he-IL",
+                "hu",
+                "hu-HU",
+                "id",
+                "id-ID",
+                "it",
+                "it-IT",
+                "ja",
+                "ja-JP",
+                "ko",
+                "ko-KR",
+                "ms",
+                "ms-MY",
+                "nb",
+                "nb-NO",
+                "nl",
+                "nl-NL",
+                "pl",
+                "pl-PL",
+                "pt",
+                "pt-BR",
+                "pt-PT",
+                "ru",
+                "ru-RU",
+                "sk",
+                "sk-SK",
+                "sv",
+                "sv-SE",
+                "th",
+                "th-TH",
+                "tr",
+                "tr-TR",
+                "vi",
+                "vi-VN",
+                "zh",
+                "zh-CN",
+                "zh-TW"
+            ]
+        }
     },
-    "layouts": {
-      "type": "object",
-      "markdownDescription": "이 속성은 디스크 레이아웃 파일의 위치 및 기본 레이아웃으로 사용해야 하는 레이아웃 파일과 같은 레이아웃 파일과 관련된 번들 속성을 정의합니다.",
-      "properties": {
-        "default": {
-          "markdownDescription": "이 속성은 터치 번들의 시작 활성 레이아웃을 정의합니다. 기본 레이아웃을 지정하려면 파일 확장자 없이 레이아웃 파일의 이름을 사용하세요. 활성 레이아웃은 나중에 https://learn.microsoft.com/gaming/gdk/_content/gc/reference/system/xgamestreaming/functions/xgamestreamingshowtouchcontrollayoutonclient에 설명된 API 호출을 통해 변경될 수 있습니다. 생략하면 시작 레이아웃이 사용되지 않습니다.",
-          "type": "string",
-          "description": "이 속성은 터치 번들의 시작 활성 레이아웃을 정의합니다. 기본 레이아웃을 지정하려면 파일 확장자 없이 레이아웃 파일의 이름을 사용하세요. 활성 레이아웃은 나중에 https://learn.microsoft.com/gaming/gdk/_content/gc/reference/system/xgamestreaming/functions/xgamestreamingshowtouchcontrollayoutonclient에 설명된 API 호출을 통해 변경될 수 있습니다. 생략하면 시작 레이아웃이 사용되지 않습니다.",
-          "examples": [
-            "cinematic",
-            "menu",
-            "firstPerson"
-          ],
-          "title": "터치 적응 번들 기본 레이아웃"
+    "type": "object",
+    "properties": {
+        "$schema": {
+            "type": "string"
         },
-        "path": {
-          "examples": [
-            "./layouts"
-          ],
-          "title": "터치 적응 번들 레이아웃 경로",
-          "format": "uri-reference",
-          "description": "이 속성은 이 파일에서 이 번들에 대한 모든 레이아웃이 포함된 디렉터리에 대한 상대 경로를 정의합니다.",
-          "markdownDescription": "이 속성은 이 파일에서 이 번들에 대한 모든 레이아웃이 포함된 디렉터리에 대한 상대 경로를 정의합니다.",
-          "type": "string"
-        }
-      },
-      "description": "이 속성은 디스크 레이아웃 파일의 위치 및 기본 레이아웃으로 사용해야 하는 레이아웃 파일과 같은 레이아웃 파일과 관련된 번들 속성을 정의합니다.",
-      "examples": [
-        {
-          "path": "./layouts"
+        "layouts": {
+            "title": "터치 적응 번들 레이아웃 구성",
+            "description": "이 속성은 디스크 레이아웃 파일의 위치 및 기본 레이아웃으로 사용해야 하는 레이아웃 파일과 같은 레이아웃 파일과 관련된 번들 속성을 정의합니다.",
+            "markdownDescription": "이 속성은 디스크 레이아웃 파일의 위치 및 기본 레이아웃으로 사용해야 하는 레이아웃 파일과 같은 레이아웃 파일과 관련된 번들 속성을 정의합니다.",
+            "examples": [
+                {
+                    "path": "./layouts"
+                },
+                {
+                    "path": "./layouts",
+                    "default": "cinematic"
+                }
+            ],
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "path": {
+                    "title": "터치 적응 번들 레이아웃 경로",
+                    "description": "이 속성은 이 파일에서 이 번들에 대한 모든 레이아웃이 포함된 디렉터리에 대한 상대 경로를 정의합니다.",
+                    "markdownDescription": "이 속성은 이 파일에서 이 번들에 대한 모든 레이아웃이 포함된 디렉터리에 대한 상대 경로를 정의합니다.",
+                    "examples": [
+                        "./layouts"
+                    ],
+                    "type": "string",
+                    "format": "uri-reference"
+                },
+                "default": {
+                    "title": "터치 적응 번들 기본 레이아웃",
+                    "description": "이 속성은 터치 번들의 시작 활성 레이아웃을 정의합니다. 기본 레이아웃을 지정하려면 파일 확장자 없이 레이아웃 파일의 이름을 사용하세요. 활성 레이아웃은 나중에 https://learn.microsoft.com/gaming/gdk/_content/gc/reference/system/xgamestreaming/functions/xgamestreamingshowtouchcontrollayoutonclient에 설명된 API 호출을 통해 변경될 수 있습니다. 생략하면 시작 레이아웃이 사용되지 않습니다.",
+                    "markdownDescription": "이 속성은 터치 번들의 시작 활성 레이아웃을 정의합니다. 기본 레이아웃을 지정하려면 파일 확장자 없이 레이아웃 파일의 이름을 사용하세요. 활성 레이아웃은 나중에 https://learn.microsoft.com/gaming/gdk/_content/gc/reference/system/xgamestreaming/functions/xgamestreamingshowtouchcontrollayoutonclient에 설명된 API 호출을 통해 변경될 수 있습니다. 생략하면 시작 레이아웃이 사용되지 않습니다.",
+                    "examples": [
+                        "cinematic",
+                        "menu",
+                        "firstPerson"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "path"
+            ]
         },
-        {
-          "default": "cinematic",
-          "path": "./layouts"
+        "assets": {
+            "title": "터치 적응 번들 자산 구성",
+            "description": "이 속성은 디스크 자산 파일의 위치와 같은 자산 파일과 관련된 번들 속성을 정의합니다.",
+            "markdownDescription": "이 속성은 디스크 자산 파일의 위치와 같은 자산 파일과 관련된 번들 속성을 정의합니다.",
+            "examples": [
+                {
+                    "path": "./assets"
+                }
+            ],
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "path": {
+                    "title": "터치 적응 번들 자산 경로",
+                    "description": "이 속성은 이 파일에서 이 번들에 대한 이미지 파일과 같은 모든 자산이 포함된 디렉터리에 대한 상대 경로를 정의합니다.",
+                    "markdownDescription": "이 속성은 이 파일에서 이 번들에 대한 이미지 파일과 같은 모든 자산이 포함된 디렉터리에 대한 상대 경로를 정의합니다.",
+                    "examples": [
+                        "./assets"
+                    ],
+                    "type": "string",
+                    "format": "uri-reference"
+                }
+            },
+            "required": [
+                "path"
+            ]
+        },
+        "context": {
+            "title": "터치 적응 번들 컨텍스트 파일 구성",
+            "description": "이 속성은 파일이 있는 디스크 위치와 같은 컨텍스트 파일과 관련된 번들 속성을 정의합니다. 생략하면 번들에 컨텍스트 파일이 포함되지 않습니다.",
+            "markdownDescription": "이 속성은 파일이 있는 디스크 위치와 같은 컨텍스트 파일과 관련된 번들 속성을 정의합니다. 생략하면 번들에 컨텍스트 파일이 포함되지 않습니다.",
+            "examples": [
+                {
+                    "path": "./context.json"
+                }
+            ],
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "path": {
+                    "title": "터치 적응 번들 컨텍스트 파일 경로",
+                    "description": "이 속성은 이 파일에서 컨텍스트 파일로의 상대 경로를 정의합니다.",
+                    "markdownDescription": "이 속성은 이 파일에서 컨텍스트 파일로의 상대 경로를 정의합니다.",
+                    "examples": [
+                        "./context.json"
+                    ],
+                    "type": "string",
+                    "format": "uri-reference"
+                }
+            },
+            "required": [
+                "path"
+            ]
+        },
+        "languages": {
+            "title": "터치 적응 번들 언어 구성",
+            "description": "이 속성은 번들에 대해 지원되는 언어와 관련된 번들 속성을 정의합니다. 생략하면 번들은 레이아웃 및 자산 폴더의 디렉터리 구조에서 유추된 모든 언어를 지원합니다. 중립 언어는 이 속성 값에 관계없이 항상 번들에 포함됩니다.",
+            "markdownDescription": "이 속성은 번들에 대해 지원되는 언어와 관련된 번들 속성을 정의합니다. 생략하면 번들은 레이아웃 및 자산 폴더의 디렉터리 구조에서 유추된 모든 언어를 지원합니다. 중립 언어는 이 속성 값에 관계없이 항상 번들에 포함됩니다.",
+            "examples": [
+                [],
+                [
+                    "en-US"
+                ],
+                [
+                    "en",
+                    "fr-FR"
+                ]
+            ],
+            "items": {
+                "$ref": "#/$defs/LanguageItem"
+            },
+            "type": "array"
+        },
+        "version": {
+            "title": "터치 적응 번들 버전",
+            "description": "이 속성은 터치 번들의 버전 번호를 정의합니다. 버전은 주, 부, 빌드 및 수정 구성 요소로 구성되지만 이러한 특정 의미 체계는 터치 번들 런타임에 의해 해석되지 않습니다. 대신 런타임이 로드할 수 있는 가장 높은 버전의 번들이 사용됩니다. 번들의 로드 기능은 번들 내에서 사용되는 최대 레이아웃 스키마 버전에 따라 결정됩니다. 이 속성은 https://learn.microsoft.com/gaming/gdk/_content/gc/reference/system/xgamestreaming/functions/xgamestreaminggettouchbundleversion에 설명된 api를 통해 쿼리할 수 있습니다.",
+            "markdownDescription": "이 속성은 터치 번들의 버전 번호를 정의합니다. 버전은 주, 부, 빌드 및 수정 구성 요소로 구성되지만 이러한 특정 의미 체계는 터치 번들 런타임에 의해 해석되지 않습니다. 대신 런타임이 로드할 수 있는 가장 높은 버전의 번들이 사용됩니다. 번들의 로드 기능은 번들 내에서 사용되는 최대 레이아웃 스키마 버전에 따라 결정됩니다. 이 속성은 https://learn.microsoft.com/gaming/gdk/_content/gc/reference/system/xgamestreaming/functions/xgamestreaminggettouchbundleversion에 설명된 api를 통해 쿼리할 수 있습니다.",
+            "examples": [
+                "1.0.0.0"
+            ],
+            "type": "string",
+            "pattern": "^\\d+\\.\\d+\\.\\d+\\.\\d+$"
+        },
+        "versionName": {
+            "title": "터치 적응 번들 버전 이름",
+            "description": "이 속성은 이 버전의 터치 번들을 나타내는 설명 이름을 정의합니다. 이 속성은 https://learn.microsoft.com/gaming/gdk/_content/gc/reference/system/xgamestreaming/functions/xgamestreaminggettouchbundleversion에 설명된 api를 통해 쿼리할 수 있습니다.",
+            "markdownDescription": "이 속성은 이 버전의 터치 번들을 나타내는 설명 이름을 정의합니다. 이 속성은 https://learn.microsoft.com/gaming/gdk/_content/gc/reference/system/xgamestreaming/functions/xgamestreaminggettouchbundleversion에 설명된 api를 통해 쿼리할 수 있습니다.",
+            "examples": [
+                "DLC 2"
+            ],
+            "type": "string"
         }
-      ],
-      "title": "터치 적응 번들 레이아웃 구성",
-      "required": [
-        "path"
-      ],
-      "additionalProperties": false
     },
-    "version": {
-      "examples": [
-        "1.0.0.0"
-      ],
-      "title": "터치 적응 번들 버전",
-      "description": "이 속성은 터치 번들의 버전 번호를 정의합니다. 버전은 주, 부, 빌드 및 수정 구성 요소로 구성되지만 이러한 특정 의미 체계는 터치 번들 런타임에 의해 해석되지 않습니다. 대신 런타임이 로드할 수 있는 가장 높은 버전의 번들이 사용됩니다. 번들의 로드 기능은 번들 내에서 사용되는 최대 레이아웃 스키마 버전에 따라 결정됩니다. 이 속성은 https://learn.microsoft.com/gaming/gdk/_content/gc/reference/system/xgamestreaming/functions/xgamestreaminggettouchbundleversion에 설명된 api를 통해 쿼리할 수 있습니다.",
-      "pattern": "^\\d+\\.\\d+\\.\\d+\\.\\d+$",
-      "markdownDescription": "이 속성은 터치 번들의 버전 번호를 정의합니다. 버전은 주, 부, 빌드 및 수정 구성 요소로 구성되지만 이러한 특정 의미 체계는 터치 번들 런타임에 의해 해석되지 않습니다. 대신 런타임이 로드할 수 있는 가장 높은 버전의 번들이 사용됩니다. 번들의 로드 기능은 번들 내에서 사용되는 최대 레이아웃 스키마 버전에 따라 결정됩니다. 이 속성은 https://learn.microsoft.com/gaming/gdk/_content/gc/reference/system/xgamestreaming/functions/xgamestreaminggettouchbundleversion에 설명된 api를 통해 쿼리할 수 있습니다.",
-      "type": "string"
-    },
-    "$schema": {
-      "type": "string"
-    },
-    "context": {
-      "type": "object",
-      "markdownDescription": "이 속성은 파일이 있는 디스크 위치와 같은 컨텍스트 파일과 관련된 번들 속성을 정의합니다. 생략하면 번들에 컨텍스트 파일이 포함되지 않습니다.",
-      "properties": {
-        "path": {
-          "examples": [
-            "./context.json"
-          ],
-          "title": "터치 적응 번들 컨텍스트 파일 경로",
-          "format": "uri-reference",
-          "description": "이 속성은 이 파일에서 컨텍스트 파일로의 상대 경로를 정의합니다.",
-          "markdownDescription": "이 속성은 이 파일에서 컨텍스트 파일로의 상대 경로를 정의합니다.",
-          "type": "string"
-        }
-      },
-      "description": "이 속성은 파일이 있는 디스크 위치와 같은 컨텍스트 파일과 관련된 번들 속성을 정의합니다. 생략하면 번들에 컨텍스트 파일이 포함되지 않습니다.",
-      "examples": [
-        {
-          "path": "./context.json"
-        }
-      ],
-      "title": "터치 적응 번들 컨텍스트 파일 구성",
-      "required": [
-        "path"
-      ],
-      "additionalProperties": false
-    },
-    "languages": {
-      "examples": [
-        [],
-        [
-          "en-US"
-        ],
-        [
-          "en",
-          "fr-FR"
-        ]
-      ],
-      "title": "터치 적응 번들 언어 구성",
-      "description": "이 속성은 번들에 대해 지원되는 언어와 관련된 번들 속성을 정의합니다. 생략하면 번들은 레이아웃 및 자산 폴더의 디렉터리 구조에서 유추된 모든 언어를 지원합니다. 중립 언어는 이 속성 값에 관계없이 항상 번들에 포함됩니다.",
-      "items": {
-        "$ref": "#/$defs/LanguageItem"
-      },
-      "markdownDescription": "이 속성은 번들에 대해 지원되는 언어와 관련된 번들 속성을 정의합니다. 생략하면 번들은 레이아웃 및 자산 폴더의 디렉터리 구조에서 유추된 모든 언어를 지원합니다. 중립 언어는 이 속성 값에 관계없이 항상 번들에 포함됩니다.",
-      "type": "array"
-    },
-    "assets": {
-      "type": "object",
-      "markdownDescription": "이 속성은 디스크 자산 파일의 위치와 같은 자산 파일과 관련된 번들 속성을 정의합니다.",
-      "properties": {
-        "path": {
-          "examples": [
-            "./assets"
-          ],
-          "title": "터치 적응 번들 자산 경로",
-          "format": "uri-reference",
-          "description": "이 속성은 이 파일에서 이 번들에 대한 이미지 파일과 같은 모든 자산이 포함된 디렉터리에 대한 상대 경로를 정의합니다.",
-          "markdownDescription": "이 속성은 이 파일에서 이 번들에 대한 이미지 파일과 같은 모든 자산이 포함된 디렉터리에 대한 상대 경로를 정의합니다.",
-          "type": "string"
-        }
-      },
-      "description": "이 속성은 디스크 자산 파일의 위치와 같은 자산 파일과 관련된 번들 속성을 정의합니다.",
-      "examples": [
-        {
-          "path": "./assets"
-        }
-      ],
-      "title": "터치 적응 번들 자산 구성",
-      "required": [
-        "path"
-      ],
-      "additionalProperties": false
-    }
-  },
-  "$schema": "https://json-schema.org/draft/2019-09/schema",
-  "required": [
-    "layouts",
-    "version"
-  ],
-  "$id": "https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/main/touch-adaptation-kit/schemas/takxconfig/v1/takxconfig.json",
-  "title": "터치 적응 번들 구성 파일 스키마",
-  "markdownDescription": "터치 적응 번들 구성 파일(예: `takxconfig.json`)은 번들에 대한 프로젝트 파일 역할을 하는 파일이며 모든 번들 메타데이터 및 속성을 재사용 가능하고 일관된 방식으로 정의합니다. 버전 간 변경 내용에 대한 최신 정보는 https://github.com/microsoft/xbox-game-streaming-tools/releases를 참조하세요."
+    "additionalProperties": false,
+    "required": [
+      "layouts",
+      "version"
+    ]
 }
