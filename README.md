@@ -15,7 +15,7 @@ To learn more about optimizing your Xbox game for game streaming see the [develo
 
 ### Touch Adaptation Kit Command Line Tool (TAK CLI)
 
-> ⚠️ The TAK CLI is governed by its own End User License Agreement that must be read and accepted before using the tool. This can through the `license` command.
+> ⚠️ The TAK CLI is governed by its own End User License Agreement that must be read and accepted before using the tool. This can be done using the CLI's `license` command.
 
 The TAK CLI is a command line tool that allows you to create, validate, and package touch adaptation layouts for your games. It is available for Windows and MacOS and is publicly distributed as a standalone executable for through the [releases page](https://github.com/microsoft/xbox-game-streaming-tools/releases) of this repository.
 
