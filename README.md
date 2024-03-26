@@ -10,7 +10,7 @@ To learn more about optimizing your Xbox game for game streaming see the [develo
 
 - [Touch Adaptation Kit Command Line Tool (TAK CLI)](https://github.com/microsoft/xbox-game-streaming-tools/releases) releases for Windows and MacOS.
 - [Schema](./touch-adaptation-kit/schemas) representing the capabilities of the [Touch Adaptation Kit](https://docs.microsoft.com/en-us/gaming/game-streaming/ux/touch-adaptation-kit/) that allows for your creation of custom touch layouts for your games.
-- [Sample touch adaptation layouts](./touch-adaptation-kit/touch-adaptation-bundles) to get started.
+- [Sample touch adaptation layouts](./touch-adaptation-kit/samples) to get started.
 - [Scripts](./touch-adaptation-kit/scripts) to assist in the development of touch adaptation layouts.
 
 ### Touch Adaptation Kit Command Line Tool (TAK CLI)
