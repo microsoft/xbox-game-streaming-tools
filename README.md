@@ -1,6 +1,6 @@
 ## Welcome!
 
-This repository provides tools, schemas, and samples to empower game developers that are optimizing their games for Xbox game streaming.
+This repository provides tools, schemas, and samples to empower game creators that are optimizing their games for Xbox game streaming.
 
 To get started with Xbox game streaming you apply to the ID@Xbox program at http://www.xbox.com/en-us/Developers/id.
 
@@ -31,7 +31,7 @@ You can read more about setting up the TAK Editor extension in the [public docum
 
 A single file executable (`tak.exe`) can be downloaded from the [releases page](https://github.com/microsoft/xbox-game-streaming-tools/releases) of this repository and used immediately from the command line.
 
-Once the CLI executable is downloaded and the extension is installed in VS Code, you must provide its path to the extension,either through the VS Code settings, or by executing the "Set TAK CLI path" command from the command palette.
+Once the CLI executable is downloaded and the extension is installed in VS Code, you must provide its path to the extension, either through the VS Code settings, or by executing the "Set TAK CLI path" command from the command palette.
 
 #### MacOS
 
