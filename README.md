@@ -35,7 +35,7 @@ Once the CLI executable is downloaded and the extension is installed in VS Code,
 
 #### MacOS
 
-The quick and easy way to install the TAK CLI on MacOS is through Homebrew:
+The TAK CLI can be installed on MacOS using Homebrew. If you have not installed Homebrew, you can do so by following the instructions on the [Homebrew website](https://brew.sh/).
 
 ```bash
 brew install microsoft/xbox-game-creator-tools/tak-cli
