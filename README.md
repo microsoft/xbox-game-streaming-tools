@@ -47,7 +47,7 @@ If you have already installed the TAK CLI through Homebrew, you can upgrade to t
 brew upgrade tak-cli
 ```
 
-Alternative, you can download a DMG file (`tak-<version>.dmg`) from the [releases page](https://github.com/microsoft/xbox-game-streaming-tools/releases) of this repository. The file contains the CLI executable (`tak`) that can be extracted and used from the command line. This can either be done by double-clicking the DMG file and dragging the executable to a location of your choice, or by using the terminal to extract the executable.
+Alternatively, you can download a DMG file (`tak-<version>.dmg`) from the [releases page](https://github.com/microsoft/xbox-game-streaming-tools/releases) of this repository. The file contains the CLI executable (`tak`) that can be extracted and used from the command line. This can either be done by double-clicking the DMG file and dragging the executable to a location of your choice, or by using the terminal to extract the executable.
 
 ```bash
 hdiutil attach tak-<version>.dmg
