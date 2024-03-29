@@ -35,7 +35,19 @@ Once the CLI executable is downloaded and the extension is installed in VS Code,
 
 #### MacOS
 
-A DMG file (`tak-<version>.dmg`) can be downloaded from the [releases page](https://github.com/microsoft/xbox-game-streaming-tools/releases) of this repository. The file contains the CLI executable (`tak`) that can be extracted and used from the command line. This can either be done by double-clicking the DMG file and dragging the executable to a location of your choice, or by using the terminal to extract the executable.
+The quick and easy way to install the TAK CLI on MacOS is through Homebrew:
+
+```bash
+brew install microsoft/xbox-game-creator-tools/tak-cli
+```
+
+If you have already installed the TAK CLI through Homebrew, you can upgrade to the latest version using the following command:
+
+```bash
+brew upgrade tak-cli
+```
+
+Alternative, you can download a DMG file (`tak-<version>.dmg`) from the [releases page](https://github.com/microsoft/xbox-game-streaming-tools/releases) of this repository. The file contains the CLI executable (`tak`) that can be extracted and used from the command line. This can either be done by double-clicking the DMG file and dragging the executable to a location of your choice, or by using the terminal to extract the executable.
 
 ```bash
 hdiutil attach tak-<version>.dmg
