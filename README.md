@@ -29,9 +29,21 @@ You can read more about setting up the TAK Editor extension in the [public docum
 
 #### Windows
 
-A single file executable (`tak.exe`) can be downloaded from the [releases page](https://github.com/microsoft/xbox-game-streaming-tools/releases) of this repository and used immediately from the command line.
+The TAK CLI can be installed on Windows using WinGet ([documentation](https://learn.microsoft.com/windows/package-manager/winget/), [download](https://aka.ms/getwinget)).
 
-Once the CLI executable is downloaded and the extension is installed in VS Code, you must provide its path to the extension, either through the VS Code settings, or by executing the "Set TAK CLI path" command from the command palette.
+```powershell
+winget install Microsoft.Gaming.TAK.CLI
+```
+
+If you have already installed the TAK CLI through WinGet, you can upgrade to the latest version using the following command:
+
+```powershell
+winget upgrade Microsoft.Gaming.TAK.CLI
+```
+
+Alternatively, you can download a single file executable (`tak.exe`) from the [releases page](https://github.com/microsoft/xbox-game-streaming-tools/releases) of this repository. The binary can be used immediately from the command line.
+
+Once the CLI executable is downloaded and the [TAK Editor](https://aka.ms/get-takeditor) extension is installed in VS Code, you must provide its path to the extension, either through the VS Code settings, or by executing the "Set TAK CLI path" command from the command palette.
 
 #### MacOS
 
@@ -55,7 +67,7 @@ cp /Volumes/tak/tak <destination directory>
 hdiutil detach /Volumes/tak
 ```
 
-Similar to the Windows installation, you must provide the path to the CLI executable to the extension in VS Code, either through the VS Code settings, or by executing the "Set TAK CLI path" command from the command palette.
+Similar to the Windows installation, you must provide the path to the CLI executable to the [TAK Editor](https://aka.ms/get-takeditor) extension in VS Code, either through the VS Code settings, or by executing the "Set TAK CLI path" command from the command palette.
 
 ## Contributing
 
