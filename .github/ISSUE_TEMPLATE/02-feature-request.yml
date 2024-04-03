@@ -1,0 +1,52 @@
+name: Feature Request 🚀
+description: Request a new feature, improvement, or general suggestion.
+title: "[FEATURE]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to fill out this feature request.
+        Please fill out the following information to the best of your ability to help us understand your request.
+  - type: dropdown
+    id: product
+    attributes:
+      label: Product
+      description: "Which product does this feature request apply to?"
+      options:
+        - "Touch Adaptation Kit Editor (TAK Editor)"
+        - "Touch Adaptation Kit Command Line Tool (TAK CLI)"
+        - "Touch Adaptation Kit Schemas (TAK Schemas)"
+        - "Other (please specify in the Request section)"
+      multiple: true
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: "Version"
+      description: |
+        What version of the product are you using?
+        If using multiple products, please list all versions.
+
+        For the CLI, you can find the version by running `tak --version`.
+        For the Editor, you can find the version by opening the extension's page  in VS Code and observing the version number displayed next to the extension's name.
+      placeholder: "e.g., TAK Editor 0.139.0, TAK CLI 11.0.0"
+    validations:
+      required: false
+  - type: textarea
+    id: repro
+    attributes:
+      label: "Request"
+      description: |
+        Please describe the feature you would like to see added or improved. Include as much detail as possible.
+        This is a public forum, **please do not include any sensitive information**.
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: "Code of Conduct"
+      description: "By submitting this issue, you agree to follow our [Code of Conduct](../../CODE_OF_CONDUCT.md)."
+      options:
+        - label: "I agree to follow this repository's Code of Conduct"
+          required: true
