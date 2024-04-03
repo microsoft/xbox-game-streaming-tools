@@ -1,0 +1,80 @@
+name: Bug Report
+description: File a bug report
+title: "[BUG]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to fill out this bug report.
+        Please fill out the following information to the best of your ability to help us resolve the issue.
+  - type: dropdown
+    id: product
+    attributes:
+      label: Product
+      description: "Which product does this bug report apply to?"
+      options:
+        - "Touch Adaptation Kit Editor (TAK Editor)"
+        - "Touch Adaptation Kit Command Line Tool (TAK CLI)"
+        - "Touch Adaptation Kit Schemas (TAK Schemas)"
+        - "Other (please specify in the Reproduction Steps section)"
+      multiple: true
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: "Operating System"
+      description: "Which operating system are you using?"
+      options:
+        - "Windows"
+        - "macOS"
+        - "Linux"
+      multiple: false
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: "Version"
+      description: "What version of the product are you using? If using multiple products, please list all versions."
+      placeholder: "e.g., TAK Editor 0.139.0, TAK CLI 11.0.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: download
+    attributes:
+      label: "Downloaded from"
+      description: "Where did you download the product from?"
+      options:
+        - "GitHub Releases"
+        - "VS Code Marketplace"
+        - "WinGet"
+        - "Homebrew"
+        - "Microsoft GDK"
+        - "Other (please specify in the Reproduction Steps section)"
+      multiple: false
+    validations:
+      required: false
+  - type: textarea
+    id: repro
+    attributes:
+      label: "Reproduction Steps"
+      description: |
+        How did you trigger this bug? Please walk us through it step by step and include any relevant information, logs, or screenshots that may help us resolve the issue.
+        This is a public forum, **please do not include any sensitive information**.
+      placeholder: |
+        Example:
+        1. Launch VS Code with the TAK Editor installed
+        2. Open folder containing a TAK bundle
+        3. Open a layout file in the bundle
+        4. Observe that the preview panel opens but does not render the layout
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: "Code of Conduct"
+      description: "By submitting this issue, you agree to follow our [Code of Conduct](CODE_OF_CONDUCT.md)."
+      options:
+        - label: "I agree to follow this repository's Code of Conduct"
+          required: true
