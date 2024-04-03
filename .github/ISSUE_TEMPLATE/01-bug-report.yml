@@ -36,7 +36,12 @@ body:
     id: version
     attributes:
       label: "Version"
-      description: "What version of the product are you using? If using multiple products, please list all versions."
+      description: |
+        What version of the product are you using?
+        If using multiple products, please list all versions.
+
+        For the CLI, you can find the version by running `tak --version`.
+        For the Editor, you can find the version by opening the extension's page  in VS Code and observing the version number displayed next to the extension's name.
       placeholder: "e.g., TAK Editor 0.139.0, TAK CLI 11.0.0"
     validations:
       required: true
