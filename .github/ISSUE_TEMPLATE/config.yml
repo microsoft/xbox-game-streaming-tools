@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Send feedback via email
+    url: https://aka.ms/gdk-feedback-email
+    about: This link will open your default email client to send us feedback through email. This is the best way to reach us for private or sensitive feedback.
