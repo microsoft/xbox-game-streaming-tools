@@ -74,9 +74,7 @@ try {
         -CertStoreLocation "Cert:\CurrentUser\My" `
         -FriendlyName "Touch Bundle Development" `
         -HashAlgorithm "SHA256" `
-        -KeyAlgorithm "RSA" `
         -KeyLength 2048 `
-        -KeyUsage KeyEncipherment `
         -NotAfter (Get-Date).AddYears($YearsUntilExpiration) `
         -NotBefore (Get-Date) `
         -Subject "CN=Touch Bundle Development" `
