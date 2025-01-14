@@ -32,7 +32,7 @@
                             }
                         },
                         {
-                            "$ref": "../../layout/latest/layout.json#/$defs/Reference"
+                            "$ref": "../../layout/v4.1/layout.json#/$defs/Reference"
                         }
                     ]
                 }
@@ -45,7 +45,7 @@
             "markdownDescription": "このファイルの `definitions` セクションで使用できるすべての型を含むユニオン型です。詳細については、`definitions` セクションを参照してください",
             "anyOf": [
                 {
-                    "$ref": "../../layout/latest/layout.json#/$defs/LayoutDefinableType"
+                    "$ref": "../../layout/v4.1/layout.json#/$defs/LayoutDefinableType"
                 },
                 {
                     "$ref": "#/$defs/StateType"
@@ -138,7 +138,7 @@
             "title": "スタイル",
             "description": "このプロパティは、スタイル設定を目的として、このタッチ アダプテーション バンドルのレイアウト内で参照できる再利用可能なスタイルを定義します。同等の `styles` プロパティが指定されたレイアウト ファイルで定義されている場合、それぞれの内容がマージされます。重複する定義が見つかった場合は、レイアウト内の定義が優先され、コンテキスト ファイル内の定義が上書きされます。",
             "markdownDescription": "このプロパティは、スタイル設定を目的として、このタッチ アダプテーション バンドルのレイアウト内で参照できる再利用可能なスタイルを定義します。同等の `styles` プロパティが指定されたレイアウト ファイルで定義されている場合、それぞれの内容がマージされます。重複する定義が見つかった場合は、レイアウト内の定義が優先され、コンテキスト ファイル内の定義が上書きされます。",
-            "$ref": "../../layout/latest/layout.json#/$defs/_LayoutStyles"
+            "$ref": "../../layout/v4.1/layout.json#/$defs/_LayoutStyles"
         }
     },
     "type": "object",

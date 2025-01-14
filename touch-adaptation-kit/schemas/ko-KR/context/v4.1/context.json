@@ -32,7 +32,7 @@
                             }
                         },
                         {
-                            "$ref": "../../layout/latest/layout.json#/$defs/Reference"
+                            "$ref": "../../layout/v4.1/layout.json#/$defs/Reference"
                         }
                     ]
                 }
@@ -45,7 +45,7 @@
             "markdownDescription": "이 파일의 `definitions` 섹션에서 사용할 수 있는 모든 형식을 포함하는 공용 구조체 형식입니다. 자세한 내용은 `definitions` 섹션을 참조하세요.",
             "anyOf": [
                 {
-                    "$ref": "../../layout/latest/layout.json#/$defs/LayoutDefinableType"
+                    "$ref": "../../layout/v4.1/layout.json#/$defs/LayoutDefinableType"
                 },
                 {
                     "$ref": "#/$defs/StateType"
@@ -138,7 +138,7 @@
             "title": "스타일",
             "description": "이 속성은 스타일 지정을 위해 이 터치 적응 번들의 레이아웃 내에서 참조할 수 있는 재사용 가능한 스타일을 정의합니다. 주어진 레이아웃 파일에 동등한 `styles` 속성이 정의되어 있으면 각각의 내용이 병합됩니다. 중복 정의가 발견되면 레이아웃의 정의가 선호되며 컨텍스트 파일의 정의를 덮어씁니다.",
             "markdownDescription": "이 속성은 스타일 지정을 위해 이 터치 적응 번들의 레이아웃 내에서 참조할 수 있는 재사용 가능한 스타일을 정의합니다. 주어진 레이아웃 파일에 동등한 `styles` 속성이 정의되어 있으면 각각의 내용이 병합됩니다. 중복 정의가 발견되면 레이아웃의 정의가 선호되며 컨텍스트 파일의 정의를 덮어씁니다.",
-            "$ref": "../../layout/latest/layout.json#/$defs/_LayoutStyles"
+            "$ref": "../../layout/v4.1/layout.json#/$defs/_LayoutStyles"
         }
     },
     "type": "object",
