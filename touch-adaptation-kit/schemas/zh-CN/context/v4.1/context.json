@@ -32,7 +32,7 @@
                             }
                         },
                         {
-                            "$ref": "../../layout/latest/layout.json#/$defs/Reference"
+                            "$ref": "../../layout/v4.1/layout.json#/$defs/Reference"
                         }
                     ]
                 }
@@ -45,7 +45,7 @@
             "markdownDescription": "包含可在此文件的`definitions`部分中使用的所有类型的联合类型。有关详细信息，请参阅`definitions`部分",
             "anyOf": [
                 {
-                    "$ref": "../../layout/latest/layout.json#/$defs/LayoutDefinableType"
+                    "$ref": "../../layout/v4.1/layout.json#/$defs/LayoutDefinableType"
                 },
                 {
                     "$ref": "#/$defs/StateType"
@@ -138,7 +138,7 @@
             "title": "样式",
             "description": "此属性定义可重用样式，可在此触摸适配捆绑包的布局中引用这些样式以实现样式设置。如果在给定的布局文件中定义了等效的`styles`属性，则将合并每个属性的内容。如果找到重复的定义，则首选布局中的定义，覆盖上下文文件中的定义。",
             "markdownDescription": "此属性定义可重用样式，可在此触摸适配捆绑包的布局中引用这些样式以实现样式设置。如果在给定的布局文件中定义了等效的`styles`属性，则将合并每个属性的内容。如果找到重复的定义，则首选布局中的定义，覆盖上下文文件中的定义。",
-            "$ref": "../../layout/latest/layout.json#/$defs/_LayoutStyles"
+            "$ref": "../../layout/v4.1/layout.json#/$defs/_LayoutStyles"
         }
     },
     "type": "object",

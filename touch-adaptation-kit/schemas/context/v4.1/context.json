@@ -32,7 +32,7 @@
                             }
                         },
                         {
-                            "$ref": "../../layout/latest/layout.json#/$defs/Reference"
+                            "$ref": "../../layout/v4.1/layout.json#/$defs/Reference"
                         }
                     ]
                 }
@@ -45,7 +45,7 @@
             "markdownDescription": "Union type that includes all types which can be used in the `definitions` section of this file. See the `definitions` section for more information",
             "anyOf": [
                 {
-                    "$ref": "../../layout/latest/layout.json#/$defs/LayoutDefinableType"
+                    "$ref": "../../layout/v4.1/layout.json#/$defs/LayoutDefinableType"
                 },
                 {
                     "$ref": "#/$defs/StateType"
@@ -138,7 +138,7 @@
             "title": "Styles",
             "description": "This property defines reusable styles which can be referenced within the layouts in this touch adaption bundle for styling purposes. If an equivalent `styles` property is defined in a given layout file, the contents of each will be merged. If a duplicate definition is found, the definition in the layout is preferred, overwriting the definition in the context file.",
             "markdownDescription": "This property defines reusable styles which can be referenced within the layouts in this touch adaption bundle for styling purposes. If an equivalent `styles` property is defined in a given layout file, the contents of each will be merged. If a duplicate definition is found, the definition in the layout is preferred, overwriting the definition in the context file.",
-            "$ref": "../../layout/latest/layout.json#/$defs/_LayoutStyles"
+            "$ref": "../../layout/v4.1/layout.json#/$defs/_LayoutStyles"
         }
     },
     "type": "object",
