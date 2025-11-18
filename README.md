@@ -1,4 +1,4 @@
-## Welcome!
+# Welcome!
 
 This repository provides tools, schemas, samples and GitHub Copilot custom instructions to empower game creators that are optimizing their games for Xbox game streaming.
 
@@ -6,7 +6,7 @@ To get started with Xbox game streaming you apply to the ID@Xbox program at http
 
 To learn more about optimizing your Xbox game for game streaming see the [developer documentation](https://docs.microsoft.com/en-us/gaming/game-streaming/).
 
-## What's included
+# What's included
 
 - [Touch Adaptation Kit Command Line Tool (TAK CLI)](https://github.com/microsoft/xbox-game-streaming-tools/releases) releases for Windows and MacOS.
 - [Schema](./touch-adaptation-kit/schemas) representing the capabilities of the [Touch Adaptation Kit](https://docs.microsoft.com/en-us/gaming/game-streaming/ux/touch-adaptation-kit/) that allows for your creation of custom touch layouts for your games.
@@ -14,7 +14,7 @@ To learn more about optimizing your Xbox game for game streaming see the [develo
 - [Scripts](./touch-adaptation-kit/scripts) to assist in the development of touch adaptation layouts.
 - [copilot-instructions](./touch-adaptation-kit/copilot-instructions) to provide customizable guidance for GitHub Copilot when generating and refining touch layouts.
 
-### Touch Adaptation Kit Command Line Tool (TAK CLI)
+## Touch Adaptation Kit Command Line Tool (TAK CLI)
 
 > [!CAUTION]
 > The TAK CLI is governed by its own End User License Agreement that must be read and accepted before using the tool. This can be done using the CLI's `license` command.
@@ -23,7 +23,7 @@ The TAK CLI is a command line tool that allows you to create, validate, and pack
 
 You can read more about the TAK CLI in the [public documentation](https://aka.ms/game-streaming-touch-tak-cli).
 
-#### Touch Adaptation Kit Editor extension for VS Code
+### Touch Adaptation Kit Editor extension for VS Code
 The CLI is also required for the core functionalities of the [Touch Adaptation Kit Editor extension for VS Code](https://aka.ms/get-takeditor). The extension provides a visual editing experience for touch adaptation bundles and is recommended as a starting point for creating touch experiences for Xbox game streaming.
 
 > [!TIP]
@@ -31,14 +31,16 @@ The CLI is also required for the core functionalities of the [Touch Adaptation K
 
 You can read more about setting up the TAK Editor extension in the [public documentation](https://aka.ms/takeditor-docs).
 
-#### GitHub Copilot Custom Instructions for Touch Layout Editing Without Editing JSON
+### Touch Layout Editing with GitHub Copilot Custom Instructions (No JSON Editing Required)
 
-The CLI is also required for leveraging GitHub Copilot’s Custom Instructions feature when editing touch layout JSON files in Visual Studio Code. By referencing custom design rules through a `copilot-instructions.md` file in [copilot-instructions](./touch-adaptation-kit/copilot-instructions), Copilot can assist with editing and generating touch adaptation layouts based on natural language prompts. This approach serves as an additional option to the TAK CLI and Editor extension, enabling a more conversational and flexible editing workflow.
+By referencing custom design rules in [copilot-instructions](./touch-adaptation-kit/copilot-instructions), Copilot can assist in generating and editing touch adaptation layouts based on natural language prompts. This approach serves as an additional option alongside the TAK CLI and Editor extension, enabling a more conversational and flexible editing workflow.
 
 > [!TIP]
-> Using Copilot with custom instructions is intended to complement, not replace, the core functionalities of the TAK CLI and Editor extension. For best results, ensure you are using the latest versions of all tools and that your `copilot-instructions.md` file reflects your project’s design guidelines.
+> For best results, ensure that the default `copilot-instructions.md` reflects your project’s touch layout design guidelines. You can customize it as needed to optimize Copilot’s suggestions and edits.
 
-You can read more about setting up GitHub Copilot Custom Instructions in the [public documentation](https://aka.ms/tak-with-copilot).
+You can read more about setting up GitHub Copilot Custom Instructions to edit touch layout JSON in [public documentation](https://aka.ms/tak-with-copilot).
+
+### Install TAK CLI
 
 #### Windows
 
@@ -82,7 +84,7 @@ hdiutil detach /Volumes/tak
 
 Similar to the Windows installation, you must provide the path to the CLI executable to the [TAK Editor](https://aka.ms/get-takeditor) extension in VS Code, either through the VS Code settings, or by executing the "Set TAK CLI path" command from the command palette.
 
-## Contributing
+# Contributing
 
 This project welcomes contributions and suggestions. For more information see [CONTRIBUTING](CONTRIBUTING.md).
 
