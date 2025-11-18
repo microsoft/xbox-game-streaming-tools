@@ -36,11 +36,11 @@ You can read more about setting up the TAK Editor extension in the [public docum
 By referencing custom design rules in [copilot-instructions](./touch-adaptation-kit/copilot-instructions), Copilot can assist in generating and editing touch adaptation layouts based on natural language prompts. This approach serves as an additional option alongside the TAK CLI and Editor extension, enabling a more conversational and flexible editing workflow.
 
 > [!TIP]
-> For best results, ensure that the default `copilot-instructions.md` reflects your project’s touch layout design guidelines. You can customize it as needed to optimize Copilot’s suggestions and edits.
+> For best results, review the contents of [copilot-instructions](./touch-adaptation-kit/copilot-instructions) and customize it to align with your project’s touch layout design guidelines. Tailoring these instructions will help Copilot provide more accurate suggestions and edits.
 
 You can read more about setting up GitHub Copilot Custom Instructions to edit touch layout JSON in [public documentation](https://aka.ms/tak-with-copilot).
 
-### Install TAK CLI
+### How to Install and Configure TAK CLI
 
 #### Windows
 
