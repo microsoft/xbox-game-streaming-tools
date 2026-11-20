@@ -4,7 +4,7 @@
 
 Before answering ANY user request related to touch layouts, always fetch (or ensure cached) the latest layout schema from:
 
-`https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/main/touch-adaptation-kit/schemas/layout/v4.1/layout.json`
+`https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/main/touch-adaptation-kit/schemas/layout/v4.2/layout.json`
 
 and fetch the designers' guidance from:
 
@@ -17,7 +17,7 @@ Rules:
 2. If the schema fetch fails (e.g. network issue), fall back to last successfully fetched copy or alert the user that online validation cannot be guaranteed.
 3. Prefer values and constraints directly from the schema over any heuristic, unless the user explicitly overrides.
 4. When proposing JSON edits, silently validate mentally against: required root property `content`, allowed top-level optional properties (`styles`, `definitions`, `orientation` deprecated), `additionalProperties:false` at multiple levels, control-specific required keys.
-5. When providing examples, do NOT introduce properties not present in the schema (e.g. avoid unofficial fields) and adhere to numeric anges: `scale` (0.5–2), `opacity` (0–1), `sensitivity` (>0), deadzone thresholds (≥0, ≤1 when applicable), etc.
+5. When providing examples, do NOT introduce properties not present in the schema (e.g. avoid unofficial fields) and adhere to numeric anges: `scale` (0.5–2), `opacity` (0–1), `sensitivity` (>0), deadzone thresholds (≥0, ≤1 when applicable), `rotation` on the inner wheel or a segmented `pullAction` (≥0, <360 degrees), etc.
 6. Enforce outer wheel max 8 items (taking cluster size, 2 slots, into account) and inner wheel/group size constraints exactly as schema: inner wheel arrays 1–4, outer wheel arrays 1–8, upper.right 1–5, lower.center 1, lower.leftCenter 1-4 and lower.rightCenter 1-4. (Note: this supposed to be changed when schema version is updated)
 7. For directionalPad exclusivity, include `"interaction": { "activationType": "exclusive" }` ONLY when the user requests 4-way behavior.
 8. Always respect `$ref` usage patterns; propose extraction to `definitions` when duplication is observed.
@@ -25,7 +25,7 @@ Rules:
 
 Cache Guidance:
 - Optionally keep a local copy for offline validation; mention to user if fallback used.
-- If a newer schema version appears (v4.x > 4.1) ask user to confirm before switching.
+- If a newer schema version appears (v4.x > 4.2) ask user to confirm before switching.
 
 Proceed with remaining instructions below after confirming schema accessibility.
 
@@ -56,7 +56,7 @@ Refer to the article for deeper rationale, accessibility, cinematic layouts, nat
 - Do not include comments in the JSON file.
 - Do not add styles other than icon unless explicitly requested.
 - Do not move other slot positions when users ask to edit, move and delete a control unless users explicitly request to do so.
-- Add only icons listed in the property FaceImageIconValue in the schema: `https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/main/touch-adaptation-kit/schemas/layout/v4.1/layout.json`
+- Add only icons listed in the property FaceImageIconValue in the schema: `https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/main/touch-adaptation-kit/schemas/layout/v4.2/layout.json`
 - Always include the following label when you add an icon: `"label": { "type": "action" }`
  configuration alongside `"type": "icon"` to ensure the button label is displayed:
 
@@ -224,7 +224,7 @@ This is full layout structure template explicitly excluding lower property, beca
 
 ```json
 {
-  "$schema": "https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/main/touch-adaptation-kit/schemas/layout/v4.1/layout.json",
+  "$schema": "https://raw.githubusercontent.com/microsoft/xbox-game-streaming-tools/main/touch-adaptation-kit/schemas/layout/v4.2/layout.json",
   "content": {
     "left": {
       "inner": [],
